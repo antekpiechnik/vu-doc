@@ -94,5 +94,102 @@ increasing amount of data collected.}
 \item{Working on the final paper}
 \end{itemize}
 
+\section{YouTube information}
+
+\begin{tabular}{l p{3cm} l p{4cm}}
+Concerning & Information & Access & Description\\ \hline
+Video & Title & Public API \\
+Video & Published & Public API \\
+Video & Updated & Public API \\
+Video & Category & Public API \\
+Video & Tags (keywords) & Public API \\
+Video & Comments & Public API \\
+Video & Permissons & Public API \\
+Video & Description & Public API \\
+Video & Thumbnails & Public API & Set of video's thumbnails (along with times
+when taken) \\
+Video & Duration & Public API \\
+Video & Ratings & Public API & Best, worst and average rating, number of votes
+\\
+Video & Viewcount & Public API \\
+Video & Favourite count & Public API \\
+Video & Number of likes & Public API \\
+Video & Number of dislikes & Public API \\
+Video & Aspect ratio & Public API \\
+Video & Related & Public API \\
+Video & Responses & Public API \\
+Video & Author & Public API \\
+
+Video search & Number of results & Public API \\
+Video search & Search results & Public API \\
+
+User & Uploads & Public API \\
+User & Gender & Public API \\
+User & Location & Public API \\
+User & Age & Public API \\
+User & Contacts & Public API \\
+User & Username & Public API \\
+User & Subscriptions & Public API \\
+User & Inbox & Public API \\
+User & Favorites & Public API \\
+
+Comment & Created & Public API \\
+Comment & Updated & Public API \\
+Comment & Author & Public API \\
+Comment & Text & Public API \\
+
+User's channel & Demographics (viewers' age/gender) & Screen scraping \\
+User's channel & Referrers & Screen scraping \\
+User's channel & Popularity across countries & Screen scraping \\
+User & History & Screen scraping \\
+User & Likes & Screen scraping \\
+User & Issued authentication subtokens & Screen scraping \\
+
+Video & Subtitles & OCR \\
+
+\end{tabular}
+
+\subsection{YouTube counting strategies}
+
+\begin{itemize}
+\item{Tags aggregation across various video sets:
+\begin{itemize}
+  \item{User's likes and favourites}
+  \item{User's subscriptions (two-level aggregation there)}
+  \item{User's history}
+  \item{User's uploads}
+\end{itemize}
+}
+
+\item{Similar aggregation for other entities found in videos
+\begin{itemize}
+  \item{Puropose of the video -- we could invent a dictionary of video purposes
+  (eg. advertisements, lectures, speeches, movie fragments, family videos) and
+  relate them to the videos.}
+  \item{Keywords from comments -- after the aggregation and rejecting of stop
+  words, this might prove userful.}
+  \item{Language -- could be estimated by analysis of language of
+  comments and description, location of the publisher and commenters.}
+  \item{Duration -- users might prefer shorter clips. This might happen only for
+  certain types of videos (lectures, advertisements).}
+  \item{Freshness -- users might prefer videos uploaded more recently. This
+  might be useful for example to identify "sneak peeks" for TV shows.}
+  \item{Controversiality -- likes/dislikes ratio, amount of favourites per
+  views.}
+  \item{Second order effects -- facts determined for a video might be applicable
+  also for a clip it is a response to.}
+\end{itemize}
+}
+
+\item{Relating videos and channels to entities from other linked data services
+\begin{itemize}
+  \item{People: music artists, actors, directors, politicians, TV presenters,
+  other public figures}
+  \item{Places: cities, countries}
+  \item{Existing works: TV programmes, movies, music tracks}
+  \item{Others: musical, political, traditional and commercial events, brands}
+\end{itemize}
+}
+\end{itemize}
 
 \end{document}
