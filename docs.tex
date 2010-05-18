@@ -192,4 +192,45 @@ Video & Subtitles & OCR \\
 }
 \end{itemize}
 
+\subsection{Conclusions from counting YouTube entities}
+The most obvious way to get profiling information is through the use of
+tags. However, tags of a single video clip can be either too numerous, making many
+of them irrelevant, too sparse, nonexistent and occasionally just wrong. To avoid
+that problem, we aggregates the tags across sets of video clips related to the
+profiled user. User's favourites and clips from his subscriptions are good
+candidates for such a set. Also, user's uploads have been considered and a
+similar indexing was performed for words in comments.
+
+As expected -- the favourites and subscriptions returned the most promising results
+giving a lot of keywords actually identifying user's interests, and relatively
+small amount of false positives.
+
+\begin{tabular}{p{5cm} p{5cm}}
+Sample subscription keywords aggregation & Sample comments keywords aggregation
+(for the same user) \\ \hline
+Smialek(39) & like(433) \\
+fredrika(39) & video(356) \\
+music(38) & just(356) \\
+kulka(37) & love(312) \\
+karin(37) & song(264) \\
+songwriter(36) & good(254) \\
+singer(36) & lol(235) \\
+original(35) & dont(235) \\
+female(34) & great(202) \\
+gabriela(33) & im(200) \\
+artist(32) & d(191) \\
+folk(31) & awesome(189) \\
+unsigned(31) & really(187) \\
+acoustic(27) & amazing(176) \\
+gaba(27) & think(169) \\
+rock(26) & know(162) \\
+guitar(23) & music(151) \\
+kabarett(20) & people(151) \\
+the(17) & thats(145) \\
+berlin(14) & nice(133) \\
+\end{tabular}
+
+We can see that keywords from comments tend to gather rather more general
+keywords, than subscription tags.
+
 \end{document}

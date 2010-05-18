@@ -1,4 +1,4 @@
-latex/*.aux
-latex/*.log
-latex/*.out
-latex/*.pdf
+*.aux
+*.log
+*.out
+*.pdf
