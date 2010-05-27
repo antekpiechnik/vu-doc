@@ -196,18 +196,14 @@ Video & Subtitles & OCR \\
 }
 \end{itemize}
 
-\subsubsection{Conclusions from counting YouTube entities}
+\subsubsection{Conclusions from counting YouTube tags}
 The most obvious way to get profiling information is through the use of
 tags. However, tags of a single video clip can be either too numerous, making many
 of them irrelevant, too sparse, nonexistent and occasionally just wrong. To avoid
-that problem, we aggregates the tags across sets of video clips related to the
+that problem, we aggregate the tags across sets of video clips related to the
 profiled user. User's favourites and clips from his subscriptions are good
-candidates for such a set. Also, user's uploads have been considered and a
+candidates for such a set. Also, user's uploaded videos have been considered and a
 similar indexing was performed for words in comments.
-
-As expected -- the favourites and subscriptions returned the most promising results
-giving a lot of keywords actually identifying user's interests, and relatively
-small amount of false positives.
 
 \begin{tabular}{p{5cm} p{5cm}}
 Sample subscription keywords aggregation & Sample comments keywords aggregation
@@ -234,8 +230,25 @@ the(17) & thats(145) \\
 berlin(14) & nice(133) \\
 \end{tabular}
 
-We can see that keywords from comments tend to gather rather more general
-keywords, than subscription tags.
+As expected -- the favourites and subscriptions returned the most promising results
+giving a lot of keywords actually identifying user's interests, and relatively
+small amount of false positives. We might still try to improve these results.
+
+\subsection{Attempt at improving tags aggregation}
+
+Even though the tags gathered across clips from user's subscriptions give
+relatively good overview on his interests, they give preference to channels with
+larger number of videos. Specifically, a subscription on a very narrow topic,
+which tags almost every video with a core set of keywords, would boost these
+tags' score in this method on counting. To prevent that, we tried to vary the
+weight of tags based on how many different keywords a single subscription has.
+Unfortunately, results of this method were much worse than simple equal-weight
+counting. Tags from single video channels gained enormous coefficients, which
+caused them to jump right ahead of all the others. An extreme example of that
+was a channel with a single video marked with a single keyword. It received a
+factor of 1, which made it impossible for any other tag to get a higher ranking
+position, while obviously -- this single word did not express original user's
+interests.
 
 \newpage
 \section{Twitter}
