@@ -1,5 +1,7 @@
 \documentclass{article}
+\usepackage[utf8]{inputenc}
 \usepackage{multirow}
+\usepackage{verbatim}
 
 \begin{document}
 \title{Profiling users media preferences based on social network data streams}
@@ -188,46 +190,119 @@ Video & Subtitles & OCR \\
 }
 \end{itemize}
 
-\subsubsection{Conclusions from counting YouTube entities}
+\subsection{Counting YouTube tags and categories}
 The most obvious way to get profiling information is through the use of
 tags. However, tags of a single video clip can be either too numerous, making many
 of them irrelevant, too sparse, nonexistent and occasionally just wrong. To avoid
-that problem, we aggregates the tags across sets of video clips related to the
-profiled user. User's favourites and clips from his subscriptions are good
-candidates for such a set. Also, user's uploads have been considered and a
-similar indexing was performed for words in comments.
+that problem, we aggregate the tags across sets of video clips related to the
+profiled user (favourites, subscriptions, uploads). Similar aggregation was
+performed for the videos' categories. Below is a comparison of results of counting
+tags (chosen by the user) and categories (picked from a small predefined set).
 
-As expected -- the favourites and subscriptions returned the most promising results
-giving a lot of keywords actually identifying user's interests, and relatively
-small amount of false positives.
+\begin{table}
+\begin{tabular}{| l | l | l | l |}
+Category & \# & Tag & \# \\ \hline
+News & 8 & sonik & 5 \\
+Music & 5 & bogusław & 5 \\
+Education & 3 & trzech & 5 \\
+Comedy & 2 & kupli & 5 \\
+& & wybory & 4 \\
+& & kraków & 4 \\
+& & polska & 4 \\
+\end{tabular}
+\caption{Most popular tags and categories from account of Bogusław Sonik -- a
+polish politician. The word ''wybory'' stands for ''election'' in polish, and
+\emph{Trzech kumpli} is a title of a controversial political documentary.}
 
-\begin{tabular}{p{5cm} p{5cm}}
-Sample subscription keywords aggregation & Sample comments keywords aggregation
-(for the same user) \\ \hline
-Smialek(39) & like(433) \\
-fredrika(39) & video(356) \\
-music(38) & just(356) \\
-kulka(37) & love(312) \\
-karin(37) & song(264) \\
-songwriter(36) & good(254) \\
-singer(36) & lol(235) \\
-original(35) & dont(235) \\
-female(34) & great(202) \\
-gabriela(33) & im(200) \\
-artist(32) & d(191) \\
-folk(31) & awesome(189) \\
-unsigned(31) & really(187) \\
-acoustic(27) & amazing(176) \\
-gaba(27) & think(169) \\
-rock(26) & know(162) \\
-guitar(23) & music(151) \\
-kabarett(20) & people(151) \\
-the(17) & thats(145) \\
-berlin(14) & nice(133) \\
+\begin{tabular}{| l | l | l | l |}
+Category & \# & Tag & \# \\ \hline
+Music & 53 & metal & 17 \\
+Comedy & 20 & music & 11 \\
+Entertainment & 8 & rock & 11 \\
+Games & 4 & video & 7 \\
+People & 3 & the & 7 \\
+Travel & 3 & black & 7 \\
+News & 2 & of & 7 \\
+\end{tabular}
+\caption{Most popular tags and categories from anonymous user -- apparently a
+heavy metal music fan}
+\end{table}
+
+We can see that category count, even though providing general overview of
+person's interests (and the ways she uses youtube), cannot be used to find
+specific interests. In other words: we can say that a person is more keen to
+favourite music videos or comedy videos, but in order to say what kind of music
+the person prefers, we need more specific information gathered from (e.g.) tags.
+
+\subsubsection{How to treat duplicates}
+
+When combining tags collected from various sets of videos, a question should be
+asked what preference -- if any -- should be given to tags appearing in more
+then one of them. Let's analyze some examples. The letters $f$, $s$ and $u$ mean number
+of videos in accordingly: favourites, subscriptions and uploads. The
+combinations of letters indicate numbers of tags repeating in these sets.
+
+\begin{tabular}{| l | l | l | l | l | l | l | l |}
+user & $f$ & $s$ & $u$ & $fs$ & $fu$ & $su$ & $fsu$ \\ \hline
+politician & 219 & 32321 & 357 & 116 & 59 & 156 & 34 \\
+metal music fan & 1103 & 7570 & 73 & 533 & 27 & 44 & 26 \\
+one of authors & 687 & 5553 & 10 & 199 & 2 & 2 & 1 \\
 \end{tabular}
 
-We can see that keywords from comments tend to gather rather more general
-keywords, than subscription tags.
+The tags that appeared in all three sets are:
+\begin{itemize}
+  \item{politician: \emph{wybory, europarlament, czerwca, europa, europejska,
+  parlament, 18, unia, europejski, kraków, w, 7, pe, 2009, bogusław, po,
+  bezpieczeństwo}}
+  \item{metal music fan: \emph{head, death, pantera, for, in, nosturi, the, live, cover, metal}}
+  \item{one of authors: \emph{film}}
+\end{itemize}
+
+As expected, the repeating tags give much more precise view of person's
+interests. Unfortunately, the tags get muted when a user is not active in one of
+those areas (e.g. does not upload movies very frequently).
+
+\subsubsection{The double nestedness problem}
+Gathering tags across user's favourites or uploads let us treat the whole video
+set as a single document, giving each tag equal weight in the counting process.
+Taking a similar approach for subscriptions (e.g. giving equal weight to each
+tag of each video of every subscription) leads to some unwanted effects.
+
+Suppose a user subscribes to two channels. One represents the british royal
+family (133 uploads), the other one: Apple Inc., an american computer company
+(19 uploads). The tags referring to new hardware releases would get flooded with
+tags regarding british-specific content. In effect, the user's profile would
+depend on third parties' youtube activity which is doubtful to be of any
+importance to her.
+
+In order to counteract this effect a number of techniques can be used. One of
+them is giving each subscription a weight, based on the number of videos or
+total number of tags.
+
+\subsection{Identifying entities in youtube streams}
+The user profile information would largely benefit from including data aligned
+to existing Linked Data sources. An attempt to run this task trivially for
+several types of entities (actors, networks) have been performed. The approach
+was to identify actors names in sequences of n-grams extracted from video's
+titles and descriptions. Below are sample results:
+
+\begin{verbatim}
+Rowan Atkinson LIVE: 02 - Fatal Beatings          , Rowan Atkinson
+Yes We Can - Barack Obama Music Video             , Scarlett Johansson
+Compay Segundo - Chan Chan                        , Compay Segundo
+Drivin' Me Wild - Common Ft Lily Allen [OFFICIAL] , Lily Allen
+PT 4 - BRITNEY SPEARS 2006 INTERVIEW BEARS ALL    , Britney Spears
+16-Lovestoned Live Futuresex/Loveshow             , Justin Timberlake
+15- Cry Me A River Live Futuresex/Loveshow        , Justin Timberlake
+Jennifer Lopez - Ain't It Funny                   , Jennifer Lopez
+Christina Aguilera - Save Me From Myself [Official, Christina Aguilera
+Nancy Sinatra Bang Bang                           , Nancy Sinatra
+Eddie Vedder - Hard Sun (Official Video)          , Eddie Vedder
+\end{verbatim}
+
+The approach is not ideal. However, above certain threshold of repeats, an
+assumption that a user likes a given actor becomes more probable.
+
 
 \newpage
 \section{Twitter}
