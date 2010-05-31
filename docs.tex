@@ -333,8 +333,8 @@ for focusing on a different language.
 
 \subsubsection{Types of entities matched}
 For purposes of this paper, I have extracted data regarding titles of movies, TV
-programmes (both shows and documentaries), movie actors and TV actors from the
-freebase.com archive. Those titles will be used to analyse and match the
+programs (both shows and documentaries), movie actors and TV actors from the
+freebase.com archive. Those titles will be used to analyze and match the
 aggregated Twitter data.
 \\ However, not all entity names are uniquely describing the show, but also many
 other entities (such as \textit{House}). Thus, in case of one-word tv show names and
@@ -345,7 +345,7 @@ be converted into a hashtag form.
 \subsubsection{Mentioning entities names}
 Using trivial methods of string matching, Twitter data will be analysed for
 mentions of entities' names in tweets.
-\\ Occurences of entity names a few times in a stream without a
+\\ Occurrences of entity names a few times in a stream without a
 provided activity or preference tag will most certainly indicate an interest in
 the entity mentioned. 
 \\What is also interesting is the frequency of those mentions. Not only does
@@ -366,7 +366,7 @@ By retrieving tweets containing the entities, a ranking of most popular words
 appearing with the entities will be created and by extracting the most useful
 ones, the vocabularies will be updated.
 \subsubsection{Mentioning an entity as a hashtag}
-witter users also use Hashtags for easier retrieval of tweets mentioning
+Twitter users also use Hashtags for easier retrieval of tweets mentioning
 a particular subject. When using a hashtag, all possible whitespace between
 words naming an entity are removed and prefixed with a \# character.
 \subsubsection{Mentioning an entity via twitter username}
@@ -384,7 +384,7 @@ Relate the mentions of entities followed (for known Twitter usernames) and the m
 \item entity's twitter username
 \item entity converted to a hashtag form
 \end{itemize}
-\subsubsection{Following preferenced entities}
+\subsubsection{Following preference entities}
 Relating the sole fact of following an entity's twitter username and the preferences towards it based on other counting methods.
 
 \subsection{Types of measurements available}
@@ -418,15 +418,15 @@ Relating the sole fact of following an entity's twitter username and the prefere
   \end{tabular}
 \end{center}
 
-\subsection{Results}
-\subsubsection{Diversing results}
+\subsection{Types of messages - results}
+\subsubsection{Diverting results}
 In order for the results to actually bring any outcome, we decided to divide the
 corpus into two halves. By measuring the
-difference in achieved results, we might be actually able to evalute their
+difference in achieved results, we might be actually able to evaluate their
 usefulness.
 
 \subsubsection{Full name matching}
-Mentioning a full name (for all actors and also tv-shows/movies titles longer
+Mentioning a full name (for all actors and also TV-shows/movies titles longer
 than one word).
 
 \begin{center}
@@ -486,7 +486,7 @@ names have been used.
 \end{center}
 
 We can easily notice how the person-based entities have either noted a smaller
-occurence rate and title-based ones have improved. This may be related to the
+occurrence rate and title-based ones have improved. This may be related to the
 fact that people usually create hashtags based on a more general entity (such as
     a movie) rather then specific it's parts (such as actors that play in it)
 when expressing their opinion.
@@ -508,7 +508,7 @@ and a entity name (full match).
   \end{tabular}
 \end{center}
 
-As we can see, the activity verbs are very unlikely to be occuring next to
+As we can see, the activity verbs are very unlikely to be occurring next to
 person-based entities. However, activity verbs are much more popular with both
 Movies and TV Shows, which originates from the very idea of Twitter and
 updating statuses with information on what the user is currently doing.
@@ -520,7 +520,7 @@ Two sets of preference have been used:
 \item negative
 \end{itemize}
 
-The figure below shows the general use of preference verbs with occurences of
+The figure below shows the general use of preference verbs with occurrences of
 mentions.
 
 \begin{center}
@@ -572,6 +572,21 @@ However, those mentions occur relatively rarely. For a sample of 70 twitter user
 Furthermore, following a certain entity should also be regarded as a preference toward the topics this entity is connected to (such as 
 Politics for \textit{BarackObama}).
 
+In order to confirm that statement, we have attempted to match topics related to those entities in their followers streams. By selecting attributes
+describing their relation to the topic (such as show names actors starred in). This has greatly improved our results, but they may now contain more noise:
+
+\begin{center}
+  \begin{tabular}{ | p{3cm}| p{2cm} | } \hline
+    Match type & Occurence \\ \hline
+    Name & XXXX\% \\ \hline
+    Hashtag & XXXX\% \\ \hline
+	Username & XXXX\% \\ \hline
+  \end{tabular}
+\end{center}
+
+This leads to a conclusion that following a certain username most definitely states users interest in a notable part of topics related to that entity and
+in the entity itself.
+
 On the other hand, locating more \textit{official} twitter usernames for various entities might be extremely hard, 
 making this approach not completely worthwhile. Given such small amounts of twitter usernames known, it would be 
 hard to reasonably specify the relation between the act of following the entity on twitter and preferences
@@ -618,8 +633,8 @@ This part will provide profiling based on tweets including a verb suggesting
 having actually seen the given entity. It will have a much higher preference
 value than the name matching. Since an interested user might tweet repeatedly,
       the profiling value will increase with each such mention. \\
-This value might also be modified by the amoung of different entities found,
-(the more user tweets about the tv, the more its significance differs)
+This value might also be modified by the among of different entities found,
+(the more user tweets about the TV, the more its significance differs)
 
 \subsubsection{Counting entity names with preference verbs (using a greater vocabulary
       and waging specific interests)}
@@ -627,7 +642,7 @@ This value might also be modified by the amoung of different entities found,
 The extraction of the mentions will be similar to the activity verbs. However,
     relating a specific preference verb to the entity with a 100\% accuracy. The
     profiling influence will be matched accordingly. \\
-Since users tend to tweet about positive preferences, the occurences of negative
+Since users tend to tweet about positive preferences, the occurrences of negative
 preference verbs will have a different effect on the profile.
 
 \subsubsection{Measuring the amount of tweets mentioning any kind of entity to all
@@ -648,10 +663,30 @@ However, there is a great number of entity names (mostly TV Shows) that create n
 Unless such entity names can be excluded, or proven not be influential enough on the profiling, any kind of recommenders based on
 those matching methods need to take that into consideration and reduce the preference values appropriately.
 
+In order to reduce the chance of such noise occurring, we decided to run those entity names against a corpus of English texts, ranking them
+by their popularity. The more often an entity name occurs in those corpora, the lesser the chance of it occurring as a name of the TV shows.
+
+In order to measure the certainty, a separate function has been introduce, taking into account the following:
+
+\begin{itemize}
+  \item form of occurrence of the entity name (string match, hashtag)
+  \item use of an activity verb
+  \item use of a preference verb
+  \item the popularity of the entity name in natural texts
+\end{itemize}
+
+This measurement will then be easily translatable into the preference weights to be recorded when profiling a user.
+
 The results seem to be very promising and indicate that data regarding the media preferences of a user might be available in their Twitter stream
 and is also quite easily accessible. 
 
 The analysis of the \textit{following} list should help to profile more efficiently when it comes to topics that the given user is interested in.
+
+\subsubsection{Additional problems}
+
+\textit{Context}
+
+\textit{Ambiguity}
 
 \subsection{Technologies}
 \subsubsection{Language}
