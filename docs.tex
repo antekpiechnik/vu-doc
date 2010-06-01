@@ -573,16 +573,8 @@ Furthermore, following a certain entity should also be regarded as a preference 
 Politics for \textit{BarackObama}).
 
 In order to confirm that statement, we have attempted to match topics related to those entities in their followers streams. By selecting attributes
-describing their relation to the topic (such as show names actors starred in). This has greatly improved our results, but they may now contain more noise:
-
-\begin{center}
-  \begin{tabular}{ | p{3cm}| p{2cm} | } \hline
-    Match type & Occurence \\ \hline
-    Name & XXXX\% \\ \hline
-    Hashtag & XXXX\% \\ \hline
-	Username & XXXX\% \\ \hline
-  \end{tabular}
-\end{center}
+describing their relation to the topic (such as show names actors starred in). The problem here is some of the topics are a bit too general (such as \textit{Writer}
+as a TV-related job). Finding a way of ranking those categories could provide us with reducing the noise in those measurements.
 
 This leads to a conclusion that following a certain username most definitely states users interest in a notable part of topics related to that entity and
 in the entity itself.
@@ -666,7 +658,7 @@ those matching methods need to take that into consideration and reduce the prefe
 In order to reduce the chance of such noise occurring, we decided to run those entity names against a corpus of English texts, ranking them
 by their popularity. The more often an entity name occurs in those corpora, the lesser the chance of it occurring as a name of the TV shows.
 
-In order to measure the certainty, a separate function has been introduce, taking into account the following:
+In order to measure the certainty, a separate function has been introduced, taking into account the following:
 
 \begin{itemize}
   \item form of occurrence of the entity name (string match, hashtag)
@@ -675,18 +667,23 @@ In order to measure the certainty, a separate function has been introduce, takin
   \item the popularity of the entity name in natural texts
 \end{itemize}
 
-This measurement will then be easily translatable into the preference weights to be recorded when profiling a user.
+This measurement allowed us to rank some of the entity names completely unusable (such as show names like \textit{'Me too'} or \textit{'Trust me'}, which popularities make their
+occurrences unusable unless e.g. they occur in a form of a \textit{Hashtag}). The result of certainty will be easily translatable into the preference weights to be recorded when profiling a user.
 
 The results seem to be very promising and indicate that data regarding the media preferences of a user might be available in their Twitter stream
 and is also quite easily accessible. 
 
 The analysis of the \textit{following} list should help to profile more efficiently when it comes to topics that the given user is interested in.
 
-\subsubsection{Additional problems}
+\subsection{Additional problems/ideas}
 
-\textit{Context}
+\paragraph{Context}
+In order to further minimize the chance of finding an occurrence of a subject that is not describing what we are hoping is analyzing the tweet's context.
+By undertaking semantic approaches we could be able to analyze different topics found in a tweet and attempt to rank their relation to the entity we are researching.
 
-\textit{Ambiguity}
+\paragraph{Ambiguity}
+Since some entity categories (such as \textit{TV Actors}) can be ambiguous (such as \textbf{John Terry the actor} and \textbf{John Terry the footballer}). Such situations
+would require us to use additional methods (such as context-based reasoning) in order to accurately identify the entity in question.
 
 \subsection{Technologies}
 \subsubsection{Language}
