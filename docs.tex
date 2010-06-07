@@ -207,31 +207,79 @@ profiled user (favourites, subscriptions, uploads). Similar aggregation was
 performed for the videos' categories. Below is a comparison of results of counting
 tags (chosen by the user) and categories (picked from a small predefined set).
 
-\begin{table}
-\begin{tabular}{| l | l | l | l |}
-Category & \# & Tag & \# \\ \hline
-News & 8 & sonik & 5 \\
-Music & 5 & bogusław & 5 \\
-Education & 3 & trzech & 5 \\
-Comedy & 2 & kupli & 5 \\
-& & wybory & 4 \\
-& & kraków & 4 \\
-& & polska & 4 \\
+
+
+
+
+
+
+\begin{table}[ht]
+\begin{minipage}[b]{0.5\linewidth}\centering
+
+\begin{tabular}{| l | l |}
+Category & \# \\ \hline
+News & 8 \\
+Music & 5 \\
+Education & 3 \\
+Comedy & 2 \\
 \end{tabular}
+
+\end{minipage}
+\hspace{0.5cm}
+\begin{minipage}[b]{0.5\linewidth}
+\centering
+
+\begin{tabular}{| l | l |}
+Tag & \# \\ \hline
+sonik & 5 \\
+bogusław & 5 \\
+trzech & 5 \\
+kupli & 5 \\
+wybory & 4 \\
+kraków & 4 \\
+polska & 4 \\
+\end{tabular}
+
+\end{minipage}
+
 \caption{Most popular tags and categories from account of Bogusław Sonik -- a
 polish politician. The word ''wybory'' stands for ''election'' in polish, and
 \emph{Trzech kumpli} is a title of a controversial political documentary.}
+\end{table}
 
-\begin{tabular}{| l | l | l | l |}
-Category & \# & Tag & \# \\ \hline
-Music & 53 & metal & 17 \\
-Comedy & 20 & music & 11 \\
-Entertainment & 8 & rock & 11 \\
-Games & 4 & video & 7 \\
-People & 3 & the & 7 \\
-Travel & 3 & black & 7 \\
-News & 2 & of & 7 \\
+
+\begin{table}
+\begin{minipage}[b]{0.5\linewidth}\centering
+
+\begin{tabular}{| l | l |}
+Category & \# \\
+Music & 53 \\
+Comedy & 20 \\
+Entertainment & 8 \\
+Games & 4 \\
+People & 3 \\
+Travel & 3 \\
+News & 2 \\
 \end{tabular}
+
+\end{minipage}
+\hspace{0.5cm}
+\begin{minipage}[b]{0.5\linewidth}
+\centering
+
+\begin{tabular}{| l | l |}
+Tag & \# \\ \hline
+metal & 17 \\
+music & 11 \\
+rock & 11 \\
+video & 7 \\
+the & 7 \\
+black & 7 \\
+of & 7 \\
+\end{tabular}
+
+\end{minipage}
+
 \caption{Most popular tags and categories from anonymous user -- apparently a
 heavy metal music fan}
 \end{table}
@@ -239,8 +287,9 @@ heavy metal music fan}
 We can see that category count, even though providing general overview of
 person's interests (and the ways she uses youtube), cannot be used to find
 specific interests. In other words: we can say that a person is more keen to
-favourite music videos or comedy videos, but in order to say what kind of music
-the person prefers, we need more specific information gathered from (e.g.) tags.
+favourite music videos or comedy videos after looking at his categories, but in
+order to say what kind of music the person prefers, we need more specific
+information gathered from (e.g.) tags.
 
 \subsubsection{How to treat duplicates}
 
