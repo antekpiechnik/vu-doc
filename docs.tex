@@ -2,6 +2,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage{multirow}
 \usepackage{verbatim}
+\usepackage[pdftex]{graphicx}
+
 
 \begin{document}
 \title{Profiling users media preferences based on social network data streams}
@@ -154,6 +156,34 @@ User & Issued authentication subtokens & Screen scraping \\
 Video & Subtitles & OCR \\
 
 \end{tabular}
+
+\subsubsection{YouTube usage}
+
+A statistics were performed measuring popularity of three YouTube features: favourites,
+subscriptions and uploads. Over a sample of 7500 users most settled down at
+relatively low level of activity. All histograms below show numbers of users
+(axis y) with $x_1-x_2$ numbers of favourites/subscriptions/uploads. The
+logarithmic scale was used for all three charts.
+
+\begin{figure}
+\includegraphics[width=12cm]{images/favs.png} \\
+\caption{Histogram of favourites function usage. Over the x axis there a groups
+of users having between $x_1$ and $x_2$ favourites. The height indicates the
+size of a group.}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=12cm]{images/subs.png} \\
+\caption{Histogram of subscriptions function usage. Users are divided into
+groups based on number of their subscriptions. We can see that almost 5000 out
+of 7500 users subscribe to less than 50 channels.}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=12cm]{images/ups.png} \\
+\caption{Histogram of upload function usage. Almost 6000 out of 7500 users
+uploaded less than 40 clips.}
+\end{figure}
 
 \subsubsection{YouTube counting strategies}
 
