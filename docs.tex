@@ -3,6 +3,7 @@
 \usepackage{multirow}
 \usepackage{verbatim}
 \usepackage[pdftex]{graphicx}
+\usepackage{subfigure}
 
 
 \begin{document}
@@ -165,24 +166,25 @@ relatively low level of activity. All histograms below show numbers of users
 (axis y) with $x_1-x_2$ numbers of favourites/subscriptions/uploads. The
 logarithmic scale was used for all three charts.
 
-\begin{figure}
-\includegraphics[width=12cm]{images/favs.png} \\
-\caption{Histogram of favourites function usage. Over the x axis there a groups
-of users having between $x_1$ and $x_2$ favourites. The height indicates the
-size of a group.}
-\end{figure}
-
-\begin{figure}
-\includegraphics[width=12cm]{images/subs.png} \\
-\caption{Histogram of subscriptions function usage. Users are divided into
-groups based on number of their subscriptions. We can see that almost 5000 out
-of 7500 users subscribe to less than 50 channels.}
-\end{figure}
-
-\begin{figure}
-\includegraphics[width=12cm]{images/ups.png} \\
-\caption{Histogram of upload function usage. Almost 6000 out of 7500 users
-uploaded less than 40 clips.}
+\begin{figure}[ht]
+\centering
+\subfigure[Favourites]{
+\includegraphics[scale=0.6]{images/favs.png}
+\label{fig:favs}
+}
+\subfigure[Subscriptions]{
+\includegraphics[scale=0.6]{images/subs.png}
+\label{fig:subs}
+}
+\subfigure[Uploads]{
+\includegraphics[scale=0.6]{images/ups.png}
+\label{fig:ups}
+}
+\label{fig:subfigureExample}
+\caption{Histograms of usage of favourites \subref{fig:favs}, subscriptions
+\subref{fig:subs} and uploads \subref{fig:ups}. The x axis represents groups of
+users having $x_1-x_2$ entities, the height of the bars indicates sizes of the
+groups.}
 \end{figure}
 
 \subsubsection{YouTube counting strategies}
