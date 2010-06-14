@@ -110,58 +110,99 @@ increasing amount of data collected.}
 
 \subsection{YouTube information}
 
-\begin{tabular}{l p{3cm} l p{4cm}}
-Concerning & Information & Access & Description\\ \hline
-Video & Title & Public API \\
-Video & Published & Public API \\
-Video & Updated & Public API \\
-Video & Category & Public API \\
-Video & Tags (keywords) & Public API \\
-Video & Comments & Public API \\
-Video & Permissons & Public API \\
-Video & Description & Public API \\
-Video & Thumbnails & Public API & Set of video's thumbnails (along with times
+\begin{table}[ht]
+\begin{tabular}{|p{3cm} | l | p{4cm}|}\hline
+Information & Access & Description\\ \hline
+
+Title & Public API & \\
+Published & Public API & \\
+Updated & Public API & \\
+Category & Public API & \\
+Tags (keywords) & Public API & \\
+Comments & Public API & \\
+Permissons & Public API & \\
+Description & Public API & \\
+Thumbnails & Public API & Set of video's thumbnails (along with times
 when taken) \\
-Video & Duration & Public API \\
-Video & Ratings & Public API & Best, worst and average rating, number of votes
+Duration & Public API & \\
+Ratings & Public API & Best, worst and average rating, number of votes
 \\
-Video & Viewcount & Public API \\
-Video & Favourite count & Public API \\
-Video & Number of likes & Public API \\
-Video & Number of dislikes & Public API \\
-Video & Aspect ratio & Public API \\
-Video & Related & Public API \\
-Video & Responses & Public API \\
-Video & Author & Public API \\
-
-Video search & Number of results & Public API \\
-Video search & Search results & Public API \\
-
-User & Uploads & Public API \\
-User & Gender & Public API \\
-User & Location & Public API \\
-User & Age & Public API \\
-User & Contacts & Public API \\
-User & Username & Public API \\
-User & Subscriptions & Public API \\
-User & Inbox & Public API \\
-User & Favorites & Public API \\
-
-Comment & Created & Public API \\
-Comment & Updated & Public API \\
-Comment & Author & Public API \\
-Comment & Text & Public API \\
-
-User's channel & Demographics (viewers' age/gender) & Screen scraping \\
-User's channel & Referrers & Screen scraping \\
-User's channel & Popularity across countries & Screen scraping \\
-User & History & Screen scraping \\
-User & Likes & Screen scraping \\
-User & Issued authentication subtokens & Screen scraping \\
-
-Video & Subtitles & OCR \\
-
+Viewcount & Public API & \\
+Favourite count & Public API & \\
+Number of likes & Public API & \\
+Number of dislikes & Public API & \\
+Aspect ratio & Public API & \\
+Related & Public API & \\
+Responses & Public API & \\
+Author & Public API & \\ \hline
 \end{tabular}
+\caption{Information available for a video}
+\end{table}
+
+
+\begin{table}[ht]
+\begin{minipage}[b]{0.5\linewidth}\centering
+
+\begin{tabular}{ | p{3cm} | l |}\hline
+Information & Access \\ \hline
+Number of results & Public API \\
+Search results & Public API \\ \hline
+\end{tabular}
+\caption{Information available for video search results}
+
+\end{minipage}
+\hspace{0.5cm}
+\begin{minipage}[b]{0.5\linewidth}
+\centering
+
+\begin{tabular}{ | p{3cm} | l |}\hline
+Information & Access\\ \hline
+Uploads & Public API \\
+Gender & Public API \\
+Location & Public API \\
+Age & Public API \\
+Contacts & Public API \\
+Username & Public API \\
+Subscriptions & Public API \\
+Inbox & Public API \\
+Favorites & Public API \\
+History & Screen scraping \\
+Likes & Screen scraping \\
+Issued authentication subtokens & Screen scraping \\ \hline
+\end{tabular}
+\caption{Information available for a user}
+
+\end{minipage}
+\end{table}
+
+
+\begin{table}[ht]
+\begin{minipage}[b]{0.5\linewidth}\centering
+
+\begin{tabular}{ | p{3cm} | l |}\hline
+Information & Access \\ \hline
+Created & Public API \\
+Updated & Public API \\
+Author & Public API \\
+Text & Public API \\ \hline
+\end{tabular}
+\caption{Information available for a comment}
+
+\end{minipage}
+\hspace{0.5cm}
+\begin{minipage}[b]{0.5\linewidth}
+\centering
+
+\begin{tabular}{ | p{3cm} | l |}\hline
+Information & Access \\ \hline
+Demographics & Screen scraping \\
+Referrers & Screen scraping \\
+Countries popularity & Screen scraping \\ \hline
+\end{tabular}
+\caption{Information available for a channel}
+
+\end{minipage}
+\end{table}
 
 \subsubsection{YouTube usage}
 
@@ -289,7 +330,7 @@ polish politician. The word ''wybory'' stands for ''election'' in polish, and
 \begin{minipage}[b]{0.5\linewidth}\centering
 
 \begin{tabular}{| l | l |}
-Category & \# \\
+Category & \# \\ \hline
 Music & 53 \\
 Comedy & 20 \\
 Entertainment & 8 \\
