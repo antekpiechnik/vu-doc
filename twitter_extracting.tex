@@ -1,0 +1,89 @@
+\section{Extracting user profile from Twitter}
+
+
+\subsection{Counting methods and profiling}
+
+\subsubsection{Reasoning}
+Due to a specific nature of Twitter (consisting mostly of natural language), and
+how hard it is to locate usernames for all entities searched, it seems as if
+using more advanced NLP methods for extracting both the entities as well as any
+kind of preference might be the only useful approaches. Lone mentioning displays
+interest, whereas activity verbs and preference verbs might be a great
+suggestion as to what kind of preference score an entity will achieve for a
+given user.
+
+\subsubsection{Counting matches to entity names (without the preference/activity verbs,
+    suggests mostly the interest in the entity)}
+
+Due to possible misleading suggestions, this counting method will have an
+extremely low value of interest. However, the more a specified subject occurs in
+a stream, the greater the preference in it will be.
+
+\subsubsection{Counting matches to names in hashtag forms (seeming more significant than
+      just entity names)}
+
+Since a hashtag might suggest a specific topic being mentioned (such as a TV
+    Show or a Movie), the chance of the matcher to be wrong is much lower. It is
+still however a low-success rate matcher and thus the profiling it generates
+will be of a smaller value.
+
+\subsubsection{Counting entity names with activity verbs (suggesting that the topic has
+    actually been seen)}
+
+This part will provide profiling based on tweets including a verb suggesting
+having actually seen the given entity. It will have a much higher preference
+value than the name matching. Since an interested user might tweet repeatedly,
+      the profiling value will increase with each such mention. \\
+This value might also be modified by the amoung of different entities found,
+(the more user tweets about the tv, the more its significance differs)
+
+\subsubsection{Counting entity names with preference verbs (using a greater vocabulary
+      and waging specific interests)}
+
+The extraction of the mentions will be similar to the activity verbs. However,
+    relating a specific preference verb to the entity with a 100\% accuracy. The
+    profiling influence will be matched accordingly. \\
+Since users tend to tweet about positive preferences, the occurences of negative
+preference verbs will have a different effect on the profile.
+
+\subsubsection{Measuring the amount of tweets mentioning any kind of entity to all
+  tweets}
+
+Such measurement may inform us as to how often a user tweets about TV-related
+topics, giving us a more general information on his interest in TV.
+
+\subsubsection{Results}
+We have used all above methods excluding the last metric. For now, only Movie titles, TV Actors and TV Shows have been used for achieving
+those results.
+
+Initial results show that even using simple matching methods we are able to extract interests from
+user's Twitter stream. Given that the user is a frequent user and updater of his Twitter page, it seems
+as if the average amount of tweets from which any kind of such data might be extracted oscillates around \textit{7-22\%}.
+
+However, there is a great number of entity names (mostly TV Shows) that create noise around the results (shows such as \textit{Me too}).
+Unless such entity names can be excluded, or proven not be influential enough on the profiling, any kind of recommenders based on
+those matching methods need to take that into consideration and reduce the preference values appropriately.
+
+The results seem to be very promising and indicate that data regarding the media preferences of a user might be available in their Twitter stream
+and is also quite easily accessible.
+
+The analysis of the \textit{following} list should help to profile more efficiently when it comes to topics that the given user is interested in.
+
+\subsection{Technologies}
+\subsubsection{Language}
+Most processing has been done using the \textit{Ruby} language. The NoTube tubelets/reasonlets will be implemented in either pure \textit{Java} or \textit{JRuby}.
+\subsubsection{Tools}
+Twitter API requests are been handled via the OAuth protocol and provided in a JSON-based stream form. Only the newest tweets for the pre-selected Twitter usernames are downloaded. The entities definitions and semantics are provided by the FreeBase database REST interface. All the processing occurs locally on the pre-loaded Twitter data. \\ Ruby gems used include:
+\begin{itemize}
+  \item \textit{bdb} from mattbauer - a BerkeleyDB wrapper for Ruby
+  \item \textit{twitter} from jnunemaker - a wrapper around the Twitter API
+  \item \textit{ferret} - full text search engine written in Ruby
+  \item \textit{ken} from michael-aufreiter - wrapper for the freebase.org API
+\end{itemize}
+\subsubsection{Storage}
+Due to Twitter API request rate limiting, tweets have been aggregated in a local
+\textit{Berkeley DB} database instance providing a fast and easy key-value
+information retrieval. Since great amount of data needs to be processed, a full
+text search engine has been used, which greatly increased the searching time. In
+this case, we decided on using \textit{ferret} - a Ruby implementation of a
+full-text search engine (similar to Apache's \textit{Lucene}).
