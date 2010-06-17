@@ -4,34 +4,33 @@
 profiling data}
 
 \subsubsection{Data availability}
-Twitter
-- unstructured
-- hard to obtain
-- limited API
-
-YouTube
-- public/unlimited API
-- more users
+The greatest issue with generating user profiles is the availability of the data. This covers not only access to remotely
+stored data, but also how information on user preferences is stored within it.
+\\ The Twitter data source is challenging to process due to very restrictive API Access Limit Rates, making closed applications
+unable to work at full speed. On the other hand, YouTube has a mostly complete (except for e.g. user's history) public API,
+access to which is virtually unrestricted and unlimited for researching systems. This is a great advantage, allowing to use
+much more approaches and aggregate more data for a greater deal of users.
+\\ Yet the greatest difference between those two sources is the internal structure (or lack thereof) of atomic information
+available. YouTube has all of it's data perfectly organized (such as tags for videos, tags for channels, channels users are
+subscribed to, etc.) and revolving around videos, whereas on Twitter, a single user can post any kind of text that is
+less or equal than 140 characters in length, making extraction of specific preference data nontrivial.
 
 \subsubsection{Type of data extractable}
-Twitter
-- completely unstructured/mostly irrelevant for the research
-- hard obtaining accurate preferences, only interest/activity
-- taking slower (text search/indexing)
-- hardy applicable NLP methods
-
-YouTube
-- mostly language-independent
-- structured
-- API parts describing preferences (?)
+Due to great diversity of data stored in a Twitter users' streams, only a little it's part can be effectively used for profiling
+users. That forces any kind of research to start with locating useful data. This however is not much different from YouTube, where
+a lot of users have data almost completely inadequate for any kind of research.
+\\ Furthermore, the language of streams is also a factor, since it is difficult to extract preferences from Non-English Twitter
+streams. The same problem applies to YouTube, despite it's API being already structured. A great deal of tags is English,
+but this may also vary depending on both user's and video's language, hence it is useful to detect their language before
+proceeding any further. Moreover in Twitter, analyzing an update's usefulness, any script will need to apply text searching (mostly
+unnecessary in YouTube), which also makes the whole process slower.
+\\ YouTube's data is, as already mentioned, well organized. That means, as soon as a useful user is found, it is not hard to
+extract media preference information (such as watched/liked videos' tags) stored for them on the server. On the other hand,
+any kind of attempt to extract preference data from Twitter carries the risk of being inaccurate, due to it's complete lack of structure.
+Since all tweets are limited to 140characters, they are usually formed as incorrect sentences, forcing to abandon traditional
+NLP methods.
 
 \subsubsection{Usefulness for the NoTube project}
-Twitter
-- depending on user's activity, might actually contain more information (describing media activity in TV and Theatres)
-- profiles way less accurate than YouTube
-
-YouTube
-- ?? (more short-movies, music and stuff)
 
 \subsection{Evaluation of user profiling by users}
 \subsubsection{Measuring efficiency of user profiling}
