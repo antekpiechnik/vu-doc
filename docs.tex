@@ -9,7 +9,7 @@
 \begin{document}
 \title{Profiling users media preferences based on social network data streams}
 \author{Konrad Delong \and Antoni Piechnik}
-\date{May 25 2010}
+\date{June 17 2010}
 
 \maketitle
 
@@ -25,15 +25,34 @@ preferences for it to be usable in a real life project (NoTube).
 
 \include{data_sources}
 
-\include{twitter_extracting}
-
 \include{youtube_extracting}
+
+\include{twitter_extracting}
 
 \include{evaluation}
 
 \section{Discussion of results}
 
 \section{Implementation details}
+
+\subsection{Technologies used in Twitter research}
+\subsubsection{Language}
+Most processing has been done using the \textit{Ruby} language. The NoTube tubelets/reasonlets will be implemented in either pure \textit{Java} or \textit{JRuby}.
+\subsubsection{Tools}
+Twitter API requests are been handled via the OAuth protocol and provided in a JSON-based stream form. Only the newest tweets for the pre-selected Twitter usernames are downloaded. The entities definitions and semantics are provided by the FreeBase database REST interface. All the processing occurs locally on the pre-loaded Twitter data. \\ Ruby gems used include:
+\begin{itemize}
+  \item \textit{bdb} from mattbauer - a BerkeleyDB wrapper for Ruby
+  \item \textit{twitter} from jnunemaker - a wrapper around the Twitter API
+  \item \textit{ferret} - full text search engine written in Ruby
+  \item \textit{ken} from michael-aufreiter - wrapper for the freebase.org API
+\end{itemize}
+\subsubsection{Storage}
+Due to Twitter API request rate limiting, tweets have been aggregated in a local
+\textit{Berkeley DB} database instance providing a fast and easy key-value
+information retrieval. Since great amount of data needs to be processed, a full
+text search engine has been used, which greatly increased the searching time. In
+this case, we decided on using \textit{ferret} - a Ruby implementation of a
+full-text search engine (similar to Apache's \textit{Lucene}).
 
 \section{Related work (work in progress)}
 
