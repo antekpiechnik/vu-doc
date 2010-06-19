@@ -11,28 +11,20 @@ We will also describe ways \textit{of measuring the accuracy and effectiveness o
 In the second section of this document we will describe the structure of the data available on the mentioned social services (both \textit{Facebook} and \textit{Twitter}) along with an analysis of which of their parts might be suitable for our research. The following section will describe the \textit{Freebase.com} linked data service that we used and it's data's nature. Sections 4 and 5 include descriptions of our approaches for extracting data from \textit{YouTube} and \textit{Twitter}. The next section consists of an evaluation of our results as well as a comparative analysis of both services. This section will be followed by a discussion of achieved results. Last but not we will cover the implementation details.
 
 \subsection{Related work}
-Patricia G. Lange in her article ''Publicly Private and Privately Public: Social
-Networking on YouTube'' discusses the social behaviours of YouTube users and
-consequences of these behaviours to users' privace.
 
-Xu Cheng, Cameron Dale and Jiangchuan Liu in ''Statistics and Social Network of
-YouTube Videos'' analyze features of videos from a large set gathered through
-several automated crawling sessions.
+A considerable number of papers examining social web services have been
+published. Works devoted to YouTube often contain analysis of the video data
+stored by the service and its implications to the traffic generated
+(\cite{i-tube-you-tube}, \cite{views-from-the-edge},
+\cite{statistics-and-social-network}), some study impact of YouTube service on
+very narrow topics, like 2006 USA presidential elections
+\cite{voters-myspace-youtube}, or social attitude towards vaccinacions
+\cite{keelan}. There are also papers analyzing privacy issues of using YouTube
+\cite{publicly-private}.
 
-Jennifer Keelan, Vera Pavri-Garcia, George Tomlinson and Kumanan Wilson
-performed an analysis of YouTube content with focus on the topic of
-immunization, in order to prepare physicians to respond to conspiracy theories
-published there.
-
-The article "Voters, MySpace, and YouTube", by Vassia Gueorguieva, discusses use
-of internet media platforms (YouTube among these) in 2006 presidential elections
-in USA. It contains analysis of their usefulness in predicting the final
-results, and their impact on the results themsevles.
-
-Meeyoung Cha, Haewoon Kwak, Pablo Rodriguez, Yong-Yeol Ahn, and Sue Moon in
-their paper "I Tube, You Tube, Everybody Tubes: Analyzing the World’s Largest
-User Generated Content Video System" perform in-depth analysis of YouTube views
-patterns, mostly from the point of view of ISPs and content providers.
+However, none of these works give focus to user-profile generation. In our
+paper, we will analyze usefulness of data from two social services in generating
+user profiles.
 
 Apart from the papers mentioned, we have also found various implementations of systems that aggregate personal preferences based on different
 social services:
