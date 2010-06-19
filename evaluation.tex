@@ -1,9 +1,11 @@
 \section{Results evaluation}
 
+In this chapter we would like to evaluate the results of our profiling approaches as well as attempt to compare both streams and their usefulness for the NoTube project.
+
 \subsection{Comparative analysis of YouTube and Twitter as sources of user
 profiling data}
 
-\subsubsection{Data availability}
+\subsubsection{Access to and the structure of data}
 The greatest issue with generating user profiles is the availability of the data. This covers not only access to remotely
 stored data, but also how information on user preferences is stored within it.
 \\ The Twitter data source is challenging to process due to very restrictive API Access Limit Rates, making closed applications
@@ -13,7 +15,7 @@ much more approaches and aggregate more data for a greater deal of users.
 \\ Yet the greatest difference between those two sources is the internal structure (or lack thereof) of atomic information
 available. YouTube has all of it's data perfectly organized (such as tags for videos, tags for channels, channels users are
 subscribed to, etc.) and revolving around videos, whereas on Twitter, a single user can post any kind of text that is
-less or equal than 140 characters in length, making extraction of specific preference data nontrivial.
+less or equal than 140 characters in length, making extraction of specific preference data nontrivial. XXXX----->>>>>
 
 \subsubsection{Type of data extractable}
 Due to great diversity of data stored in a Twitter users' streams, only a little it's part can be effectively used for profiling
@@ -28,7 +30,7 @@ unnecessary in YouTube), which also makes the whole process slower.
 extract media preference information (such as watched/liked videos' tags) stored for them on the server. On the other hand,
 any kind of attempt to extract preference data from Twitter carries the risk of being inaccurate, due to it's complete lack of structure.
 Since all tweets are limited to 140characters, they are usually formed as incorrect sentences, forcing to abandon traditional
-NLP methods.
+NLP methods. XXXX <<<<<------
 
 \subsubsection{Usefulness for the NoTube project}
 Both services contain large amounts of information useful for recommender

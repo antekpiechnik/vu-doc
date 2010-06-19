@@ -25,6 +25,8 @@ preferences for it to be usable in a real life project (NoTube).
 
 \include{data_sources}
 
+\include{vocabularies}
+
 \include{youtube_extracting}
 
 \include{twitter_extracting}
@@ -54,23 +56,4 @@ text search engine has been used, which greatly increased the searching time. In
 this case, we decided on using \textit{ferret} - a Ruby implementation of a
 full-text search engine (similar to Apache's \textit{Lucene}).
 
-\section{Related work (work in progress)}
-
-\subsection{Hunch.com}
-\subsubsection{Goal}
-\textit{Hunch.com} is a service offering recommendations on different topics based on a user's twitter data. It predicts preferences in forms of small questions and is then able to recommend a product or a solution to a problem that is represented with a \textit{Topic} on the site. \textit{Hunch.com} seems to be more commercial-oriented, e.g. providing users with links to online stores with products they are recommending.
-
-\subsubsection{Approach}
-The application can create recommendations based solely on user's twitter data (mostly people they follow). However, when not that much data is available, it requires input from users in order to make future predictions more accurate. It also seems to be covering topics a bit broader than the NoTube project.
-\textit{Hunch.com} does not provide information on how the recommender system works, although it provides an API for accessing their data.
-Hunch is able to adapt to much more different topics, and it not necessarily focuses on their semantics (rather on what similar people simply like).
-
-\subsection{Open Graph}
-\subsubsection{Goal}
-\textit{Open Graph} has been introduced by Facebook in order to create a system for stating preferences by clicking a \textit{Like} button displayed on different pages. Due to the popularity of Facebook, it certainly will become a major source of data for any kind of recommender systems.
-
-\subsubsection{Approach}
-\textit{Open Graph} provides developers with an API for accessing it's data. It is restricted by a given user's privacy settings.
-It aggregates information based on the sites the user clicks the button on, thus being able to gather a great deal of information. \textit{Open Graph} does not seem to be also approaching any kind of Twitter data, making our Twitter profiling methods a completely separate topic.
-The biggest disadvantage is no \textit{Dislike} button, making it impossible for a user to state negative opinion on a given subject.
 \end{document}
