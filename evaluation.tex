@@ -12,10 +12,6 @@ stored data, but also how information on user preferences is stored within it.
 unable to work at full speed. On the other hand, YouTube has a mostly complete (except for e.g. user's history) public API,
 access to which is virtually unrestricted and unlimited for researching systems. This is a great advantage, allowing to use
 much more approaches and aggregate more data for a greater deal of users.
-\\ Yet the greatest difference between those two sources is the internal structure (or lack thereof) of atomic information
-available. YouTube has all of it's data perfectly organized (such as tags for videos, tags for channels, channels users are
-subscribed to, etc.) and revolving around videos, whereas on Twitter, a single user can post any kind of text that is
-less or equal than 140 characters in length, making extraction of specific preference data nontrivial. XXXX----->>>>>
 
 \subsubsection{Type of data extractable}
 Due to great diversity of data stored in a Twitter users' streams, only a little it's part can be effectively used for profiling
@@ -26,12 +22,12 @@ streams. The same problem applies to YouTube, despite it's API being already str
 but this may also vary depending on both user's and video's language, hence it is useful to detect their language before
 proceeding any further. Moreover in Twitter, analyzing an update's usefulness, any script will need to apply text searching (mostly
 unnecessary in YouTube), which also makes the whole process slower.
-\\ YouTube's data is, as already mentioned, well organized. That means, as soon as a useful user is found, it is not hard to
-extract media preference information (such as watched/liked videos' tags) stored for them on the server. On the other hand,
-any kind of attempt to extract preference data from Twitter carries the risk of being inaccurate, due to it's complete lack of structure.
-Since all tweets are limited to 140characters, they are usually formed as incorrect sentences, forcing to abandon traditional
-NLP methods. XXXX <<<<<------
-
+\\ Yet the greatest difference between those two sources is the internal structure (or lack thereof) of atomic information
+available. YouTube has all of it's data perfectly organized (such as tags for videos, tags for channels, channels users are
+subscribed to, etc.) and revolving around videos, whereas on Twitter, a single user can post any kind of text that is
+less or equal than 140 characters in length, making extraction of specific preference data nontrivial and possibly inaccurate and forcing to abandon traditional
+NLP methods
+Since all tweets are limited to 140characters, they are usually formed as incorrect sentences,
 \subsubsection{Usefulness for the NoTube project}
 Both services contain large amounts of information useful for recommender
 systems, like the one designed for NoTube project. For both of them, the
