@@ -3,7 +3,7 @@ For our research we have focused on data from two social services: \textit{YouTu
 \subsection{YouTube}
 \subsubsection{YouTube data}
 YouTube stores various data concerning its users and content. Tables
-\ref{ut_video_info} - \ref{ut_channel_info} show the types of information
+\ref{ut_video_info} - \ref{ut_user_info} show the types of information
 available.
 
 \begin{table}[ht]
@@ -44,6 +44,23 @@ available.
 		Search results & Public API \\ \hline
 		\end{tabular}
 		\caption{Information available for video search results}
+
+		\begin{tabular}{ | p{3cm} | l |}\hline
+			Information & Access \\ \hline
+			Created & Public API \\
+			Updated & Public API \\
+			Author & Public API \\
+			Text & Public API \\ \hline
+		\end{tabular}
+		\caption{Information available for a comment}
+
+		\begin{tabular}{ | p{3cm} | l |}\hline
+			Information & Access \\ \hline
+			Demographics & Screen scraping \\
+			Referrers & Screen scraping \\
+			Countries popularity & Screen scraping \\ \hline
+		\end{tabular}
+		\caption{Information available for a channel}
 	\end{minipage}
 	\hspace{0.5cm} % no new lines here!!
 	\begin{minipage}[b]{0.5\linewidth}
@@ -64,35 +81,9 @@ available.
 			Issued authentication subtokens & Screen scraping \\ \hline
 		\end{tabular}
 		\caption{Information available for a user}
+		\label{ut_user_info}
 	\end{minipage}
 \end{table}
-
-
-\begin{table}[ht]
-	\begin{minipage}[b]{0.5\linewidth}\centering
-		\begin{tabular}{ | p{3cm} | l |}\hline
-			Information & Access \\ \hline
-			Created & Public API \\
-			Updated & Public API \\
-			Author & Public API \\
-			Text & Public API \\ \hline
-		\end{tabular}
-		\caption{Information available for a comment}
-	\end{minipage}
-	\hspace{0.5cm} % no new lines here!!
-	\begin{minipage}[b]{0.5\linewidth}
-		\centering
-		\begin{tabular}{ | p{3cm} | l |}\hline
-			Information & Access \\ \hline
-			Demographics & Screen scraping \\
-			Referrers & Screen scraping \\
-			Countries popularity & Screen scraping \\ \hline
-		\end{tabular}
-		\caption{Information available for a channel}
-		\label{ut_channel_info}
-	\end{minipage}
-\end{table}
-
 
 \subsubsection{YouTube usage}
 
