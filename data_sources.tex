@@ -4,7 +4,15 @@ For our research we have focused on data from two social services: \textit{YouTu
 \subsubsection{YouTube data}
 YouTube stores various data concerning its users and content. Tables
 \ref{ut_video_info} - \ref{ut_user_info} show the types of information
-available.
+available. Within this data, three sets are of particular use for user
+profiling. These sets are: \emph{favorites}, \emph{subscriptions} and
+\emph{uploads}. All of them have two features in common: they all are connected
+to user's interests and a user needs to perform action in order to add and item
+to the set. In order to find out how commonly used mentioned functions are, a
+sample of 7500 users was examined, as described in next section.
+
+There are also fields that can be used directly in user's profile. These would
+be user's age, gender and location.
 
 \begin{table}[ht]
 	\begin{tabular}{|p{3cm} | l | p{4cm}|}\hline
@@ -67,15 +75,15 @@ available.
 		\centering
 		\begin{tabular}{ | p{3cm} | l |}\hline
 			Information & Access\\ \hline
-			Uploads & Public API \\
+			\emph{Uploads} & Public API \\
 			Gender & Public API \\
 			Location & Public API \\
 			Age & Public API \\
 			Contacts & Public API \\
 			Username & Public API \\
-			Subscriptions & Public API \\
+			\emph{Subscriptions} & Public API \\
 			Inbox & Public API \\
-			Favorites & Public API \\
+			\emph{Favorites} & Public API \\
 			History & Screen scraping \\
 			Likes & Screen scraping \\
 			Issued authentication subtokens & Screen scraping \\ \hline
@@ -95,6 +103,10 @@ three cases, almost all users belonged to the first histogram range -- the one
 with least items. As number of items grew, the number of users decreased so
 quickly, that logarithmic scale must have been used in order to make charts
 readable.
+
+For all three sets, almost half of examined users had no more than 100 items.
+This means that for most cases, the user profiling would need to base on very
+scarse amount of data.
 
 \begin{figure}[ht]
   \centering
