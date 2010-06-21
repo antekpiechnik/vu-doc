@@ -152,11 +152,11 @@ them is giving each subscription a weight, based on the number of videos or
 total number of tags.
 
 \subsection{Identifying entities in youtube streams}
-The user profile information would largely benefit from including data aligned
-to existing Linked Data sources. An attempt to run this task trivially for
-several types of entities (actors, networks) have been performed. The approach
-was to identify actors names by a simple text search in videos' titles and
-descriptions. Below are sample results (note that descriptions are not shown):
+The linked data concepts can be associated with user data through the use of
+simple text search. The video's title and description fields often carry names
+of people depicted in the clip. Having a set of all actors' names we can
+identify their occurrences. Below are sample results for text-search-based
+identification of actors among user's favourites.
 
 \begin{verbatim}
 Rowan Atkinson LIVE: 02 - Fatal Beatings          , Rowan Atkinson
@@ -172,6 +172,8 @@ Nancy Sinatra Bang Bang                           , Nancy Sinatra
 Eddie Vedder - Hard Sun (Official Video)          , Eddie Vedder
 \end{verbatim}
 
-The approach is not ideal. However, above certain threshold of repeats, an
+This approach is not ideal. Many false positives can be returned, particularily
+for concepts that are also common phrases (e.g. the "Lost" TV show). However,
+above certain threshold of repeats, an
 assumption that a user likes a given actor becomes more probable.
 
