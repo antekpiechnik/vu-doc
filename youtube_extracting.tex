@@ -1,50 +1,26 @@
 \section{Extracting user profile from YouTube}
-\subsection{YouTube counting strategies}
 
-\begin{itemize}
-\item{Tags aggregation across various video sets:
-\begin{itemize}
-  \item{User's likes and favourites}
-  \item{User's subscriptions (two-level aggregation there)}
-  \item{User's history}
-  \item{User's uploads}
-\end{itemize}
-}
+Our goal is to extract a user profile. For this paper, we will assume that user's
+profile is a collection of linked data concepts, that should be understood as
+user's interests. Many YouTube's videos have very semantic meaning -- they can
+be associated with existing concepts (like actors or music bands) by performing
+simple text search. In addition to that, analysis of video's tags can give some
+more vague overview of user's interests. This kind of data is useful in two
+ways: first, it lets easily identify interests for a human, second: it can be
+used to verify interests generated with other methods..
 
-\item{Similar aggregation for other entities found in videos
-\begin{itemize}
-  \item{Puropose of the video -- we could invent a dictionary of video purposes
-  (eg. advertisements, lectures, speeches, movie fragments, family videos) and
-  relate them to the videos.}
-  \item{Keywords from comments -- after the aggregation and rejecting of stop
-  words, this might prove userful.}
-  \item{Language -- could be estimated by analysis of language of
-  comments and description, location of the publisher and commenters.}
-  \item{Duration -- users might prefer shorter clips. This might happen only for
-  certain types of videos (lectures, advertisements).}
-  \item{Freshness -- users might prefer videos uploaded more recently. This
-  might be useful for example to identify "sneak peeks" for TV shows.}
-  \item{Controversiality -- likes/dislikes ratio, amount of favourites per
-  views.}
-  \item{Second order effects -- facts determined for a video might be applicable
-  also for a clip it is a response to.}
-\end{itemize}
-}
-
-\item{Relating videos and channels to entities from other linked data services
-\begin{itemize}
-  \item{People: music artists, actors, directors, politicians, TV presenters,
-  other public figures}
-  \item{Places: cities, countries}
-  \item{Existing works: TV programmes, movies, music tracks}
-  \item{Others: musical, political, traditional and commercial events, brands}
-\end{itemize}
-}
-\end{itemize}
+In the following sections, we will describe methods used to generate the user
+profile. First, we describe our tag counting approach and compare the possible
+use of tags and categories in user profiling. Then we will discuss possible
+additional information coming from repeating occurrences of the tags in
+different sets of videos. The next subsection present the double
+nestedness problem, which makes counting tags from subscriptions fundamentally
+different that the other two sets. The last subsection describes matching
+YouTube videos to actual linked data concepts.
 
 \subsection{Counting YouTube tags and categories}
-The most obvious way to get profiling information is through the use of
-tags. However, tags of a single video clip can be either too numerous, making many
+Analyzing tags information carries some problems. Tags of a single video clip
+can be either too numerous, making many
 of them irrelevant, too sparse, nonexistent and occasionally just wrong. To avoid
 that problem, we aggregate the tags across sets of video clips related to the
 profiled user (favourites, subscriptions, uploads). Similar aggregation was
