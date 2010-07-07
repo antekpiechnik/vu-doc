@@ -1,0 +1,61 @@
+\section{Results of the extraction}
+
+The following section describes the results of the profile extractions and its
+analysis.
+
+\subsection{Analysed user sets}
+In order to analyze the effectiveness of our profilers, we ran them on groups of
+users selected from Twitter and YouTube services. The samples were selected
+using two different methods. For Twitter, the website's search service was used
+in order to identify users that are likely to post updates about media content.
+Such an aproach let us skip laborous analysis of accounts with hardly any
+updates at all, or updates not related to media content in any manner (which,
+given Twitter's access limits, was a considerable gain). For YouTube -- service
+with no access limits and no user-by-favourites-search function -- a BFS graph
+crawl was performed in order to collect the user set.
+
+\subsection{Analysis performed on collected data}
+
+For each user, a profile was generated using our profilers for both Twitter and
+YouTube services. We measured effectiveness of profilers as a ratio of number of
+items (tweets/videos) with linked data concepts identified to the overall number
+of items alanyzed. The results are presented in the table below.
+
+
+\begin{tabular}{| l | l | l |}
+Topic & Twitter & YouTube \\ \hline
+Film actors & 4.70\% & 10.92\% \\
+TV actors & 4.34\% & 9.12\% \\
+TV shows & 2.3\% & 4.38\% \\
+\end{tabular}
+
+
+The reader should note, there was no checking of actual correctness of those results at
+this stage (the evaluation of results using surveys is in the next chapter). We
+can still draw some conclusions after this step.
+
+\subsection{Use of text in social services}
+First: YouTube looks to be a more promising area for this kind of search. The
+linked data concepts were present in about twice as many items as for the other
+web service for almost every type of concepts searched. This is most probably a
+result of different natures of text data in both services.  Text in a Twitter
+update is an expressive or informative message The YouTube video's description's
+raison d'être is to characterize contents of the clip.
+
+\subsection{Variety across concept types}
+Another remark worth making is that number of matched items depends on type of
+concepts that we are in search of. However, after manual analysis of identified
+items, authors came to a conclusion that comparing data stream penetration of
+different concepts is counterproductive at this stage. And that is because of
+numbers of false positives, which vary wildly depending on the topic. This
+observation will be extended in the next chapter.
+
+\subsection{Dependency on amount of data}
+The efectiveness of profiler -- not surprisingly -- depends strictly on data
+that the profiler was fed. For vast majority of users (see section 2.2) the
+profiles will be fed hardly any data at all. As the reader just learned, only a
+small fraction of this data is useful for profilers. That leads us to a
+conclusion that only a small number of very active users could be profiled
+thoroughly. Profiles for similarily small group should be considered to be only
+stubs, which would be of relatively small use for recommenders. Profiles for the
+rest of users would be essentialy worthless.
