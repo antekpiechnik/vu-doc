@@ -1,31 +1,31 @@
 \section{Sources of user activities on the Social Web}
-For our research we have focused on data from two social services: \textit{YouTube} and \textit{Twitter}.
+In order to answer the first research question, we have focused on data from two social services: \textit{YouTube} and \textit{Twitter}. In the first subsection we describe user data available via APIs for \textit{YouTube}, whereas the
+following section covers possible methods of extracting preference information from \textit{Twitter} users' timelines.
 \subsection{YouTube}
-\subsubsection{YouTube data}
 YouTube stores various data concerning its users and content. Tables
 \ref{ut_video_info} - \ref{ut_user_info} show the types of information
 available. Within this data, three sets are of particular use for user
 profiling. These sets are: \emph{favorites}, \emph{subscriptions} and
 \emph{uploads}. All of them have two features in common: they all are connected
-to user's interests and a user needs to perform action in order to add and item
-to the set. In order to find out how commonly used mentioned functions are, a
-sample of 7500 users was examined, as described in next section.
+to user's interests and a user needs to perform action in order to add an item
+to the set. In order to find out how frequently the mentioned sets are used, a
+sample of 7500 randomly chosen users was examined, as described in next section.
 
 There are also fields that can be used directly in user's profile. These would
 be user's age, gender and location.
 
 \begin{table}[ht]
 	\begin{tabular}{|p{3cm} | l | p{4cm}|}\hline
-		Information & Access & Description\\ \hline
+		Information & Access & Notes\\ \hline
 
-		Title & Public API & \\
+		Title & Public API & Natural language \\
 		Published & Public API & \\
-		Updated & Public API & \\
-		Category & Public API & \\
-		Tags (keywords) & Public API & \\
-		Comments & Public API & \\
-		Permissons & Public API & \\
-		Description & Public API & \\
+		Updated & Public API & Date \\
+		Category & Public API & Chosen from a restricted set of YouTube categories \\
+		Tags (keywords) & Public API & May be freely assigned \\
+		Comments & Public API & Natural language \\
+		Permissons & Public API & Irrelevant, but available \\
+		Description & Public API & Natural language \\
 		Thumbnails & Public API & Set of video's thumbnails (along with times
 		when taken) \\
 		Duration & Public API & \\
@@ -96,16 +96,17 @@ be user's age, gender and location.
 \subsubsection{YouTube usage}
 
 A statistics were performed measuring popularity of three YouTube features: favourites,
-subscriptions and uploads. Over a sample of 7500 users most settled down at
-relatively low level of activity. All histograms below show numbers of users
+subscriptions and uploads. From the 7500 users analyzed, notable differences in activity
+where noted. Many users show little activity, as compared to a few highly active users.
+All histograms below show numbers of users
 (axis y) with $x_1-x_2$ numbers of favourites/subscriptions/uploads. For all
 three cases, almost all users belonged to the first histogram range -- the one
 with least items. As number of items grew, the number of users decreased so
-quickly, that logarithmic scale must have been used in order to make charts
-readable.
+quickly, that logarithmic scale has been used in order to increase the readability of the
+charts.
 
 For all three sets, almost half of examined users had no more than 100 items.
-This means that for most cases, the user profiling would need to base on very
+This means that for most cases, the user profiling would need to be based on a very
 scarse amount of data.
 
 \begin{figure}[ht]
