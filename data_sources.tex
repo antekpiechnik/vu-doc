@@ -133,16 +133,20 @@ scarse amount of data.
 \newpage
 \subsection{Twitter}
 
-Due to the structure of the data available on Twitter, certain approaches had to be undertaken in order to
-extract information about their activities related to the media. In this section we would like to describe
+Data available on \textit{Twitter} is composed of natural language short messages posted by users
+consisting of up to 140 characters, commonly known as \textbf{tweets} \cite{why-we-twitter}.
+Their initial purpose was to inform other users of currently performed activities. However, as this service has
+evolved, users started to use `tweets` for a variety of purposes, such as conversations,	sharing information/URLs and reporting news \cite{twitter-content-is-it}. In order to use such unstructured data,
+certain approaches had to be undertaken in order to
+extract information about their activities related to the media. In this section we describe
 available methods to achieve this as well as measurements that may be applied to the aggregated data.
 We will use the word \textit{entity} to refer to known media people, shows and programmes.
 
 \subsubsection{Available data}
 \paragraph{Mentioning entities names}
-Using rather trivial methods of string matching, Twitter data will be analyzed for
+Using trivial string matching method, Twitter data is analyzed for
 mentions of entities' names in tweets. Multiple occurrences of entity names in the
-stream indicate interest in the entity mentioned. \\
+stream indicate interest in the entity mentioned \cite{twitter-content-is-it} \\
 Entities might be mentioned by:
 \begin{itemize}
   \item \textit{full name} - Matching by the entities' full name.
@@ -187,10 +191,6 @@ An attempt will be made for relating the mentions of entities followed (for know
       & Positive preferences \\ \cline{2-2}
       & Negative preferences \\ \cline{2-2}
     \hline
-    \multirow{3}{*}{Following entity}
-      & Mentioning the entity by name while following \\ \cline{2-2}
-      & Relation between following and actual preferences \\ \cline{2-2}
-    \hline
     \multirow{3}{*}{Researching mentions}
       & Statistics of words most used with mentions \\ \cline{2-2}
       & Finding average amount of mentions-to-tweets ratio \\ \cline{2-2}
@@ -200,7 +200,7 @@ An attempt will be made for relating the mentions of entities followed (for know
 
 \subsubsection{Corpus used for research}
 The example data to be analyzed consists of Twitter streams of over 70 users
-consisting in total of about 9000 tweets. They have been selected from the followers of most popular TV channels and broadcasters available on Twitter basing on the amounts of tweets they have accumulated, the amount of their followers and the language they are tweeting in (English in this evaluation).
+consisting in total of about 9000 tweets. They have been selected from the followers of most popular TV channels and broadcasters available on Twitter basing on the amounts of tweets they have accumulated, the amount of their followers and the language they are tweeting in (English in this experiment).
 
 The most significant reason for using a preselected corpus for this research is
 the Twitter API Rate Limiting which makes a wider analysis challenging.
