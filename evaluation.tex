@@ -1,115 +1,36 @@
-\section{Results evaluation}
+\section{User evalutation}
+In order to get more detailed measures of our results, we performed user surveys
+asking users to judge their extracted profiles. Two groups of users were chosed,
+each counting about 15 persons, most of them active users of Twitter and YouTube
+web services.
 
-In this chapter we would like to evaluate the results of our profiling approaches as well as attempt to compare both streams and their usefulness for the NoTube project.
+\subsubsection{The surveys}
 
-\subsection{Comparative analysis of YouTube and Twitter as sources of user
-profiling data}
+Each person was presented a list of topics that were extracted from their online
+activity and asked to mark their preference / level on interest in every one of
+them. The marks ranged from 0 (dislike), through 1 (neutral) and 2 (like) up to
+3 (strongly like). This set was extended with additional mark ''X'', meaning
+''don't know this'', which let us quickly identify false positives that sneaked
+into extracted profiles.
 
-\subsubsection{Access to and the structure of data}
-The greatest issue with generating user profiles is the availability of the data. This covers not only access to remotely
-stored data, but also how information on user preferences is stored within it.
-\\ The Twitter data source is challenging to process due to very restrictive API Access Limit Rates, making closed applications
-unable to work at full speed. On the other hand, YouTube has a mostly complete (except for e.g. user's history) public API,
-access to which is virtually unrestricted and unlimited for researching systems. This is a great advantage, allowing to use
-much more approaches and aggregate more data for a greater deal of users.
+\subsubsection{Analyzed data description}
+The activeness of users fit in relatively wide range: from 20 up to 400 tweets,
+and 6-400 favourites. On average, \textit{2.69\%} of tweets were media-related.
+For YouTube, videos useful for profiling formed about one tenth (\textit{9.56\%})
+of the analyzed set.
 
-\subsubsection{Type of data extractable}
-Due to great diversity of data stored in a Twitter users' streams, only a little it's part can be effectively used for profiling
-users. That forces any kind of research to start with locating useful data. This however is not much different from YouTube, where
-a lot of users have data almost completely inadequate for any kind of research.
-\\ Furthermore, the language of streams is also a factor, since it is difficult to extract preferences from Non-English Twitter
-streams. The same problem applies to YouTube, despite it's API being already structured. A great deal of tags is English,
-but this may also vary depending on both user's and video's language, hence it is useful to detect their language before
-proceeding any further. Moreover in Twitter, analyzing an update's usefulness, any script will need to apply text searching (mostly
-unnecessary in YouTube), which also makes the whole process slower.
-\\ Yet the greatest difference between those two sources is the internal structure (or lack thereof) of atomic information
-available. YouTube has all of it's data perfectly organized (such as tags for videos, tags for channels, channels users are
-subscribed to, etc.) and revolving around videos, whereas on Twitter, a single user can post any kind of text that is
-less or equal than 140 characters in length, making extraction of specific preference data nontrivial and possibly inaccurate and forcing to abandon traditional
-NLP methods
-Since all tweets are limited to 140characters, they are usually formed as incorrect sentences,
+\subsubsection{Number of false positives}
+The number of false positives was astonishingly large. For some users, this
+number reached more than 50\% (maximum of 73.37\% for Twitter and 83\% for
+Youtube). This score makes any
+recommender algorhitm, that is based on such a profile hardly of any use.
+Luckily, such degenerate (more than 50\% false positives) cases were relatively
+uncommon (1 and 2 in accordingly for Twitter and YouTube surveys) and happened
+for users with small numbers of items in their streams.
 
-\subsubsection{Usefulness for filling the user profiles}
-Both Twitter and YouTube contain large amounts of information concerning user's
-interests. This kind of information is useful for recommender
-systems, like the one designed for NoTube project.
-For data coming from both services, the more data the recommender has, the
-better its suggestions are. This can, in extreme situations, make both profiler and recommender
-algorithms barely usable.
-
-When it comes to identifying linked data concepts depicted in videos / tweeter
-posts, the task is much simpler for YouTube, as videos quite often are music
-clips, movie trailers or fragments of television shows. The ''official'' title
-and actors names are usually mentioned in the video's description, as the data
-editor (meaning: uploader) is for most cases a different person than the
-profiled user. The Twitter posts are edited by the profiled user himself, which
-means the title might be mentioned only partially or in alternated form, and
-the actors' names most probably wouldn't be mentioned at all.
-On the other hand, this gives Twitter advantage of opinions being more
-expressive (after watching a good movie, user is more likely to tweet about it
-than look for a fitting YouTube video).
-
-YouTube also exposes additional data useful for user profiling: gender, age and
-location. In the \textit{cold start} problem, those pieces of information are very
-often used to narrow down the initial set of recommended items. Twitter is much
-more minimalistic in this area -- only email address, full name and the login
-name are required for registration. However, it is worth noting, that all
-mentioned pieces of information are commonly faked by the users wishing to keep
-their privacy.
-
-\subsection{Evaluation of user profiling by users}
-Given the fact that measuring the accuracy of the profiling requires additional input
-from the users being profiled, a survey has been performed.
-
-The survey contained list of topics extracted from user's profile (without any preference scores).
-Each topic was assigned a mark ranging from 0 to 3 which was supposed to reflect the user's interests
-in that particular subject:
-\begin{itemize}
-\item 0 -- does not like
-\item 1 -- neutral
-\item 2 -- does like
-\item 3 -- does like a lot
-\end{itemize}
-A mark \textit{X} has been used for a topic not recognized by the user in the media-related field.
-
-\subsubsection{Twitter profiling results}
-
-The survey has been performed on 15 people. Each user has had their Twitter stream analyzed
-(up to 400 last tweets). Each found subject has been assigned a score reflecting what the profiler
-had extracted from the stream.
-
-\paragraph{Amount of tweets with found subjects}
-The amount of tweets aggregated varied from user to user (up to 400) and we have measured the average amount
-of tweets in which a media preference subject was found. On average, such subjects have been found in \textit{2.69\%}
-tweets. This is a very little amount, probably due to the fact that Twitter is usually closely related to user's current
-activity (and that might not always be related to media entertainment while using devices capable of ''Tweeting'')
-
-\paragraph{Amount of subjects not recognized by the user}
-For each user, the amount of subjects marked as \textit{X} (not recognized) has been counted. However, due to many
-\textit{false positives}, as much as \textit{73.37\%} of all those subjects have been falsely identified. This score is
-related to the fact that sometimes names of TV-shows and Movies are also words used in natural language (although not
-often) even using them in a Hashtag form (such as the \textit{Ruby} TV show also being a widely used programming language.)
-
-However, there are users who actually do use Twitter for more media-related topics. In those situations, the amount of
-false positives has dropped even below \textit{30\%}. This enforces the statement that those results greatly depend
-on the way a given user employs his Twitter account.
-
-\paragraph{Preference score accuracy for subjects}
-Out of all the subjects that the user had recognized, we have measured whether the preference score has been accurate
-(reflecting negative, neutral and positive scores). Out of those scores, \textit{76\%} have been accurate, meaning
-the preference value put in the poll by the user has generally matched the one generated by the system.
-
-\subsubsection{YouTube profiling results}
-
-The survey was performed on a sample of 20 people -- a small number, which
-decreased even more after counting out users without enough videos in their
-profiling sets (favorites/uploads/subscriptions) to perform profiling.
-
-\paragraph{The linked data concepts} were found in \textit{9.56\%} of analyzed videos. This
-is considerably larger percentage than for Twitter, which makes the profiling
-more effective, but only for small number of people who use YouTube actively.
-
-\paragraph{Number of false positives.} The number of false positives largely
-depended on type of entities that the search was performed on. For example:
-names of TV shows were much more likely to be common expressions. This wasn't
-the case for actors' names.
+\subsubsection{Preference rate accuracy}
+After couting out false positives, the correctness of ratings was judged. The
+number of rates guessed correctly by the Twitter profiler was \textit{76\%},
+while only \textit{50\%} of YouTube rate guesses turned out to be correct. This
+might mean, that the frequency of tweeting on a given subject is a better
+indicator of interest than a number of videos in user's favourites feed.

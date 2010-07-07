@@ -1,88 +1,98 @@
-\section{Discussion of results}
-In this chapter we will discuss and compare the results achieved as well as their possible influence on the NoTube project. We will also mention work that might be performed in the future in order to extend this research further.
+\section{Potential uses and future work}
 
-\subsection{Comparison and analysis of the results}
-For both the \textit{YouTube} as well as \textit{Twitter} services, it was extremely challenging to achieve results of
-quality. Results varied from quite accurate to containing subjects completely irrelevant to the user being surveyed.
-
-\paragraph{Userbase}
-Perhaps the biggest influence on the quality of the results has been the way people use the services researched.
-In \textit{YouTube}, videos are often connected to media subjects. They are
-often movie trailers of music clips. Twitter users usually tend to update their statuses
-with various information, very rarely regarding TV activities. From the users being analyzed by this poll, a very
-little amount of tweets regarded media subjects. Given the fact that those users tweeted on multiple other subjects,
-a chance of recognizing an entity in the right context is relatively tiny.
-
-\paragraph{Accuracy of known topics recognition}
-Both data sources analyzed returned only a small part of correct topics recognized. In Twitter this score has
-averaged around \textit{25\%}, whereas in YouTube \textit{20\%}. This means that the data, in small amounts however, is actually present
-within those streams. However in order to be able to extract them with greater accuracy, more advanced methods have
-to be used.
-
-\paragraph{Accuracy of the preference scores}
-Within the properly recognized subjects, methods used by the \textit{Twitter} profiler have proved to be effective enough
-to be able to specify whether the user simply knows the subject or could identify preference towards it with quite a high
-rate (more than \textit{75\%} preference scores were correct), despite being quite trivial. This also originates in the fact
-that Twitter users tend to Tweet about things they like.
+In this section, we discuss the future of our work in context of the current
+trends among social web services. We also point out potential improvements for
+our algorhitms.
 
 \subsection{Possible influence on the NoTube project}
 
-The \textit{NoTube} project is able to personalize recommendations for TV programmes for a user. In order to maximize
-it's recommending potential, it needs to aggregate data from different sources.
+The \textit{NoTube} project is able to personalize recommendations for TV
+programmes for a user. In order to maximize it's recommending potential, it
+needs to aggregate data from different sources.
 
-Both \textit{YouTube} and \textit{Twitter} certainly do contain information useful for this topic. However, in order to be
-able to fully use it's potential, the recommender would have to incorporate more advanced methods for media topics
-recognition and also require an evaluation of information extracted from those streams based on the current profile
-of a given user. Given the little amounts of media-related information in some of user's streams, results obtained from incorporating such methods might prove not worth the cost of their implementation.
+Both \textit{YouTube} and \textit{Twitter} certainly do contain information
+useful for this topic. However, in order to be able to fully use it's
+potential, the recommender would have to incorporate more advanced methods for
+media topics recognition and also require an evaluation of information
+extracted from those streams based on the current profile of a given user.
+Given the little amounts of media-related information in some of user's
+streams, results obtained from incorporating such methods might prove not worth
+the cost of their implementation.
 
-The \textit{NoTube} target might be users who very rarely employ Twitter or YouTube for expressing their
-opinions on media subjects. Moreover, should any integration with YouTube or Twitter appear within the project, the TV-related
-part of a user's stream might become automatically generated, making use of such services-based recommender slightly obsolete.
+The \textit{NoTube} target might be users who very rarely employ Twitter or
+YouTube for expressing their opinions on media subjects. Moreover, should any
+integration with YouTube or Twitter appear within the project, the TV-related
+part of a user's stream might become automatically generated, making use of
+such services-based recommender slightly obsolete.
 
-On the other hand, there seem to be uses for such recommenders. Provided a user updates his Twitter information with enough
-media--related information, a recommender based on information from this service could be helpful for creating initial
-user profiles as well as be able to provide a teaser of the project's functionality.
+On the other hand, there seem to be uses for such recommenders. Provided a user
+updates his Twitter information with enough media--related information, a
+recommender based on information from this service could be helpful for
+creating initial user profiles as well as be able to provide a teaser of the
+project's functionality.
 
 \subsection{Evolution of the Userbase}
-Since the userbase of social network is constantly changing, we would like to discuss the possible changes and their
-influence on this research.
+
+Since the userbase of social network is constantly changing, we would like to
+discuss the possible changes and their influence on this research.
 
 \paragraph{YouTube}
-YouTube users tend not to watch many videos related to the TV Shows, we would like to consider situations where this
-state might change. An obvious case appears with Google (the owner of YouTube) planning on offering GoogleTV in the fall
-of 2010. Such a move might create opportunities for users to integrate this service with YouTube, changing the way
-users employ YouTube.
 
-Furthermore, should YouTube follow the example of services like \textit{Hulu} and start offering streaming of TV-Shows,
-it would immediately allow people to comment, share their preferences, making it a perfect source for extracting users' preferences.
+YouTube users tend not to watch many videos related to the TV Shows, we would
+like to consider situations where this state might change. An obvious case
+appears with Google (the owner of YouTube) planning on offering GoogleTV in the
+fall of 2010. Such a move might create opportunities for users to integrate
+this service with YouTube, changing the way users employ YouTube.
+
+Furthermore, should YouTube follow the example of services like \textit{Hulu}
+and start offering streaming of TV-Shows, it would immediately allow people to
+comment, share their preferences, making it a perfect source for extracting
+users' preferences.
 
 \paragraph{Twitter}
-Recently Twitter has announced plans of bringing advertising (e.g. in a form of \textit{Promoted Tweets}) to users' stream.
-By retweeting such advertisements, users might show some interest in additional subjects mentioned in their streams.
 
-What is far more interesting, is the idea of providing Twitter-based enrichments (that Twitter has also announced), bringing
-semantic-like concepts into all tweets and making users able to retweet those concepts and find out more about them. This
-could increase the probability of matching entities correctly.
+Recently Twitter has announced plans of bringing advertising (e.g. in a form of
+\textit{Promoted Tweets}) to users' stream.  By retweeting such advertisements,
+users might show some interest in additional subjects mentioned in their
+streams.
 
-On the other hand, it seems like Twitter will still mostly be used to update information on current activities and, in
-contrast to YouTube, we do not think this will change soon.
+What is far more interesting, is the idea of providing Twitter-based
+enrichments (that Twitter has also announced), bringing semantic-like concepts
+into all tweets and making users able to retweet those concepts and find out
+more about them. This could increase the probability of matching entities
+correctly.
+
+On the other hand, it seems like Twitter will still mostly be used to update
+information on current activities and, in contrast to YouTube, we do not think
+this will change soon.
 
 \subsection{Future work}
 
 \subsubsection{Possible improvements of subject recognition methods}
 
 \paragraph{Context/Semantic-based searching for removing accidental matches}
-In order to enhance the accuracy of entities recognized within a user's Twitter stream, one could employ search methods
-based on analyzing a single tweet's context regarding other topics related to the media field using semantic services.
-However, this approach could be much slower for multiple tweets within a significant userbase.
+
+In order to enhance the accuracy of entities recognized within a user's Twitter
+stream, one could employ search methods based on analyzing a single tweet's
+context regarding other topics related to the media field using semantic
+services.  However, this approach could be much slower for multiple tweets
+within a significant userbase.
 
 \paragraph{Comparison of TV show entities against more natural language corpora}
-In order to minimize the amount of \textit{false positives} matched in a user's stream, different entities' names and aliases
-should be ran against corpora strictly related to the field of research (such as TV or other media related newspaper/magazine
-articles). Using this approach while also using semantic recognition could decrease recommender's speed even further. The
-eventual product of employing such approach would have to be measured, as simple methods of such ''ranking'' proved not effective enough (despite being quite promising).
+
+In order to minimize the amount of \textit{false positives} matched in a user's
+stream, different entities' names and aliases should be ran against corpora
+strictly related to the field of research (such as TV or other media related
+newspaper/magazine articles). Using this approach while also using semantic
+recognition could decrease recommender's speed even further. The eventual
+product of employing such approach would have to be measured, as simple methods
+of such ''ranking'' proved not effective enough (despite being quite
+promising).
 
 \subsubsection{Research into other services}
-In order to be able to perform more analaysis, it might be useful to perform research into other services, such as \textit{Facebook} or \textit{MySpace}. There however are much more private networks, where users tend not to share
-their information publicly. This might make them less available, but due to a great number of users, they might contain
-useful data.
+
+In order to be able to perform more analaysis, it might be useful to perform
+research into other services, such as \textit{Facebook} or \textit{MySpace}.
+There however are much more private networks, where users tend not to share
+their information publicly. This might make them less available, but due to a
+great number of users, they might contain useful data.
