@@ -134,47 +134,53 @@ scarse amount of data.
 \subsection{Twitter}
 
 Data available on \textit{Twitter} is composed of natural language short messages posted by users
-consisting of up to 140 characters, commonly known as \textbf{tweets} \cite{why-we-twitter}.
-Their initial purpose was to inform other users of currently performed activities. However, as this service has
-evolved, users started to use `tweets` for a variety of purposes, such as conversations,	sharing information/URLs and reporting news \cite{twitter-content-is-it}. In order to use such unstructured data,
-certain approaches had to be undertaken in order to
-extract information about their activities related to the media. In this section we describe
-available methods to achieve this as well as measurements that may be applied to the aggregated data.
-We will use the word \textit{entity} to refer to known media people, shows and programmes.
+consisting of up to 140 characters, commonly known as \textbf{tweets} \cite{why-we-twitter}. Within
+those tweets we can distinguish user mentions (\textit{Twitter} usernames preceeded with the symbol \@,
+such as \textit{@justinbieber}) as well as topics in form of `Hashtags` (name stripped of all whitespace
+and preceded by the hash symbol -- e.g. \textit{\#TheDailyShow}) \cite{edinburg-corpus}.
 
-\subsubsection{Available data}
-\paragraph{Mentioning entities names}
-Using trivial string matching method, Twitter data is analyzed for
-mentions of entities' names in tweets. Multiple occurrences of entity names in the
-stream indicate interest in the entity mentioned \cite{twitter-content-is-it} \\
+The initial purpose of tweets was to inform other users of currently performed activities. However, as this service has
+evolved, users started to use `tweets` for a variety of purposes, such as conversations, sharing information/URLs and reporting news(\cite{why-we-twitter} , \cite{twitter-content-is-it}). In order to use such unstructured data,
+certain approaches need to be undertaken in order to extract information about their activities related to
+the media. In this section we describe available methods to achieve this as well as measurements
+that may be applied to the aggregated data. We will use the word \textit{entity} to refer to
+known media people, shows and programmes.
+
+Due to the structure of a regular \textit{Twitter} stream, certain ways of extracting references to entities
+must be found. In our experiments, we focus on the following:
+
+\paragraph{Mentioning entities' names}
+Using trivial string matching methods, we search for entity names within \textit{Twitter} users' steams and updates.
+mentions of entities' names in tweets. Multiple occurrences of entity names in the stream indicate interest
+in the entity mentioned \cite{twitter-content-is-it} \\
 Entities might be mentioned by:
 \begin{itemize}
-  \item \textit{full name} - Matching by the entities' full name.
-  \item \textit{hashtag} - Matching by a Hashtag form, that is: full name stripped of all whitespace and preceded by a hash (e.g. \textit{\#TheDailyShow})
-  \item \textit{twitter username} - Matching by entity's twitter username (if known) preceded by the @ character
-  \item \textit{full name acronyms} - Matching acronyms built upon entity names that are longer than three words
+  \item \textit{full name}
+  \item \textit{Hashtag}
+  \item \textit{twitter username} - by entity's twitter username (if known)
+  \item \textit{full name acronyms} - by acronyms built upon entity names
 \end{itemize}
 \paragraph{Usage of preference verbs when tweeting about entities}
-For extracting preference information, a vocabulary consisting of
-popular preference (both positive and negative) verbs and adjectives has been used.
+In order to extract preference towards an entity from a tweet, a set of verbs
+that express preference (both positive, such as \textit{enjoyed}, as well as negative \textit{hated})
+was prepared. Those verbs were searched for in the tweets containing entity mentions.
 \paragraph{Usage of activity verbs when tweeting about entities}
+When mentioning a media-related entity, users may also describe the activity performed.
+In order to find such tweets, an activity verbs vocabulary has also been prepared. Use of this vocabulary
+might also decrease the chance of locating
 Describing the activity of participating in a certain TV experience (such
-as watching a show) will also need to be marked as preferential due to the
+as watching a show) will also need to be marked as due to the
 fact that Twitter users are more likely to specify what they are doing at a
 particular moment)
-\paragraph{Researching the structure of the most popular mentions}
-By retrieving tweets containing the entities, a ranking of most popular words
-appearing with the entities will be created and by extracting the most useful
-ones, the vocabularies will be updated.
 \paragraph{Extracting entities from structured twitter stream sources}
-Some applications, such as YouTube of Boxee, can automatically generate tweets
+Applications, such as \textit{YouTube} or \textit{Boxee}\footnote[1]{http://www.boxee.tv}, automatically generate tweets
 if the user linked their Twitter account with that application. These tweets are
-usually very well structured, and therefore very suitable to extract an entity, verb and/or rating from.
+usually well structured, and therefore very suitable to extract an entity, activity or preference.
 \paragraph{Mentioning and following entities}
-An attempt will be made for relating the mentions of entities followed (for known Twitter usernames) and the mentions of those and other entities.
+Mentions of entities followed (for known Twitter usernames) by the given user.
 
-\subsubsection{Types of measurements available}
-\begin{center}
+\begin{figure}[htp]
+  \centering
   \begin{tabular}{ | p{4cm} | p{7cm} | } \hline
     \multicolumn{2}{|c|}{Types of measurements available} \\
     \hline
@@ -192,18 +198,19 @@ An attempt will be made for relating the mentions of entities followed (for know
       & Negative preferences \\ \cline{2-2}
     \hline
     \multirow{3}{*}{Researching mentions}
-      & Statistics of words most used with mentions \\ \cline{2-2}
       & Finding average amount of mentions-to-tweets ratio \\ \cline{2-2}
     \hline
   \end{tabular}
-\end{center}
+  \caption{Measures available for the Twitter tweets data corpus}
+\end{figure}
 
 \subsubsection{Corpus used for research}
-The example data to be analyzed consists of Twitter streams of over 70 users
-consisting in total of about 9000 tweets. They have been selected from the followers of most popular TV channels and broadcasters available on Twitter basing on the amounts of tweets they have accumulated, the amount of their followers and the language they are tweeting in (English in this experiment).
 
-The most significant reason for using a preselected corpus for this research is
-the Twitter API Rate Limiting which makes a wider analysis challenging.
-Furthermore, a great deal of Twitter users provide completely irrelevant
-information or tweet in languages not useful for this research, which also
-influences the effectiveness of a limited Twitter data aggregator. Using a preselected corpus enables measuring and comparing the effectiveness of different counting methods much easier.
+The example data analyzed consists of Twitter streams consisting in total of about 50000 tweets. They have been selected from the followers of most popular TV channels and broadcasters available on Twitter basing on the amounts of tweets they have accumulated, the amount of their followers and the language they are tweeting in (English in this experiment).
+
+The most significant reason for using a preselected corpus for this research is the Twitter API Rate Limiting
+which makes a wider analysis challenging. Furthermore, a great deal of Twitter users provide completely irrelevant
+information or tweet in languages barely useful for this research. All non-English mentions may be located,
+but makes extracting preference information more challenging and decreases, which also
+influences the effectiveness of a limited Twitter data aggregator. Using a preselected corpus enables measuring and comparing the effectiveness of different counting methods much easier. This idea has has been suggested by \cite{short-tweet} for
+restricting the amount of subjects to be recommended, due to the high volume of tweets on \textit{Twitter}.
