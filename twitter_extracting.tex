@@ -1,23 +1,45 @@
 \section{Extracting user profile from Twitter}
 
+In the following subsections, we will evaluate the use of entity reference extractions
+mentioned in Section 3.2 when ran against the \textit{Twitter} corpus (as described in Section 3.2.1).
+We will discuss the results and their usefulness for the profile generation. We will also cover problems
+encountered and suggest possible solutions.
+
 \subsection{Approach}
-In order for the results we decided to be dividing the corpus into two halves.
-By measuring the difference in achieved results, we might be actually able to
-evaluate their relative usefulness.
+Since the \textit{Twitter} corpus has been selected as described in the Section 3.2.1,
+we decided to cross-validate the measurements against two randomly selected halves of the corpus
+to be able to minimize the overfitting of the data. By measurements, we understand methods of
+entity reference extraction described in Section 3.2.
+
+We have used vocabularies consisting of \textit{TV Actors, TV Programmes, Movies and Movie Actors} from
+the \textit{FreeBase} dataset to be able to easily link the found concepts to the \textit{Open Linked Data}.
+
+Initial results show that even using simple matching methods we are able to extract interests from
+user's Twitter stream. Given that the user is a frequent user and updater of his Twitter stream, it seems
+as if the average amount of tweets from which any kind of such data might be extracted oscillates around \textit{3-18\%}.
+
+However, there is a great number of entity names (mostly TV Shows) that create noise around the results (shows such as \textit{Me too}). Removing those false positives has a crucial effect on the eventual accuracy of a Twitter-based profiler.
+
+\subsection{Results}
+In this section we present results of locating references to entities using different methods (as described in Section 3.2).
+In each paragraph we present results for both halves of the Corpus, which we will refer to as \textit{Corpus 1} and
+\textit{Corpus 2}
 
 \paragraph{Full name matching}
 Mentions a full name (for all actors and also TV shows/movies titles longer
-than one word). The figure show's relative amount of tweets containing those
-matches out of all tweets browsed.
+than one word).
 
 \begin{center}
-  \begin{tabular}{ | p{4cm} | p{2cm} | p{1cm}| p{2cm} | } \hline
-    Entity (average) & Corpus 1 & & Corpus 2 \\ \hline
-    TV Shows & 1.24\% & & 1.76\% \\ \hline
-    TV Actors & 0.41\% & & 0.00\% \\ \hline
-    Movies & 1.92\% & & 1.69\% \\ \hline
-    Movie actors & 0.74\% & & 0.21\% \\ \hline
-  \end{tabular}
+  \begin{table}[h!b!p!]
+    \begin{tabular}{ | p{4cm} | p{2cm} | p{1cm}| p{2cm} | } \hline
+      Entity (average) & Corpus 1 & & Corpus 2 \\ \hline
+      TV Shows & 1.24\% & & 1.76\% \\ \hline
+      TV Actors & 0.41\% & & 0.00\% \\ \hline
+      Movies & 1.92\% & & 1.69\% \\ \hline
+      Movie actors & 0.74\% & & 0.21\% \\ \hline
+    \end{tabular}
+    \caption{Average ratio of tweets with entities found to all tweets for different kinds of entities using full-name matching.}
+  \end{table}
 \end{center}
 
 This score should be considered a baseline for further research. Those low scores seem to indicate
@@ -29,36 +51,44 @@ usernames related to TV media), this approach seems not to be effective. Includi
 has brought extremely little (0.02\% in on of the corpuses for TV Shows) to almost none increase in the results.
 
 \paragraph{Matching title acronyms}
-Only entities with a title with 3 or more words have been used for this measurement.
+Only entities with a title with 3 or more words have been used for this measurement, since searching
+for smaller acronyms has generated a great amount of noise in the results.
 
 \begin{center}
-  \begin{tabular}{ | p{4cm} | p{2cm} | p{1cm}| p{2cm} | } \hline
-    Entity (average) & Corpus 1 & & Corpus 2 \\ \hline
-    TV Shows & 3.07\% & & 2.17\% \\ \hline
-    Movies & 2.01\% & & 2.33\% \\ \hline
-  \end{tabular}
+  \begin{table}[h!b!p!]
+    \begin{tabular}{ | p{4cm} | p{2cm} | p{1cm}| p{2cm} | } \hline
+      Entity (average) & Corpus 1 & & Corpus 2 \\ \hline
+      TV Shows & 3.07\% & & 2.17\% \\ \hline
+      Movies & 2.01\% & & 2.33\% \\ \hline
+    \end{tabular}
+    \caption{Average ratio of tweets with entities found to all tweets for different kinds of entities using entity name acronym}
+  \end{table}
 \end{center}
 
 We can easily spot an increase in matched entities, however there might be many
 misleading acronyms created with this approach. Acronyms such as \textit{SNL}
 (for \textit{Saturday Night Live} show) or  \textit{BBT} (\textit{Big Bang
 Theory}) are widely used, probably even as much as the full titles. However,
-if a \textit{CAT} acronym emerges, it will drastically increase the noise generated
-by the matching algorithms (thus the greatly increased percentage of tweets found).
+if an acronym similar to a natural language word emerges (e.g.\textit{CAT}),
+it will drastically increase the noise generated. By the matching algorithms
+(thus the greatly increased percentage of tweets found). This problem might
+partially be solved by the false positives avoiding methods, which we discuss later.
 
-\paragraph{Matching name converted to a hashtag form}
-All entities have been converted to a hashtag form (such as
-\textit{\#SaturdayNightLive} for Saturday Night Live). Also one-word entity
-names have been used.
+\paragraph{Matching name converted to a Hashtag form}
+For this measurement, all entities' names have been converted to a Hashtag form (as described
+in Section 3.2). In this experiment, also one-word entity names have been used.
 
 \begin{center}
-  \begin{tabular}{ | p{4cm} | p{2cm} | p{1cm}| p{2cm} | } \hline
-    Entity (average) & Corpus 1 & & Corpus 2 \\ \hline
-    TV Shows & 1.18\% & & 2.21 \% \\ \hline
-    TV Actors & 0.00\% & & 0.03\% \\ \hline
-    Movies & 2.49\% & & 3.12\% \\ \hline
-    Movie actors & 0.67\% & & 0.09\% \\ \hline
-  \end{tabular}
+  \begin{table}[h!b!p!]
+    \begin{tabular}{ | p{4cm} | p{2cm} | p{1cm}| p{2cm} | } \hline
+      Entity (average) & Corpus 1 & & Corpus 2 \\ \hline
+      TV Shows & 1.18\% & & 2.21 \% \\ \hline
+      TV Actors & 0.00\% & & 0.03\% \\ \hline
+      Movies & 2.49\% & & 3.12\% \\ \hline
+      Movie actors & 0.67\% & & 0.09\% \\ \hline
+    \end{tabular}
+    \caption{Average ratio of tweets with entities found to all tweets for different kinds of entities using Hashtag formed from the entity name}
+  \end{table}
 \end{center}
 
 We can easily notice how the person-based entities have either noted a smaller
@@ -74,13 +104,16 @@ and a entity name (full match) out of all that have been matched with an
 entity's name (hence the greater percentage scores).
 
 \begin{center}
-  \begin{tabular}{ | p{4cm} | p{2cm} | p{1cm}| p{2cm} | } \hline
-    Entity (average) & Corpus 1 & & Corpus 2 \\ \hline
-    Movies & 37.4\% & & 24.3\% \\ \hline
-    TV Shows & 21.2\% & & 13.4\% \\ \hline
-    TV Actors & 1.3\% & & 0.6\% \\ \hline
-    Movie actors & 2.1\% & & 0.0\% \\ \hline
-  \end{tabular}
+  \begin{table}[h!b!p!]
+    \begin{tabular}{ | p{4cm} | p{2cm} | p{1cm}| p{2cm} | } \hline
+      Entity (average) & Corpus 1 & & Corpus 2 \\ \hline
+      Movies & 37.4\% & & 24.3\% \\ \hline
+      TV Shows & 21.2\% & & 13.4\% \\ \hline
+      TV Actors & 1.3\% & & 0.6\% \\ \hline
+      Movie actors & 2.1\% & & 0.0\% \\ \hline
+    \end{tabular}
+    \caption{Average ratio of tweets with activity verbs found to all tweets with entity references}
+  \end{table}
 \end{center}
 
 As we can see, the activity verbs are very unlikely to be occurring next to
@@ -90,33 +123,35 @@ updating statuses with information on what the user is currently doing rather
 than expressing their opinions on various subjects.
 
 \paragraph{Usage of preference verbs}
-Two sets of preference have been used:
-\begin{itemize}
-\item positive
-\item negative
-\end{itemize}
+Two sets of preference have been used: \textit{positive and negative}
 
 The figure below shows the general use of preference verbs with occurrences of
 mentions.
 
 \begin{center}
-  \begin{tabular}{ | p{4cm} | p{2cm} | p{1cm}| p{2cm} | } \hline
-    Entity (average) & Corpus 1 & & Corpus 2 \\ \hline
-    TV Shows & 7.4\% & & 6.3\% \\ \hline
-    Movies & 9.1\% & & 8.4\% \\ \hline
-    TV Actors & 0.0\% & & 0.9\% \\ \hline
-    Movie actors & 1.2\% & & 2.7\% \\ \hline
-  \end{tabular}
+  \begin{table}[h!b!p!]
+    \begin{tabular}{ | p{4cm} | p{2cm} | p{1cm}| p{2cm} | } \hline
+      Entity (average) & Corpus 1 & & Corpus 2 \\ \hline
+      TV Shows & 7.4\% & & 6.3\% \\ \hline
+      Movies & 9.1\% & & 8.4\% \\ \hline
+      TV Actors & 0.0\% & & 0.9\% \\ \hline
+      Movie actors & 1.2\% & & 2.7\% \\ \hline
+    \end{tabular}
+    \caption{Average ratio of tweets with preference verbs found to all tweets with entity references}
+  \end{table}
 \end{center}
 
 And a positive-to-negative preference ratio:
 
 \begin{center}
-  \begin{tabular}{ | p{3cm}| p{2cm} | } \hline
-    Type & Amount \\ \hline
-    Positive & 92\% \\ \hline
-    Negative & 8\% \\ \hline
-  \end{tabular}
+  \begin{table}[h!b!p!]
+    \begin{tabular}{ | p{3cm}| p{2cm} | } \hline
+      Type & Amount \\ \hline
+      Positive & 92\% \\ \hline
+      Negative & 8\% \\ \hline
+    \end{tabular}
+    \caption{The amount of positive and negative verbs found within the tweets with entity references found}
+  \end{table}
 \end{center}
 
 The amount of preference verbs used whilst mentioning an entity is definitely
@@ -124,19 +159,22 @@ smaller compared to activity verbs. However, the Positive-to-Negative ratio most
 certainly suggests that users' media preferences expressed on Twitter are
 usually positive.
 
-\paragraph{Relation between preferences and following}
+\paragraph{Preference towards entities followed by a user}
 By gathering available Twitter usernames from the \textit{Freebase} database,
 we were able to perform searches for mentions of those usernames within the followers' streams.
 
 The following figure shows the share of different kind of mentions of the specific entity while following.
 
 \begin{center}
-  \begin{tabular}{ | p{3cm}| p{2cm} | } \hline
-    Match type & Occurence \\ \hline
-    Name & 0\% \\ \hline
-    Hashtag & 6\% \\ \hline
-	Username & 94\% \\ \hline
-  \end{tabular}
+  \begin{table}[h!b!p!]
+    \begin{tabular}{ | p{3cm}| p{2cm} | } \hline
+      Match type & Occurence \\ \hline
+      Name & 0\% \\ \hline
+      Hashtag & 6\% \\ \hline
+      Username & 94\% \\ \hline
+    \end{tabular}
+    \caption{The amount of mentions by different methods of the entity being followed by a user in his stream}
+  \end{table}
 \end{center}
 
 Since Twitter usernames mostly represent specific people rather than any other kinds of entities, it seems as if users mostly
@@ -148,81 +186,12 @@ However, those mentions occur relatively rarely. For a sample of 70 twitter user
 Furthermore, following a certain entity should also be regarded just as a preference toward the topics this entity is connected to (such as
 Politics for \textit{BarackObama}).
 
-On the other hand, locating more \textit{official} twitter usernames for various entities is challenging. Making this approach not
-completely worthwhile. Given such small amounts of twitter usernames known, it would be hard to reasonably specify the
-relation between the act of following the entity on twitter and preferences towards it, thus making in the profiling
-based on the ones known less influential than the other methods.
+On the other hand, automated locating of more \textit{official} twitter usernames for various entities is challenging, which
+limits the use of this approach.
 
-\subsubsection{Summary}
-All the methods used are slightly naive and may not always reflect the actual
-state of preferences. Not only do some names of entities not actually always
-represent what we would like them to.
-\\ What is more, due to a very specific nature of the
-tweets and their structure, it is quite hard to apply more definite Natural Language Processing
-methods. Sentence in tweets mostly do not contain a proper object making it quite hard to
-relate the activity/preference verb to the entity itself.
-
-\subsection{Counting methods applied in the profiling.}
-
-\subsubsection{Counting matches to entity names (without the preference/activity verbs,
-    suggests mostly the interest in the entity)}
-
-Due to possible misleading suggestions, this counting method will have a low value of interest.
-However, the more a specified subject occurs in a stream, the greater the preference in it will be.
-
-\subsubsection{Counting matches to names in hashtag forms (seeming more significant than
-      just entity names)}
-
-Since a hashtag might suggest a specific topic being mentioned (such as a TV Show or a Movie), the chance
-of the matcher to be wrong is much lower. It is still however a low-success rate matcher
-and thus the profiling it generates will be of a smaller value.
-
-\subsubsection{Counting entity names with activity verbs (suggesting that the topic has
-    actually been seen)}
-
-This part will provide profiling based on tweets including a verb suggesting
-having actually seen the given entity. It will have a much higher preference
-value than the name matching. Since an interested user might tweet repeatedly,
-the profiling value will increase with each such mention. \\
-This value might also be modified by the amount of different entities found,
-(the more user tweets about the TV, the more its significance differs)
-
-\subsubsection{Counting entity names with preference verbs (using a greater vocabulary
-      and waging specific interests)}
-
-The extraction of the mentions will be similar to the activity verbs. However,
-relating a specific preference verb to the entity with a 100\% accuracy. The
-profiling influence will be matched accordingly. \\
-Since users tend to tweet about positive preferences, the occurrences of negative
-preference verbs will have a different effect on the profile.
-
-\subsubsection{Measuring the amount of tweets mentioning any kind of entity to all
-  tweets}
-
-Such measurement may inform us as to how often a user tweets about TV-related
-topics, giving us a more general information on his interest in TV.
-
-\subsubsection{Approach}
-We have used all above methods excluding the last metric. For now, only Movie titles, actors,
-TV actors and shows have been used.
-
-Initial results show that even using simple matching methods we are able to extract interests from
-user's Twitter stream. Given that the user is a frequent user and updater of his Twitter stream, it seems
-as if the average amount of tweets from which any kind of such data might be extracted oscillates around \textit{3-18\%}.
-
-However, there is a great number of entity names (mostly TV Shows) that create noise around the results (shows such as \textit{Me too}).
-
-The results seem to be very promising and indicate that data regarding the media preferences of a user might
-be available in their Twitter stream and is also quite easily accessible.
-
-The analysis of the \textit{following} list could also help profiling more efficiently when it comes to topics that the
-given user is interested in.
-
-\subsection{Additional problems/ideas}
-\paragraph{Accidental matches}
-In order to reduce the chance accidental name matches occurring. Entity names should be ran against a corpus of English texts,
-ranking them by their popularity. The more often an entity name occurs in those corpora, the lesser the chance of it occurring
-as a name of the TV shows. In order to measure the certainty, a separate function should be introduced, taking into account the following:
+\subsection{Avoiding accidental matches}
+In order to reduce the chance accidental name matches occurring. Entity names were ran against a corpus of English texts,
+ranking them by their popularity. The more often an entity name occurs in those corpora, the smaller the chance of it occurring as a name of the TV shows. In order to measure the certainty, a separate function is introduced, taking into account the following:
 
 \begin{itemize}
   \item form of occurrence of the entity name (string match, hashtag)
@@ -234,12 +203,4 @@ as a name of the TV shows. In order to measure the certainty, a separate functio
 This measurement will then be easily translatable into the preference weights to be recorded when profiling a user.
 In order to further minimize the chance of finding an occurrence of a subject that is not describing what we are hoping is analyzing the tweet's context.
 By undertaking semantic approaches we could be able to analyze different topics found in a tweet and attempt to rank their relation to the entity we are researching.
-
-\paragraph{Context}
-In order to further minimize the chance of finding an occurrence of a subject that is not describing what we are hoping is analyzing the tweet's context.
-By undertaking semantic approaches we could be able to analyze different topics found in a tweet and attempt to rank their relation to the entity we are researching.
-
-\paragraph{Ambiguity}
-Since some entity categories (such as \textit{TV Actors}) can be ambiguous (such as \textbf{John Terry the actor} and \textbf{John Terry the footballer}). Such situations
-would require us to use additional methods (such as context-based reasoning) in order to accurately identify the entity in question.
 

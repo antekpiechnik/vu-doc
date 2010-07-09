@@ -68,9 +68,9 @@ this will change soon.
 
 \subsection{Future work}
 
-\subsubsection{Possible improvements of subject recognition methods}
+\subsubsection{Context/Semantic-based entity recognition}
 
-\paragraph{Context/Semantic-based searching for removing accidental matches}
+\paragraph{Removing more accidental matches}
 
 In order to enhance the accuracy of entities recognized within a user's Twitter
 stream, one could employ search methods based on analyzing a single tweet's
@@ -78,7 +78,14 @@ context regarding other topics related to the media field using semantic
 services.  However, this approach could be much slower for multiple tweets
 within a significant userbase.
 
-\paragraph{Comparison of TV show entities against more natural language corpora}
+\paragraph{Entity ambiguity}
+
+Some entity categories (such as \textit{TV Actors}) can be ambiguous (such as \textbf{John Terry the actor} and \textbf{John Terry the footballer}). Such situations
+would require us to use additional methods (such as context-based reasoning) in order to accurately identify the entity in question.
+
+
+
+\subsubsection{Comparison of TV show entities against more natural language corpora}
 
 In order to minimize the amount of \textit{false positives} matched in a user's
 stream, different entities' names and aliases should be ran against corpora
