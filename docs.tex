@@ -96,13 +96,18 @@ Hunch is able to adapt to much more different topics, and it not necessarily foc
 
 \section{Implementation details}
 
+A wide set of technologies was used for the research. Since we didn't need to implement them on our own, we were able to spend more time experimenting.
+
 \subsection{Technologies used in Twitter research}
 \subsubsection{Language}
 Most processing has been done using the \textit{Ruby} language. The NoTube tubelets/reasonlets will be implemented in either pure \textit{Java} or \textit{JRuby}.
 \subsubsection{Tools}
-Twitter API requests are been handled via the OAuth protocol and provided in a JSON-based stream form. Only the newest tweets for the pre-selected Twitter usernames are downloaded. The entities definitions and semantics are provided by the FreeBase database REST interface. All the processing occurs locally on the pre-loaded Twitter data. \\ Ruby gems used include:
-\begin{itemize}
-  \item \textit{bdb} from mattbauer - a BerkeleyDB wrapper for Ruby
+Twitter API requests are been handled via the OAuth protocol and provided in a
+JSON-based stream form. Only the newest tweets for the pre-selected Twitter
+usernames are downloaded. The entities definitions and semantics are provided by
+the FreeBase database REST interface. All the processing occurs locally on the
+pre-loaded Twitter data. \\ Ruby gems used include: \begin{itemize} \item
+\textit{bdb} from mattbauer - a BerkeleyDB wrapper for Ruby
   \item \textit{twitter} from jnunemaker - a wrapper around the Twitter API
   \item \textit{ferret} - full text search engine written in Ruby
   \item \textit{ken} from michael-aufreiter - wrapper for the freebase.org API
@@ -114,6 +119,38 @@ information retrieval. Since great amount of data needs to be processed, a full
 text search engine has been used, which greatly increased the searching time. In
 this case, we decided on using \textit{ferret} - a Ruby implementation of a
 full-text search engine (similar to Apache's \textit{Lucene}).
+
+\subsection{Technologies used in YouTube research}
+The code used for the research was written in Python programming language. Using
+high-level programming language let us focus on the code itself, and skip the
+gory details like memory management.
+
+\subsubsection{The basic functionality}
+The main program -- that's the one responsible for generating user's preferences
+-- connects to YouTube API in order to receive the required data. The
+API responses come as xml documents, and are further analyzed in search of
+pieces of data, that are of interest to a particular, examined subject.
+
+This code depends solely on modules contained in the standard library, which
+simplifies the installation process and lets us avoid dependency on a particular
+Python implementation (such an approach makes the eventual switch to Jython far
+easier). The standard library modules used were: ElementTree -- for xml
+processing, csv -- for reading freebase data dumps and urllib2 -- for accessing
+the API.
+
+\subsubsection{Additional research scripts}
+
+A set of additional scripts was prepared that were used for YouTube data
+analysis. These scripts rather than analyzing single user's data, worked over a
+large number of users in order to gather information on how YouTube is used.
+This information includes number of people using various features (see section
+3.1.1), rates of videos with identifieable linked data concepts (section 7.2).
+
+The corpora for analysis was collected using bfs graph traversal through YouTube
+contacts. The corpus of video titles and descriptions was collected based on
+those user's favourites.
+
+
 
 \bibliographystyle{plain}
 \bibliography{sources}
