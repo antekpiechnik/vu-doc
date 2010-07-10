@@ -28,129 +28,23 @@ data for users profiling as well as show promising results for possibly employin
 this data in a real-life project.
 \end{abstract}
 
-\section{Introduction}
+\input{introduction}
 
-Recommender systems used to involve recommending more physical objects \cite{combining-cf-with-pa} to users.
-However, more and more abstract topics are becoming parts of such recommenders (such as tags) \cite{accuracy-recommending}. The NoTube project bases its recommendation of TV programmes on aggregating,
-extracting and analyzing user activities \cite{notube-main}. The Web provides traces left by users
-of social services regarding their activities, varying from user video viewing history
-and subscriptions to video channels (e.g. \textit{YouTube})
-to users' activity updates formed in natural language (such as \textit{Twitter}) \cite{why-we-twitter}.
+\input{data_sources}
 
-In this paper we analyze those data streams and evaluate their usefulness to the \textit{NoTube}
-project, by answering two main research questions.
+\input{vocabularies}
 
-Firstly, we find out \textit{what user data we can collect from both structured and natural language-based social applications?}. We mainly focus on researching the available data and analyze the way people use services such as
-\textit{YouTube} and \textit{Twitter} to share their media preferences (Section 3).
+\input{youtube_extracting}
 
-Furthermore, we look into \textit{how do those services compare when it comes to automated user media
-preference profile generating?}. In this part of the paper we present methods of evaluating results of
-the aggregation of available data (Sections 5 and 6) as well as actual user preferences profiling for both
-services with a comparative analysis and discussion of the latter (Sections 7 and 8). Our research reveals that despite the
-differences between those streams, both of them may provide enough opportunities for user media preference
-extraction. We conclude with a summary and future work (Section 8).
+\input{twitter_extracting}
 
-\section{Related work}
+\input{results}
 
-A considerable number of papers examining social Web services have been
-published. Works devoted to YouTube often contain analysis of the video data
-stored by the service and its implications to the traffic generated
-(\cite{i-tube-you-tube}, \cite{views-from-the-edge},
-\cite{statistics-and-social-network}), some study impact of YouTube service on
-very narrow topics, like 2006 USA presidential elections
-\cite{voters-myspace-youtube}, or social attitude towards vaccinacions
-\cite{keelan}. There are also papers analyzing privacy issues of using YouTube
-\cite{publicly-private}.
+\input{evaluation}
 
-Works analyzing \textit{Twitter} as a data stream can differ from very general \cite{why-we-twitter},
-to works devoted to analyzing content of the \textit{Twitter} users' timelines (such as \cite{twitter-content-is-it} and \cite{short-tweet}).
+\input{discussion}
 
-There are also works devoted to automated user profile generation, covering multiple data sources for profile
-information aggregation \cite{public-profiles}, as well as abusing social networks for profile generation \cite{twitter-abuse}. Apart from profile generation, a URL recommender system for \textit{Twitter} users
-has been introduced by \cite{short-tweet}.
-
-Apart from the papers mentioned, we have also found various implementations of systems that aggregate personal preferences based on different
-social services:
-
-\paragraph{Hunch}
-\textit{Hunch}\footnote[2]{http://www.hunch.com}) is a service offering recommendations on different topics based on a user's \textit{Twitter} data. It predicts preferences in forms of small questions and is then able to recommend a product or a solution to a problem that is represented with a \textit{Topic} on the site. \textit{Hunch} seems to be more commercial-oriented, e.g. providing users with links to online stores with products they are recommending. However,
-it's prediction results suggest that \textit{Twitter} users' timelines contain information about their preferences.
-
-The application can create recommendations based solely on user's \textit{Twitter} data (mostly people they follow). However, when little is available, it requires input from users in order to make future predictions more accurate. It covers topics broader than the \textit{NoTube} project.
-\textit{Hunch.com} does not provide information on how the recommender system works, although it provides an API for accessing their data.
-Hunch is able to adapt to much more different topics, and it not necessarily focuses on their semantics (rather on what similar people simply like).
-
-\include{data_sources}
-
-\include{vocabularies}
-
-\include{youtube_extracting}
-
-\include{twitter_extracting}
-
-\include{results}
-
-\include{evaluation}
-
-\include{discussion}
-
-\section{Implementation details}
-
-A wide set of technologies was used for the research. Since we didn't need to implement them on our own, we were able to spend more time experimenting.
-
-\subsection{Technologies used in Twitter research}
-\subsubsection{Language}
-Most processing has been done using the \textit{Ruby} language. The NoTube tubelets/reasonlets will be implemented in either pure \textit{Java} or \textit{JRuby}.
-\subsubsection{Tools}
-Twitter API requests are been handled via the OAuth protocol and provided in a
-JSON-based stream form. Only the newest tweets for the pre-selected Twitter
-usernames are downloaded. The entities definitions and semantics are provided by
-the FreeBase database REST interface. All the processing occurs locally on the
-pre-loaded Twitter data. \\ Ruby gems used include: \begin{itemize} \item
-\textit{bdb} from mattbauer - a BerkeleyDB wrapper for Ruby
-  \item \textit{twitter} from jnunemaker - a wrapper around the Twitter API
-  \item \textit{ferret} - full text search engine written in Ruby
-  \item \textit{ken} from michael-aufreiter - wrapper for the freebase.org API
-\end{itemize}
-\subsubsection{Storage}
-Due to Twitter API request rate limiting, tweets have been aggregated in a local
-\textit{Berkeley DB} database instance providing a fast and easy key-value
-information retrieval. Since great amount of data needs to be processed, a full
-text search engine has been used, which greatly increased the searching time. In
-this case, we decided on using \textit{ferret} - a Ruby implementation of a
-full-text search engine (similar to Apache's \textit{Lucene}).
-
-\subsection{Technologies used in YouTube research}
-The code used for the research was written in Python programming language. Using
-high-level programming language let us focus on the code itself, and skip the
-gory details like memory management.
-
-\subsubsection{The basic functionality}
-The main program -- that's the one responsible for generating user's preferences
--- connects to YouTube API in order to receive the required data. The
-API responses come as xml documents, and are further analyzed in search of
-pieces of data, that are of interest to a particular, examined subject.
-
-This code depends solely on modules contained in the standard library, which
-simplifies the installation process and lets us avoid dependency on a particular
-Python implementation (such an approach makes the eventual switch to Jython far
-easier). The standard library modules used were: ElementTree -- for xml
-processing, csv -- for reading freebase data dumps and urllib2 -- for accessing
-the API.
-
-\subsubsection{Additional research scripts}
-
-A set of additional scripts was prepared that were used for YouTube data
-analysis. These scripts rather than analyzing single user's data, worked over a
-large number of users in order to gather information on how YouTube is used.
-This information includes number of people using various features (see section
-3.1.1), rates of videos with identifieable linked data concepts (section 7.2).
-
-The corpora for analysis was collected using bfs graph traversal through YouTube
-contacts. The corpus of video titles and descriptions was collected based on
-those user's favourites.
-
-
+\input{implementation}
 
 \bibliographystyle{plain}
 \bibliography{sources}

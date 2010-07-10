@@ -28,8 +28,8 @@ In each paragraph we present results for both halves of the Corpus, which we wil
 Mentions using string matching of the full name within the tweets (for all actors and also TV shows/movies titles longer
 than one word).
 
-\begin{center}
-  \begin{table}[h!b!p!]
+\begin{table}[h!]
+  \begin{center}
     \begin{tabular}{ | p{4cm} | p{2cm} | p{1cm}| p{2cm} | } \hline
       Entity (average) & Corpus 1 & & Corpus 2 \\ \hline
       TV Shows & 1.24\% & & 1.76\% \\ \hline
@@ -38,8 +38,8 @@ than one word).
       Movie actors & 0.74\% & & 0.21\% \\ \hline
     \end{tabular}
     \caption{Average ratio of tweets with entities found to all tweets for different kinds of entities using full-name matching of the entity name.}
-  \end{table}
-\end{center}
+  \end{center}
+\end{table}
 
 This score should be considered a baseline for further research. We have expected low scores, since users of \textit{Twitter} update their statuses with multiple different types of information (as described in Section 3.2).
 
@@ -53,16 +53,16 @@ Only entities with a title with 3 or more words have been used for this measurem
 for smaller acronyms has generated a great amount of noise in the results. We have omitted Actors names, because
 they mostly consist of two words and their acronyms rarely correspond to those actors.
 
-\begin{center}
-  \begin{table}[h!b!p!]
+\begin{table}[h!]
+  \begin{center}
     \begin{tabular}{ | p{4cm} | p{2cm} | p{1cm}| p{2cm} | } \hline
       Entity (average) & Corpus 1 & & Corpus 2 \\ \hline
       TV Shows & 3.07\% & & 2.17\% \\ \hline
       Movies & 2.01\% & & 2.33\% \\ \hline
     \end{tabular}
     \caption{Average ratio of tweets with entities found to all tweets for different kinds of entities using the entity's name acronym}
-  \end{table}
-\end{center}
+  \end{center}
+\end{table}
 
 We can easily spot an increase in matched entities, however there might be many
 misleading acronyms created with this approach. Acronyms such as \textit{SNL}
@@ -78,8 +78,8 @@ partially be solved by the false positives avoiding methods, which we discuss la
 For this measurement, all entities' names have been converted to a Hashtag form (as described
 in Section 3.2). In this experiment, also one-word entity names have been used.
 
-\begin{center}
-  \begin{table}[h!b!p!]
+\begin{table}[h!]
+  \begin{center}
     \begin{tabular}{ | p{4cm} | p{2cm} | p{1cm}| p{2cm} | } \hline
       Entity (average) & Corpus 1 & & Corpus 2 \\ \hline
       TV Shows & 1.18\% & & 2.21 \% \\ \hline
@@ -88,8 +88,8 @@ in Section 3.2). In this experiment, also one-word entity names have been used.
       Movie actors & 0.67\% & & 0.09\% \\ \hline
     \end{tabular}
     \caption{Average ratio of tweets with entities found to all tweets for different kinds of entities using Hashtag formed from the entity name}
-  \end{table}
-\end{center}
+  \end{center}
+\end{table}
 
 We notice how the person-based entities have either noted a smaller
 occurrence rate and title-based ones have improved. This may be related to the
@@ -104,8 +104,9 @@ as \textit{to watch, to play, to see, to check out, to catch} with their past fo
 and a entity name (full match) out of all that have been matched with an
 entity's name (hence the higher scores).
 
-\begin{center}
-  \begin{table}[h!b!p!]
+
+\begin{table}[h!]
+  \begin{center}
     \begin{tabular}{ | p{4cm} | p{2cm} | p{1cm}| p{2cm} | } \hline
       Entity (average) & Corpus 1 & & Corpus 2 \\ \hline
       Movies & 37.4\% & & 24.3\% \\ \hline
@@ -114,8 +115,9 @@ entity's name (hence the higher scores).
       Movie actors & 2.1\% & & 0.0\% \\ \hline
     \end{tabular}
     \caption{Average ratio of tweets with activity verbs found to all tweets with entity references}
-  \end{table}
-\end{center}
+  \end{center}
+\end{table}
+
 
 As we can see, the activity verbs are very unlikely to be occurring next to
 person-based entities. However, activity verbs are much more popular with both
@@ -133,8 +135,8 @@ Two sets of preference have been used:
 The figure below shows the general use of preference verbs with occurrences of
 mentions.
 
-\begin{center}
-  \begin{table}[h!b!p!]
+\begin{table}[h!]
+  \begin{center}
     \begin{tabular}{ | p{4cm} | p{2cm} | p{1cm}| p{2cm} | } \hline
       Entity (average) & Corpus 1 & & Corpus 2 \\ \hline
       TV Shows & 7.4\% & & 6.3\% \\ \hline
@@ -143,21 +145,21 @@ mentions.
       Movie actors & 1.2\% & & 2.7\% \\ \hline
     \end{tabular}
     \caption{Average ratio of tweets with preference verbs found to all tweets with entity references}
-  \end{table}
-\end{center}
+  \end{center}
+\end{table}
 
 We have also measured the positive-to-negative preference ratio:
 
-\begin{center}
-  \begin{table}[h!b!p!]
-    \begin{tabular}{ | p{3cm}| p{2cm} | } \hline
-      Type & Amount \\ \hline
-      Positive & 92\% \\ \hline
-      Negative & 8\% \\ \hline
-    \end{tabular}
-    \caption{The amount of positive and negative verbs found within the tweets with entity references found}
-  \end{table}
-\end{center}
+\begin{table}[h!]
+  \begin{center}
+  \begin{tabular}{ | p{3cm}| p{2cm} | } \hline
+    Type & Amount \\ \hline
+    Positive & 92\% \\ \hline
+    Negative & 8\% \\ \hline
+  \end{tabular}
+  \caption{The amount of positive and negative verbs found within the tweets with entity references found}
+  \end{center}
+\end{table}
 
 The amount of preference verbs used whilst mentioning an entity is definitely
 smaller compared to activity verbs. However, the Positive-to-Negative ratio suggests that users'
@@ -169,17 +171,17 @@ we were able to perform searches for mentions of those usernames within the foll
 
 The following figure shows the share of different kind of mentions of the specific entity while following.
 
-\begin{center}
-  \begin{table}[h!b!p!]
-    \begin{tabular}{ | p{3cm}| p{2cm} | } \hline
-      Match type & Occurence \\ \hline
-      Name & 0\% \\ \hline
-      Hashtag & 6\% \\ \hline
-      Username & 94\% \\ \hline
-    \end{tabular}
-    \caption{The amount of mentions by different methods of the entity being followed by a user in his stream}
-  \end{table}
-\end{center}
+\begin{table}[h!]
+  \begin{center}
+  \begin{tabular}{ | p{3cm}| p{2cm} | } \hline
+    Match type & Occurence \\ \hline
+    Name & 0\% \\ \hline
+    Hashtag & 6\% \\ \hline
+    Username & 94\% \\ \hline
+  \end{tabular}
+  \caption{The amount of mentions by different methods of the entity being followed by a user in his stream}
+  \end{center}
+\end{table}
 
 Since Twitter usernames mostly represent specific people rather than any other kinds of entities, it seems as if users mostly
 mention them using their usernames rather than their names in plain or hashtag form.
