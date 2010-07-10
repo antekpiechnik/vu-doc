@@ -182,3 +182,25 @@ for concepts that are also common phrases (e.g. the "Lost" TV show). However,
 above certain threshold of repeats, an
 assumption that a user likes a given actor becomes more probable.
 
+\subsection{Pervasiveness of linked data concepts}
+A set of statistics was prepare to measure the pervasiveness of linked data
+concepts as extracted from the freebase vocabularies. The matching performed
+was a simple text-based search in videos titles and descriptions.
+
+\begin{center}
+  \begin{table}
+    \begin{tabular}{ | p{4cm} | p{6cm} | } \hline
+      Entity (average) & Rate of videos with matched contents 1 \\ \hline
+      TV Shows & 30.25\% \\ \hline
+      TV Actors & 14.73\% \\ \hline
+      Movies & 45.95\% \\ \hline
+      Movie actors & 13.12\% \\ \hline
+    \end{tabular}
+    \caption{Rate of video descriptions with entities found using text-based matching.}
+  \end{table}
+\end{center}
+
+These numbers are exceptionally large, but unfortunately, a vast number of text
+based matches proved to be false positives. This was the case particularily for
+movie titles, where entities with common names are quite popular (e.g. 'Under',
+'House', or 'Power').
