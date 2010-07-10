@@ -7,29 +7,24 @@ our algorithms.
 \subsection{Possible influence on the NoTube project}
 
 The \textit{NoTube} project is able to personalize recommendations for TV
-programmes for a user. In order to maximize it's recommending potential, it
-needs to aggregate data from different sources.
+programmes for a user. In order to maximize its recommending potential, it
+needs to aggregate data from different sources. Once the project becomes such a
+source, the recommender would have access to a much wider set of data,
+collected by the NoTube project itself.
 
 Both \textit{YouTube} and \textit{Twitter} certainly do contain information
-useful for this topic. However, in order to be able to fully use it's
-potential, the recommender would have to incorporate more advanced methods for
-media topics recognition and also require an evaluation of information
-extracted from those streams based on the current profile of a given user.
+useful for this topic. However, for limited sets of data (non-active
+Twitter/YouTube users), the recommender might need to 
+incorporate more advanced methods for media topics recognition or maybe require
+an evaluation of information extracted from those streams by the user.
 Given the little amounts of media-related information in some of user's
-streams, results obtained from incorporating such methods might prove not worth
-the cost of their implementation.
+streams, results obtained from incorporating such methods might prove useful
+only for the cold-start situation, that is: to estimate the user's interests
+very roughly in hope to gather more data during user's activity.
 
-The \textit{NoTube} target might be users who very rarely employ Twitter or
-YouTube for expressing their opinions on media subjects. Moreover, should any
-integration with YouTube or Twitter appear within the project, the TV-related
-part of a user's stream might become automatically generated, making use of
-such services-based recommender slightly obsolete.
-
-On the other hand, there seem to be uses for such recommenders. Provided a user
-updates his Twitter information with enough media--related information, a
-recommender based on information from this service could be helpful for
-creating initial user profiles as well as be able to provide a teaser of the
-project's functionality.
+However, for very active Twitter and YouTube users, the profiles extracted
+might be rich enough to be very useful for recommender systems. The amount of
+information generated would be a considerable set to run a recommender against.
 
 \subsection{Evolution of the Userbase}
 
