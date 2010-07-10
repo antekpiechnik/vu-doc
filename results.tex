@@ -3,12 +3,12 @@
 The following section describes the results of the profile extractions and its
 analysis.
 
-\subsection{Analysed user sets}
+\subsection{Analyzed user sets}
 In order to analyze the effectiveness of our profilers, we ran them on groups of
 users selected from Twitter and YouTube services. The samples were selected
 using two different methods. For Twitter, the website's search service was used
 in order to identify users that are likely to post updates about media content.
-Such an aproach let us skip laborous analysis of accounts with hardly any
+Such an approach let us skip laborious analysis of accounts with hardly any
 updates at all, or updates not related to media content in any manner (which,
 given Twitter's access limits, was a considerable gain). For YouTube -- service
 with no access limits and no user-by-favourites-search function -- a BFS graph
@@ -19,17 +19,20 @@ crawl was performed in order to collect the user set.
 For each user, a profile was generated using our profilers for both Twitter and
 YouTube services. We measured effectiveness of profilers as a ratio of number of
 items (tweets/videos) with linked data concepts identified to the overall number
-of items alanyzed. The results are presented in the table below.
+of items analyzed. The results are presented in the table below.
 
-
-\begin{tabular}{| l | l | l |}
-Topic & Twitter & YouTube \\ \hline
-Film actors & 0.48\% & 13.12\% \\
-Movie titles & 1.79\% & 45.95\% \\
-TV actors & 0.20\% & 14.73\% \\
-TV shows & 1.5\% & 30.25\% \\
-\end{tabular}
-
+\begin{figure}[h!]
+  \begin{center}
+    \begin{tabular}{| l | l | l |}
+    Topic & Twitter & YouTube \\ \hline
+    Film actors & 0.48\% & 13.12\% \\
+    Movie titles & 1.79\% & 45.95\% \\
+    TV actors & 0.20\% & 14.73\% \\
+    TV shows & 1.5\% & 30.25\% \\
+    \end{tabular}
+    \caption{The comparison of the amount of linked data concepts within separate data streams}
+  \end{center}
+\end{figure}
 
 The reader should note, there was no checking of actual correctness of those results at
 this stage (the evaluation of results using surveys is in the next chapter). We

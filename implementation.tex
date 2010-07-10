@@ -1,49 +1,57 @@
 \section{Implementation details}
+This section covers the code that performed most of the experiments used for the research in Sections 2, 5 and 6.
 
-\begin{itemize}
-  \item {forma}
-  \item {diagram}
-  \item {opis}
-\end{itemize}
+\subsection{Twitter Experiments}
+Most processing has been done using the \textit{Ruby}\footnote{http://www.ruby-lang.org/en/}
+language, a dynamic, scripting open source programming language. This allowed us
+to focus on experimenting instead of implementation. The profiler scripts have been
+separated from any native extensions, making them compatible with \textit{JRuby}\footnote{http://www.jruby.org} -- the Java implementation
+of the Ruby language.
+\subsubsection{Structure}
+The Extractor part retrieves the data from Twitter. The Twitter API requests are been handled via the \textit{OAuth}\footnote{http://oauth.net/} protocol and provided in a
+\textit{JSON}-based stream form. Only the newest tweets for the Twitter
+users are downloaded. The entities definitions and semantics are provided by
+the \textit{FreeBase} database REST interface. All further processing by the Associator
+occurs locally on the pre-loaded Twitter data. \\
 
-A wide set of technologies was used for the research. Since we didn't need to implement them on our own, we were able to spend more time experimenting.
+\begin{figure}[h!]
+  \begin{center}
+	  \includegraphics[scale=0.65]{images/twitter_diagram.pdf}
+	  \caption{The structure of the Twitter data experiments workflow}
+  \end{center}
+\end{figure}
 
-\subsection{Technologies used in Twitter research}
-\subsubsection{Language}
-Most processing has been done using the \textit{Ruby} language. The NoTube tubelets/reasonlets will be implemented in either pure \textit{Java} or \textit{JRuby}.
 \subsubsection{Tools}
-Twitter API requests are been handled via the OAuth protocol and provided in a
-JSON-based stream form. Only the newest tweets for the pre-selected Twitter
-usernames are downloaded. The entities definitions and semantics are provided by
-the FreeBase database REST interface. All the processing occurs locally on the
-pre-loaded Twitter data. \\ Ruby gems used include: \begin{itemize} \item
-\textit{bdb} from mattbauer - a BerkeleyDB wrapper for Ruby
-  \item \textit{twitter} from jnunemaker - a wrapper around the Twitter API
-  \item \textit{ferret} - full text search engine written in Ruby
-  \item \textit{ken} from michael-aufreiter - wrapper for the freebase.org API
+Apart from using the standard Ruby libraries, separate open-source Ruby gems have been used for the experiment:
+\begin{itemize}
+  \item \textit{bdb}\footnote{http://github.com/mattbauer/bdb} - a wrapper for the BerkeleyDB C driver
+  \item \textit{twitter}\footnote{http://github.com/jnunemaker/twitter} - a wrapper around the Twitter API
+  \item \textit{ferret} \footnote{http://ferret.davebalmain.com} - full text search engine written in pure Ruby
+  \item \textit{ken}\footnote{http://github.com/michael/ken} - a wrapper for the freebase.org API
 \end{itemize}
+
 \subsubsection{Storage}
 Due to Twitter API request rate limiting, tweets have been aggregated in a local
 \textit{Berkeley DB} database instance providing a fast and easy key-value
-information retrieval. Since great amount of data needs to be processed, a full
+information retrieval. Since a huge amount of data needs to be processed, a full
 text search engine has been used, which greatly increased the searching time. In
-this case, we decided on using \textit{ferret} - a Ruby implementation of a
-full-text search engine (similar to Apache's \textit{Lucene}).
+this case, we decided on using \textit{ferret} - a full-text search engine
+written in Ruby (similar to Apache's \textit{Lucene}).
 
-\subsection{Technologies used in YouTube research}
-The code used for the research was written in Python programming language. Using
-high-level programming language let us focus on the code itself, and skip the
+\subsection{YouTube Experiments}
+The code used for the research was written in \textit{Python}\footnote{http://www.python.org}
+programming language. Using high-level programming language let us focus on the code itself, and skip the
 gory details like memory management.
 
 \subsubsection{The basic functionality}
 The main program -- that's the one responsible for generating user's preferences
--- connects to YouTube API in order to receive the required data. The
+-- connects to \textit{YouTube} API in order to receive the required data. The
 API responses come as xml documents, and are further analyzed in search of
 pieces of data, that are of interest to a particular, examined subject.
 
 This code depends solely on modules contained in the standard library, which
 simplifies the installation process and lets us avoid dependency on a particular
-Python implementation (such an approach makes the eventual switch to Jython far
+Python implementation (such an approach makes the eventual switch to \textit{Jython}\footnote{http://www.jython.org} far
 easier). The standard library modules used were: ElementTree -- for xml
 processing, csv -- for reading freebase data dumps and urllib2 -- for accessing
 the API.
