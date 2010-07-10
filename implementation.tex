@@ -57,22 +57,22 @@ pieces of data, that are of interest to the examined subject.
 \end{figure}
 
 \subsubsection{Tools}
-This code depends solely on modules contained in the standard library, which
-simplifies the installation process and lets us avoid dependency on a particular
-Python implementation (such an approach makes the eventual switch to \textit{Jython}\footnote{http://www.jython.org} far
-easier). The standard library modules used were: ElementTree -- for xml
-processing, csv -- for reading freebase data dumps and urllib2 -- for accessing
-the API.
 
-
-
-\subsubsection{Additional research scripts}
+The code for user profiling depends solely on modules contained in the standard
+library, which simplifies the installation process and lets us avoid dependency
+on a particular Python implementation (such an approach makes the eventual
+switch to \textit{Jython}\footnote{http://www.jython.org} far easier). The
+standard library modules used were: ElementTree -- for xml processing, csv --
+for reading freebase data dumps and urllib2 -- for accessing the API.
 
 A set of additional scripts was prepared that were used for YouTube data
 analysis. These scripts rather than analyzing single user's data, worked over a
 large number of users in order to gather information on how YouTube is used.
 This information includes number of people using various features (see section
 3.1.1), rates of videos with identifieable linked data concepts (section 7.2).
+Parts of data extracted for this research was only possible to obtain after
+authentication. This was performed using http-based Google's protocol designed
+for this purpose.
 
 The corpora for analysis was collected using bfs graph traversal through YouTube
 contacts. The corpus of video titles and descriptions was collected based on
