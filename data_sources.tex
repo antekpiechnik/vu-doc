@@ -14,36 +14,38 @@ sample of 7500 randomly chosen users was examined, as described in next section.
 There are also fields that can be used directly in user's profile. These would
 be user's age, gender and location.
 
-\begin{table}[ht]
-	\begin{tabular}{|p{3cm} | l | p{4cm}|}\hline
-		Information & Access & Notes\\ \hline
-
-		Title & Public API & Natural language \\
-		Published & Public API & \\
-		Updated & Public API & Date \\
-		Category & Public API & Chosen from a restricted set of YouTube categories \\
-		Tags (keywords) & Public API & May be freely assigned \\
-		Comments & Public API & Natural language \\
-		Permissons & Public API & Irrelevant, but available \\
-		Description & Public API & Natural language \\
-		Thumbnails & Public API & Set of video's thumbnails (along with times
-		when taken) \\
-		Duration & Public API & \\
-		Ratings & Public API & Best, worst and average rating, number of votes \\
-		Viewcount & Public API & \\
-		Favourite count & Public API & \\
-		Number of likes & Public API & \\
-		Number of dislikes & Public API & \\
-		Aspect ratio & Public API & \\
-		Related & Public API & \\
-		Responses & Public API & \\
-		Author & Public API & \\ \hline
-	\end{tabular}
-	\caption{Information available for a video}
-	\label{ut_video_info}
+\clearpage
+\begin{table}[htb]
+  \begin{center}
+    \begin{tabular}{|p{3cm} | l | p{4cm}|} \hline
+    Information & Access & Notes\\ \hline
+    Title & Public API & Natural language \\
+    Published & Public API & \\
+    Updated & Public API & Date \\
+    Category & Public API & Chosen from a restricted set of YouTube categories \\
+    Tags (keywords) & Public API & May be freely assigned \\
+    Comments & Public API & Natural language \\
+    Permissons & Public API & Irrelevant, but available \\
+    Description & Public API & Natural language \\
+    Thumbnails & Public API & Set of video's thumbnails (along with times
+    when taken) \\
+    Duration & Public API & \\
+    Ratings & Public API & Best, worst and average rating, number of votes \\
+    Viewcount & Public API & \\
+    Favourite count & Public API & \\
+    Number of likes & Public API & \\
+    Number of dislikes & Public API & \\
+    Aspect ratio & Public API & \\
+    Related & Public API & \\
+    Responses & Public API & \\
+    Author & Public API & \\ \hline
+    \end{tabular}
+    \caption{Information available for a video}
+    \label{ut_video_info}
+  \end{center}
 \end{table}
 
-\begin{table}[ht]
+\begin{table}[htb]
 	\begin{minipage}[b]{0.5\linewidth}
 	\centering
 		\begin{tabular}{ | p{3cm} | l |}\hline
@@ -98,7 +100,7 @@ be user's age, gender and location.
 A statistics were performed measuring popularity of three YouTube features: favourites,
 subscriptions and uploads. From the 7500 users analyzed, notable differences in activity
 where noted. Many users show little activity, as compared to a few highly active users.
-All histograms below show numbers of users
+All histograms on Figure 1 show numbers of users
 (axis y) with $x_1-x_2$ numbers of favourites/subscriptions/uploads. For all
 three cases, almost all users belonged to the first histogram range -- the one
 with least items. As number of items grew, the number of users decreased so
@@ -109,7 +111,7 @@ For all three sets, almost half of examined users had no more than 100 items.
 This means that for most cases, the user profiling would need to be based on a very
 scarse amount of data.
 
-\begin{figure}[ht]
+\begin{figure}[htb]
   \centering
   \subfigure[Favourites]{
 		\includegraphics[scale=0.6]{images/favs.png}
@@ -130,6 +132,7 @@ scarse amount of data.
   groups.}
 \end{figure}
 
+
 \subsubsection{YouTube descriptions corpus}
 
 A corpus of titles and descriptions for little over 100000 videos was collected
@@ -137,12 +140,11 @@ for text-based analysis of YouTube data. The file's size was 36 Mbytes. This
 data was used to compute number of videos with identifiable concepts from
 freebase data vocabularies.
 
-\newpage
 \subsection{Twitter}
 
 Data available on \textit{Twitter} is composed of natural language short messages posted by users
 consisting of up to 140 characters, commonly known as \textbf{tweets} \cite{why-we-twitter}. Within
-those tweets we can distinguish user mentions (\textit{Twitter} usernames preceeded with the symbol \@,
+those tweets we can distinguish user mentions (\textit{Twitter} usernames preceeded with the symbol @,
 such as \textit{@justinbieber}) as well as topics in form of `Hashtags` (name stripped of all whitespace
 and preceded by the hash symbol -- e.g. \textit{\#TheDailyShow}) \cite{edinburg-corpus}.
 
@@ -157,8 +159,8 @@ Due to the structure of a regular \textit{Twitter} stream, certain ways of extra
 must be found. In our experiments, we focus on the following:
 
 \paragraph{Mentioning entities' names}
-Using trivial string matching methods, we search for entity names within \textit{Twitter} users' steams and updates.
-mentions of entities' names in tweets. Multiple occurrences of entity names in the stream indicate interest
+Using trivial string matching methods, we search for entity names within \textit{Twitter} users' streams and updates.
+Multiple occurrences of entity names in the stream indicate interest
 in the entity mentioned \cite{twitter-content-is-it} \\
 Entities might be mentioned by:
 \begin{itemize}
@@ -173,12 +175,11 @@ that express preference (both positive, such as \textit{enjoyed}, as well as neg
 was prepared. Those verbs were searched for in the tweets containing entity mentions.
 \paragraph{Usage of activity verbs when tweeting about entities}
 When mentioning a media-related entity, users may also describe the activity performed.
-In order to find such tweets, an activity verbs vocabulary has also been prepared. Use of this vocabulary
-might also decrease the chance of locating
+In order to find such tweets, an activity verbs vocabulary has also been prepared.
 Describing the activity of participating in a certain TV experience (such
-as watching a show) will also need to be marked as due to the
-fact that Twitter users are more likely to specify what they are doing at a
-particular moment)
+as watching a show) has to be noted due to the fact that Twitter users are more
+likely to specify what they are doing at a particular moment.
+
 \paragraph{Extracting entities from structured twitter stream sources}
 Applications, such as \textit{YouTube} or \textit{Boxee}\footnote{http://www.boxee.tv}, automatically generate tweets
 if the user linked their Twitter account with that application. These tweets are
@@ -213,11 +214,10 @@ Mentions of entities followed (for known Twitter usernames) by the given user.
 
 \subsubsection{Corpus used for research}
 
-The example data analyzed consists of Twitter streams consisting in total of about 50000 tweets. They have been selected from the followers of most popular TV channels and broadcasters available on Twitter basing on the amounts of tweets they have accumulated, the amount of their followers and the language they are tweeting in (English in this experiment).
+The example data analyzed consists of Twitter streams consisting in total of about 42000 tweets. They have been selected from the followers of most popular TV channels and broadcasters available on Twitter basing on the amounts of tweets they have accumulated, the amount of their followers and the language they are tweeting in (English in this experiment).
 
 The most significant reason for using a preselected corpus for this research is the Twitter API Rate Limiting
 which makes a wider analysis challenging. Furthermore, a great deal of Twitter users provide completely irrelevant
 information or tweet in languages barely useful for this research. All non-English mentions may be located,
-but makes extracting preference information more challenging and decreases, which also
-influences the effectiveness of a limited Twitter data aggregator. Using a preselected corpus enables measuring and comparing the effectiveness of different counting methods much easier. This idea has has been suggested by \cite{short-tweet} for
+but make extracting preference information more challenging. Using a preselected corpus enables measuring and comparing the effectiveness of different counting methods much easier. This idea has has been suggested by \cite{short-tweet} for
 restricting the amount of subjects to be recommended, due to the high volume of tweets on \textit{Twitter}.
