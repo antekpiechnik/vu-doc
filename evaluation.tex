@@ -35,22 +35,20 @@ We have analyzed the effect of different methods of minimizing the amount of fal
 positives for Twitter profiling (as described in Section 6.3) by providing test users
 polls with results of different methods. The results are presented in the figure below:
 
-\begin{figure}[h!]
-  \begin{center}
-    \begin{tabular}{ | p{4cm} | p{2cm} | p{2cm} | p{2cm} | } \hline
-      Method & Entites & False positives & Correct preference \\ \hline
-      Full name & 3.11\% & 92.17\% & 42\% \\ \hline
-      Full name \& Hashtag & 3.62\% & 80.81\% & 62\% \\ \hline
-      Corpus for FN and HT & 1.63\% & 67.25\% & 75\% \\ \hline
-      Corpus for FN only & 1.64\% & 61.13\% & 69\% \\ \hline
-    \end{tabular}
-    \caption{Results of different matches filtering methods on the results. \textit{FN} stands for Full Name,
-    \textit{HT} stands for Hashtag, where \textit{Corpus} means filtering entity names matches by ranking
-    their popularity in a natural language corpus. The \textit{Entities} column shows the amount of matched
-    entities within all tweets, the \textit{False positives} column shows the percentage of falsely matched
-    entities, whereas \textit{Correct preference} shows the percentage of correct preference predictions.}
-  \end{center}
-\end{figure}
+\begin{center}
+  \begin{tabular}{ | p{4cm} | p{2cm} | p{2cm} | p{2cm} | } \hline
+    Method & Entites & False positives & Correct preference \\ \hline
+    Full name & 3.11\% & 92.17\% & 42\% \\ \hline
+    Full name \& Hashtag & 3.62\% & 80.81\% & 62\% \\ \hline
+    Corpus for FN and HT & 1.63\% & 67.25\% & 75\% \\ \hline
+    Corpus for FN only & 1.64\% & 61.13\% & 69\% \\ \hline
+  \end{tabular} \\
+  Figure 6: Results of different matches filtering methods on the results. \textit{FN} stands for Full Name,
+  \textit{HT} stands for Hashtag, where \textit{Corpus} means filtering entity names matches by ranking
+  their popularity in a natural language corpus. The \textit{Entities} column shows the amount of matched
+  entities within all tweets, the \textit{False positives} column shows the percentage of falsely matched
+  entities, whereas \textit{Correct preference} shows the percentage of correct preference predictions.
+\end{center}
 
 For this experiment we have used the \textit{British National Corpus}\footnote{http://www.natcorp.ox.ac.uk/}.
 The table shows that the number false positives without any matching provides us with many matches, less than

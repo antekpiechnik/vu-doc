@@ -3,7 +3,7 @@ In order to answer the first research question, we have focused on data from two
 following section covers possible methods of extracting preference information from \textit{Twitter} users' timelines.
 \subsection{YouTube}
 YouTube stores various data concerning its users and content. Tables
-\ref{ut_video_info} - \ref{ut_user_info} show the types of information
+1 - 5 show the types of information
 available. Within this data, three sets are of particular use for user
 profiling. These sets are: \emph{favorites}, \emph{subscriptions} and
 \emph{uploads}. All of them have two features in common: they all are connected
@@ -14,36 +14,32 @@ sample of 7500 randomly chosen users was examined, as described in next section.
 There are also fields that can be used directly in user's profile. These would
 be user's age, gender and location.
 
-\clearpage
-\begin{table}[htb]
-  \begin{center}
-    \begin{tabular}{|p{3cm} | l | p{4cm}|} \hline
-    Information & Access & Notes\\ \hline
-    Title & Public API & Natural language \\
-    Published & Public API & \\
-    Updated & Public API & Date \\
-    Category & Public API & Chosen from a restricted set of YouTube categories \\
-    Tags (keywords) & Public API & May be freely assigned \\
-    Comments & Public API & Natural language \\
-    Permissons & Public API & Irrelevant, but available \\
-    Description & Public API & Natural language \\
-    Thumbnails & Public API & Set of video's thumbnails (along with times
-    when taken) \\
-    Duration & Public API & \\
-    Ratings & Public API & Best, worst and average rating, number of votes \\
-    Viewcount & Public API & \\
-    Favourite count & Public API & \\
-    Number of likes & Public API & \\
-    Number of dislikes & Public API & \\
-    Aspect ratio & Public API & \\
-    Related & Public API & \\
-    Responses & Public API & \\
-    Author & Public API & \\ \hline
-    \end{tabular}
-    \caption{Information available for a video}
-    \label{ut_video_info}
-  \end{center}
-\end{table}
+\begin{center}
+  \begin{tabular}{|p{3cm} | l | p{4cm}|} \hline
+  Information & Access & Notes\\ \hline
+  Title & Public API & Natural language \\
+  Published & Public API & \\
+  Updated & Public API & Date \\
+  Category & Public API & Chosen from a restricted set of YouTube categories \\
+  Tags (keywords) & Public API & May be freely assigned \\
+  Comments & Public API & Natural language \\
+  Permissons & Public API & Irrelevant, but available \\
+  Description & Public API & Natural language \\
+  Thumbnails & Public API & Set of video's thumbnails (along with times
+  when taken) \\
+  Duration & Public API & \\
+  Ratings & Public API & Best, worst and average rating, number of votes \\
+  Viewcount & Public API & \\
+  Favourite count & Public API & \\
+  Number of likes & Public API & \\
+  Number of dislikes & Public API & \\
+  Aspect ratio & Public API & \\
+  Related & Public API & \\
+  Responses & Public API & \\
+  Author & Public API & \\ \hline
+  \end{tabular} \\
+  Table 1: Information available for a video \\
+\end{center}
 
 \begin{table}[htb]
 	\begin{minipage}[b]{0.5\linewidth}
@@ -53,7 +49,7 @@ be user's age, gender and location.
 		Number of results & Public API \\
 		Search results & Public API \\ \hline
 		\end{tabular}
-		\caption{Information available for video search results}
+		Table 2: Information available for video search results \\
 
 		\begin{tabular}{ | p{3cm} | l |}\hline
 			Information & Access \\ \hline
@@ -62,7 +58,7 @@ be user's age, gender and location.
 			Author & Public API \\
 			Text & Public API \\ \hline
 		\end{tabular}
-		\caption{Information available for a comment}
+		Table 3: Information available for a comment \\
 
 		\begin{tabular}{ | p{3cm} | l |}\hline
 			Information & Access \\ \hline
@@ -70,7 +66,7 @@ be user's age, gender and location.
 			Referrers & Screen scraping \\
 			Countries popularity & Screen scraping \\ \hline
 		\end{tabular}
-		\caption{Information available for a channel}
+		Table 4: Information available for a channel \\
 	\end{minipage}
 	\hspace{0.5cm} % no new lines here!!
 	\begin{minipage}[b]{0.5\linewidth}
@@ -90,7 +86,7 @@ be user's age, gender and location.
 			Likes & Screen scraping \\
 			Issued authentication subtokens & Screen scraping \\ \hline
 		\end{tabular}
-		\caption{Information available for a user}
+		Table 5: Information available for a user
 		\label{ut_user_info}
 	\end{minipage}
 \end{table}
@@ -149,19 +145,16 @@ such as \textit{@justinbieber}) as well as topics in form of `Hashtags` (name st
 and preceded by the hash symbol -- e.g. \textit{\#TheDailyShow}) \cite{edinburg-corpus}.
 
 The initial purpose of tweets was to inform other users of currently performed activities. However, as this service has
-evolved, users started to use `tweets` for a variety of purposes, such as conversations, sharing information/URLs and reporting news(\cite{why-we-twitter} , \cite{twitter-content-is-it}). In order to use such unstructured data,
-certain approaches need to be undertaken in order to extract information about their activities related to
-the media. In this section we describe available methods to achieve this as well as measurements
+evolved, users started to use `tweets` for a variety of purposes, such as conversations, sharing information/URLs and reporting news(\cite{why-we-twitter} , \cite{twitter-content-is-it}). In order to use such unstructured data for extracting information about user activities related to the media, certain approaches need to be undertaken. In this section we describe available methods to achieve this as well as measurements
 that may be applied to the aggregated data. We will use the word \textit{entity} to refer to
 known media people, shows and programmes.
 
-Due to the structure of a regular \textit{Twitter} stream, certain ways of extracting references to entities
-must be found. In our experiments, we focus on the following:
+In our experiments, we focus on the following entity extraction methods:
 
 \paragraph{Mentioning entities' names}
 Using trivial string matching methods, we search for entity names within \textit{Twitter} users' streams and updates.
 Multiple occurrences of entity names in the stream indicate interest
-in the entity mentioned \cite{twitter-content-is-it} \\
+in the entity mentioned \cite{twitter-content-is-it}. \\
 Entities might be mentioned by:
 \begin{itemize}
   \item \textit{full name}
@@ -187,8 +180,7 @@ usually well structured, and therefore very suitable to extract an entity, activ
 \paragraph{Mentioning and following entities}
 Mentions of entities followed (for known Twitter usernames) by the given user.
 
-\begin{figure}[htp]
-  \centering
+\begin{center}
   \begin{tabular}{ | p{4cm} | p{7cm} | } \hline
     \multicolumn{2}{|c|}{Types of measurements available} \\
     \hline
@@ -209,8 +201,8 @@ Mentions of entities followed (for known Twitter usernames) by the given user.
       & Finding average amount of mentions-to-tweets ratio \\ \cline{2-2}
     \hline
   \end{tabular}
-  \caption{Measures available for the Twitter tweets data corpus}
-\end{figure}
+Figure 2: Measures available for the Twitter tweets data corpus \\
+\end{center}
 
 \subsubsection{Corpus used for research}
 
