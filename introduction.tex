@@ -10,15 +10,15 @@ to users' activity updates formed in natural language (such as \textit{Twitter})
 In this paper we analyze those data streams and evaluate their usefulness to the \textit{NoTube}
 project, by answering two main research questions.
 
-Firstly, we find out \textit{what user data we can collect from both structured and natural language-based social applications?}. We mainly focus on researching the available data and analyze the way people use services such as
-\textit{YouTube} and \textit{Twitter} to share their media preferences (Section 3).
+Firstly, we find out \textit{what user data we can collect from both structured and natural language-based social applications?} We mainly focus on researching the available data and analyze the way people use services such as
+\textit{YouTube} and \textit{Twitter} to share their media preferences (section 3).
 
 Furthermore, we look into \textit{how do those services compare when it comes to automated user media
-preference profile generating?}. In this part of the paper we present methods of evaluating results of
-the aggregation of available data (Sections 5 and 6) as well as actual user preferences profiling for both
-services with a comparative analysis and discussion of the latter (Sections 7 and 8). Our research reveals that despite the
+preference profile generating?}. In this part of the paper we present methods for evaluating results of
+available data aggregation (sections 5 and 6) as well as actual user preferences profiling for both
+services with a comparative analysis and discussion of the latter (sections 7 and 8). Our research reveals that despite the
 differences between those streams, both of them may provide enough opportunities for user media preference
-extraction. We conclude with a summary and future work (Section 8).
+extraction. We conclude with a section on future work (section 9), our implementation details (section 10) and a summary of our paper (section 11).
 
 \section{Related work}
 
@@ -43,9 +43,9 @@ Apart from the papers mentioned, we have also found various implementations of s
 social services:
 
 \paragraph{Hunch}
-\textit{Hunch}\footnote{http://www.hunch.com}) is a service offering recommendations on different topics based on a user's \textit{Twitter} data. It predicts preferences in forms of small questions and is then able to recommend a product or a solution to a problem that is represented with a \textit{Topic} on the site. \textit{Hunch} seems to be more commercial-oriented, e.g. providing users with links to online stores with products they are recommending. However,
+\textit{Hunch}\footnote{http://www.hunch.com} is a service offering recommendations on different topics based on a user's \textit{Twitter} data. It predicts preferences in forms of small questions and is then able to recommend a product or a solution to a problem that is represented with a \textit{Topic} on the site. \textit{Hunch} seems to be more commercial-oriented, e.g. providing users with links to online stores with products they are recommending. However,
 it's prediction results suggest that \textit{Twitter} users' timelines contain information about their preferences.
 
-The application can create recommendations based solely on user's \textit{Twitter} data (mostly people they follow). However, when little is available, it requires input from users in order to make future predictions more accurate. It covers topics broader than the \textit{NoTube} project.
+The application can create recommendations based solely on user's \textit{Twitter} data (mostly people they follow). However, when little data is available, it requires input from users in order to make future predictions more accurate. It covers topics broader than the \textit{NoTube} project.
 \textit{Hunch.com} does not provide information on how the recommender system works, although it provides an API for accessing their data.
 Hunch is able to adapt to much more different topics, and it not necessarily focuses on their semantics (rather on what similar people simply like).
