@@ -64,12 +64,15 @@ different concepts is counterproductive at this stage. And that is because of
 numbers of false positives, which vary wildly depending on the topic. This
 observation will be extended in the next chapter.
 
-\subsection{Dependency on amount of data}
+\subsection{Dependency on amount and quality of data}
+
 The efectiveness of profiler -- not surprisingly -- depends strictly on data
-that the profiler was fed. For vast majority of users (see section 2.2) the
-profiles will be fed hardly any data at all. As the reader just learned, only a
-small fraction of this data is useful for profilers. That leads us to a
-conclusion that only a small number of very active users could be profiled
-thoroughly. Profiles for similarily small group should be considered to be only
-stubs, which would be of relatively small use for recommenders. Profiles for the
-rest of users would be essentialy worthless.
+that the profiler was fed. Only a small number of users -- those, whose updates
+are published frequently and often feature media-related subjects -- could be
+profiled thoroughly. Profiles for similarily small group should be considered
+to be only stubs, which would be of relatively little use for recommenders.
+Profiles for the rest of users would be essentialy worthless. A technique that
+might amortise the effect of small amounts of data would be combining results
+coming from various web services. This way, in face of scarce YouTube data, the
+profiler might still return meaningful results based on data coming from
+Twitter.
