@@ -5,6 +5,8 @@
 \usepackage[pdftex]{graphicx}
 \usepackage{subfigure}
 
+\def\eg{{e.g. }}
+
 % Alter some LaTeX defaults for better treatment of figures:
 % See p.105 of "TeX Unbound" for suggested values.
 % See pp. 199-200 of Lamport's "LaTeX" book for details.
@@ -29,23 +31,21 @@
 \begin{document}
 \title{\textbf{Profiling users media preferences based on social network data streams}}
 \author{Konrad Delong \and Antoni Piechnik}
-\date{July 11 2010}
+\date{July 13 2010}
 
 \maketitle
 
 \begin{abstract} Social networks have been becoming hugely popular over the last
-years. With enormous number of people sharing information about their lives,
-they are now a great source of information about their media interests. Based on both
-structured data (such as the social aspect of \textit{YouTube}\footnote{http://www.youtube.com}) as well as unstructured
-(\textit{Twitter}\footnote{http://www.twitter.com}), we analyze what data can be extracted from their profiles as well as
-how useful such extraction is for profiling those users. This profiling could
-prove hugely influential for media-oriented recommender systems, such as the one
-used in the \textit{NoTube}\footnote{http://www.notube.tv} project.
-We focus on aggregating and analyzing the publicly available data and covering
-different approaches of profile generation
-for users. Our experiments reveal multiple ways of employing social networks'
-data for users profiling as well as show promising results for employing
-this data in a real-life project.
+years. With an enormous number of people sharing information about their lives,
+social networks are now a great source of data on their users media interests. Based on both
+\textit{structured} data (such as favorites and ratings on \textit{YouTube}\footnote{http://www.youtube.com})
+and \textit{unstructured} data (free text on \textit{Twitter}\footnote{http://www.twitter.com}),
+we analyze what data can be extracted from their profiles as well as how useful such extraction
+is for user profiling. This profiling data is useful for media-oriented recommender
+systems, such as the one used in the \textit{NoTube}\footnote{http://www.notube.tv} project.
+We focus on aggregating and analyzing the publicly available data and
+identify several ways of employing the user activity data for user profiling.
+Our results show potentially great added value for user profiling in a real-life project.
 \end{abstract}
 
 \input{introduction}
