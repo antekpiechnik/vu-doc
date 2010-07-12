@@ -9,7 +9,7 @@ profiling. These sets are: \emph{favorites}, \emph{subscriptions} and
 \emph{uploads}. All of them have two features in common: they all are connected
 to user's interests and a user needs to perform action in order to add an item
 to the set. In order to find out how frequently the mentioned sets are used, a
-sample of 7500 randomly chosen users was examined, as described in next section.
+sample of 7,500 randomly chosen users was examined, as described in next section.
 
 There are also fields that can be used directly in user's profile. These would
 be user's age, gender and location.
@@ -131,36 +131,35 @@ scarse amount of data.
 
 \subsubsection{YouTube descriptions corpus}
 
-A corpus of titles and descriptions for little over 100000 videos was collected
+A corpus of titles and descriptions for little over 100,000 videos was collected
 for text-based analysis of YouTube data. The file's size was 36 Mbytes. This
 data was used to compute number of videos with identifiable concepts from
-freebase data vocabularies.
+\textit{Freebase}\footnote{http://freebase.com} data vocabularies (more on this in section 4).
 
 \subsection{Twitter}
 
 Data available on \textit{Twitter} is composed of natural language short messages posted by users
-consisting of up to 140 characters, commonly known as \textbf{tweets} \cite{why-we-twitter}. Within
+consisting of up to 140 characters, commonly known as \textbf{tweets}. Within
 those tweets we can distinguish user mentions (\textit{Twitter} usernames preceeded with the symbol @,
-such as \textit{@justinbieber}) as well as topics in form of `Hashtags` (name stripped of all whitespace
-and preceded by the hash symbol -- e.g. \textit{\#TheDailyShow}) \cite{edinburg-corpus}.
+such as \textit{@justinbieber}) as well as topics in form of \textit{hashtags} -- name stripped of all whitespace
+and preceded by the hash symbol, \eg \textit{\#TheDailyShow} \cite{edinburg-corpus}.
 
 The initial purpose of tweets was to inform other users of currently performed activities. However, as this service has
-evolved, users started to use `tweets` for a variety of purposes, such as conversations, sharing information/URLs and reporting news(\cite{why-we-twitter} , \cite{twitter-content-is-it}). In order to use such unstructured data for extracting information about user activities related to the media, certain approaches need to be undertaken. In this section we describe available methods to achieve this as well as measurements
-that may be applied to the aggregated data. We will use the word \textit{entity} to refer to
+evolved, users started to use \textit{tweets} for a variety of purposes, such as conversations,
+sharing information/URLs and reporting news \cite{why-we-twitter, twitter-content-is-it}. In this section we describe available methods to use such unstructured data. We will use the word \textit{entity} to refer to
 known media people, shows and programmes.
-
 In our experiments, we focus on the following entity extraction methods:
 
-\paragraph{Mentioning entities' names}
-Using trivial string matching methods, we search for entity names within \textit{Twitter} users' streams and updates.
-Multiple occurrences of entity names in the stream indicate interest
-in the entity mentioned \cite{twitter-content-is-it}. \\
+\paragraph{Mentioning entities names}
+Using simple string matching methods, we search for entity names within \textit{Twitter} users' streams and updates.
+Occurrences of entity names in the stream indicate interest in the entity mentioned \cite{twitter-content-is-it}. The
+number of references is expected to be positively correlated with the level of interest in the entity mentioned.
 Entities might be mentioned by:
 \begin{itemize}
   \item \textit{full name}
-  \item \textit{Hashtag}
-  \item \textit{twitter username} - by entity's twitter username (if known)
-  \item \textit{full name acronyms} - by acronyms built upon entity names
+  \item \textit{hashtag}
+  \item \textit{twitter username} (entity's twitter username, if known)
+  \item \textit{acronyms}
 \end{itemize}
 \paragraph{Usage of preference verbs when tweeting about entities}
 In order to extract preference towards an entity from a tweet, a set of verbs
@@ -206,10 +205,12 @@ Figure 2: Measures available for the Twitter tweets data corpus \\
 
 \subsubsection{Corpus used for research}
 
-The example data analyzed consists of Twitter streams consisting in total of about 42000 tweets. They have been selected from the followers of most popular TV channels and broadcasters available on Twitter basing on the amounts of tweets they have accumulated, the amount of their followers and the language they are tweeting in (English in this experiment).
+The example data analyzed consists of Twitter streams consisting in total of about 42,000 tweets.
+They have been selected by looking at the followers of popular TV channels and broadcasters
+available on Twitter. Users were selected based on the number of tweets and their followers.
+For our experiments, we have focused on tweets in English.
 
-The most significant reason for using a preselected corpus for this research is the Twitter API Rate Limiting
-which makes a wider analysis challenging. Furthermore, a great deal of Twitter users provide completely irrelevant
-information or tweet in languages barely useful for this research. All non-English mentions may be located,
-but make extracting preference information more challenging. Using a preselected corpus enables measuring and comparing the effectiveness of different counting methods much easier. This idea has has been suggested by \cite{short-tweet} for
-restricting the amount of subjects to be recommended, due to the high volume of tweets on \textit{Twitter}.
+The most significant reason for using a precompiled corpus for this research is the Twitter API Rate Limiting
+which makes a wider analysis challenging. Furthermore, a great deal of Twitter users provide data not necessarily
+useful for our experiments. All non-English mentions may be located,
+but make extracting preference information more challenging. Using a preselected corpus enables measuring and comparing the effectiveness of different counting methods much easier \cite{short-tweet}.
