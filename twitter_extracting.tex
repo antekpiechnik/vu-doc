@@ -12,21 +12,23 @@ to be able to minimize the overfitting of the data. By measurements, we understa
 entity reference extraction described in Section 3.2.
 
 We have used vocabularies consisting of \textit{TV Actors, TV Programmes, Movies and Movie Actors} from
-the \textit{FreeBase} dataset to be able to easily link the found concepts to the \textit{Open Linked Data}\footnote{http://linkeddata.org}.
+the \textit{Freebase} dataset.
 
-Initial results show that even using simple string matching methods we are able to extract interests from
-user's Twitter stream. Given that the user is a frequent user and updater of his Twitter stream, the average amount of tweets from which any kind of such data might be extracted revolves around \textit{3-18\%}.
+Initial results show that using simple string matching methods we are able to extract interests from
+a user's Twitter stream. For an active Twitter user, it holds that on average up to \textit{18\%} of their tweets
+contain mentions of media entities (more on that in section 8.2).
 
-However, there is a great number of entity names (mostly TV Shows) that create noise in the results (e.g. show titles such as \textit{Me too}). Removing those false positives has a crucial effect on the eventual accuracy of a Twitter-based profiler.
+However, there is a great number of entity names (mostly TV Shows) that create noise in the results, \eg show titles such as \textit{Me too}. Removing those false positives has a crucial effect on the eventual accuracy of a Twitter-based profiler
+(as we shall see in section 8.3.1).
 
 \subsection{Results}
 In this section we present results of locating references to entities using different methods (as described in Section 3.2).
-In each paragraph we present results for both halves of the Corpus, which we will refer to as \textit{Corpus 1} and
+In each paragraph we present results for both halves of the corpus, which we will refer to as \textit{Corpus 1} and
 \textit{Corpus 2}.
 
+\subsubsection{Detecting mentioned entities}
 \paragraph{Full name matching}
-Mentions using string matching of the full name within the tweets (for all actors and also TV shows/movies titles longer
-than one word).
+We have measured the average ratio of tweets with entities found to all tweets for different kinds of entities using full name matching of the entity name.
 
 \begin{center}
   \begin{tabular}{ | p{4cm} | p{2cm} | p{1cm}| p{2cm} | } \hline
@@ -36,14 +38,13 @@ than one word).
     Movies & 1.92\% & & 1.69\% \\ \hline
     Movie actors & 0.74\% & & 0.21\% \\ \hline
   \end{tabular} \\
-  Table 8: Average ratio of tweets with entities found to all tweets for different kinds of entities using full-name matching of the entity name. \\
+  Table 8: Percentage of all tweets with recognized entities using full name matching \\
 \end{center}
 
-Scores presented in Table 8 should be considered a baseline for further research. We have expected low scores, since users of \textit{Twitter} update their statuses with multiple different types of information (as described in Section 3.2).
+Scores presented in Table 8 are used as the a baseline below. Out of half of the corpus, an average of 224 tweets contained reference for each entity type (898 tweets in total). This is a low score, but considering the purpose of \textit{Twitter} (as described in section 3.2), we have been expecting them and still believe this amount might be enough for user profiling.
 
 \paragraph{Matching twitter usernames}
-Due to poor availability of Twitter usernames for various entities within the \textit{FreeBase} dataset (we were able to locate less than 200 Twitter
-usernames related to TV/media), this approach is not proving effective. After including those usernames in the search,
+Due to small number of available Twitter usernames for entities in the \textit{Freebase} dataset (as of writing this paper -- 182 \textit{Twitter} usernames related to TV), this approach is not proving effective. After including those usernames in the search,
 we noticed little (0.02\% in on of the corpuses for TV Shows) to almost none increase in the results.
 
 \paragraph{Matching title acronyms}
@@ -57,21 +58,18 @@ they mostly consist of two words and their acronyms rarely correspond to those a
     TV Shows & 3.07\% & & 2.17\% \\ \hline
     Movies & 2.01\% & & 2.33\% \\ \hline
   \end{tabular} \\
-  Table 8: Average ratio of tweets with entities found to all tweets for different kinds of entities using the entity's name acronym \\
+  Table 8: Percentage of all tweets with recognized entities using the entity's name acronym \\
 \end{center}
 
-We can easily spot an increase in matched entities, however there might be many
-misleading acronyms created with this approach. Acronyms such as \textit{SNL}
-(for \textit{Saturday Night Live} show) or  \textit{BBT} (\textit{Big Bang
-Theory}) are widely used. Our experiments show that for certain TV shows, the acronyms
-are used as much as the full titles. However,
-if an acronym is similar to a natural language word (e.g.\textit{CAT}),
-it will drastically increase the noise and the amount of \textit{false positives} generated by the
-matching algorithms (thus the higher percentage of tweets found). This problem might
-partially be solved by the false positives avoiding methods, which we discuss later.
+We can easily spot an increase in matched entities, since acronyms such as \textit{SNL}
+(for \textit{Saturday Night Live} show) or \textit{BBT} (\textit{Big Bang Theory}) are widely used.
+However there might be many misleading acronyms created with this approach. If an acronym is similar
+to a natural language word (\eg \textit{CAT}), it will drastically increase the noise and the amount
+of \textit{false positives} generated by the matching algorithms (thus the higher percentage of tweets
+found). This problem might be solved by methods for avoiding the false positives, which we discuss in section 6.3.
 
-\paragraph{Matching of the name converted to a Hashtag form}
-For this measurement, all entities' names have been converted to a Hashtag form (as described
+\paragraph{Matching of the name converted to a hashtag form}
+For this measurement, all entities' names have been converted to a \textit{hashtag} form (as described
 in Section 3.2). In this experiment, also one-word entity names have been used.
 
 \begin{center}
@@ -82,7 +80,7 @@ in Section 3.2). In this experiment, also one-word entity names have been used.
     Movies & 2.49\% & & 3.12\% \\ \hline
     Movie actors & 0.67\% & & 0.09\% \\ \hline
   \end{tabular} \\
-  Table 10: Average ratio of tweets with entities found to all tweets for different kinds of entities using Hashtag formed from the entity name \\
+  Table 10: Percentage of all tweets with recognized entities using hashtag formed from the entity name \\
 \end{center}
 
 The results in Table 10 let us notice how the person-based entities have either noted a smaller
@@ -91,6 +89,7 @@ fact that people usually create hashtags based on a more general entity (such as
 a movie) rather then it's specific parts (such as actors that play in it)
 when expressing their opinion \cite{edinburg-corpus}
 
+\subsubsection{Detecting opinion on an entity}
 \paragraph{Usage of activity verbs}
 For this experiment, a rather small activity verbs vocabulary has been used. (verbs such
 as \textit{to watch, to play, to see, to check out, to catch} with their past forms.
@@ -161,8 +160,8 @@ The Table 14 shows the share of different kind of mentions of the specific entit
   \begin{tabular}{ | p{3cm}| p{2cm} | } \hline
     Match type & Occurence \\ \hline
     Name & 0\% \\ \hline
-    Hashtag & 6\% \\ \hline
-    Username & 94\% \\ \hline
+    Hashtag & 8\% (2 occurrences) \\ \hline
+    Username & 92\% (22 occurences) \\ \hline
   \end{tabular} \\
   Table 14: The amount of mentions by different methods of the entity being followed by a user in his stream \\
 \end{center}
@@ -176,21 +175,25 @@ However, those mentions occur relatively rarely. For a sample of 70 twitter user
 Furthermore, following a certain entity should also be regarded just as a preference toward the topics this entity is related to (such as Politics for \textit{BarackObama}). On the other hand, automated locating of more \textit{official} twitter usernames for various entities is challenging, which
 limits the use of this approach.
 
-\subsection{Avoiding accidental matches}
-In order to reduce the chance of accidental name matches occurring. Entity names were ran against a corpus of English texts,
-ranking them by their popularity. The more often an entity name occurs in those corpora, the smaller the chance of it occurring as a name of the TV shows rather than a natural language expression. In order to rate the certainty, a separate function is introduced, taking into account the following:
+\subsection{Avoiding false positives}
+By \textit{false positives}, we understand matches that have been falsely assigned to a user stating user's interest.
+They occur usually when a user uses the entity name in a unrelated context when the entity name is similar to a
+part of natural language.
+
+In order to reduce the chance of such accidental name matches occurring, entity names were ran against a corpus
+of English texts, ranking them by their frequency. The more often an entity name occurs in those corpora, the smaller the chance of it occurring as a name of the TV shows rather than a natural language expression. In order to rate the certainty, a separate function is introduced, taking into account the following:
 
 \begin{itemize}
   \item form of occurrence of the entity name (string match, hashtag)
   \item use of an activity verb
   \item use of a preference verb
-  \item the popularity of the entity name in natural texts
+  \item the frequency of the entity name in a collection of samples of written and spoken language
 \end{itemize}
 
-The results described in Section 6.2 suggest that the first three of those factors have a huge influence on the accuracy of the entity recognition within a tweet. The results of using the fourth factor have been significant and are discussed in
-the Section 8.3.
+We expect the first three of those factors to have a huge influence on the accuracy of the entity recognition within a tweet (basing on results in section 6.2). The can see in section 8.3.1 that such approach provided great results for
+reducing the amount of false positives.
 
 This measurement is easily translatable into the preference weights to be recorded when profiling a user.
-In order to further minimize the chance of finding an occurrence of a subject that is not describing what we are hoping is analyzing the tweet's context.
-Moreover, by undertaking semantic approaches we are able to analyze different topics found in a tweet and attempt to rank their relation to the entity we are researching. We will discuss this in the Section 9 (Future work)
+Moreover, by undertaking semantic approaches we are able to analyze different topics found in a tweet and
+attempt to rank their relation to the entity we are researching. We will discuss this in the section 9 (Future work).
 
