@@ -5,11 +5,31 @@
 \usepackage[pdftex]{graphicx}
 \usepackage{subfigure}
 
+% Alter some LaTeX defaults for better treatment of figures:
+% See p.105 of "TeX Unbound" for suggested values.
+% See pp. 199-200 of Lamport's "LaTeX" book for details.
+%   General parameters, for ALL pages:
+\renewcommand{\topfraction}{0.9}	% max fraction of floats at top
+\renewcommand{\bottomfraction}{0.8}	% max fraction of floats at bottom
+%   Parameters for TEXT pages (not float pages):
+\setcounter{topnumber}{2}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}     % 2 may work better
+\setcounter{dbltopnumber}{2}    % for 2-column pages
+\renewcommand{\dbltopfraction}{0.9}	% fit big float above 2-col. text
+\renewcommand{\textfraction}{0.07}	% allow minimal text w. figs
+%   Parameters for FLOAT pages (not text pages):
+\renewcommand{\floatpagefraction}{0.7}	% require fuller float pages
+% N.B.: floatpagefraction MUST be less than topfraction !!
+\renewcommand{\dblfloatpagefraction}{0.7}	% require fuller float pages
+
+% remember to use [htp] or [htpb] for placement
+
 
 \begin{document}
 \title{\textbf{Profiling users media preferences based on social network data streams}}
 \author{Konrad Delong \and Antoni Piechnik}
-\date{July 8 2010}
+\date{July 11 2010}
 
 \maketitle
 
@@ -18,13 +38,13 @@ years. With enormous number of people sharing information about their lives,
 they are now a great source of information about their media interests. Based on both
 structured data (such as the social aspect of \textit{YouTube}\footnote{http://www.youtube.com}) as well as unstructured
 (\textit{Twitter}\footnote{http://www.twitter.com}), we analyze what data can be extracted from their profiles as well as
-how useful such extraction is for profiling those users. Such profiling could
+how useful such extraction is for profiling those users. This profiling could
 prove hugely influential for media-oriented recommender systems, such as the one
 used in the \textit{NoTube}\footnote{http://www.notube.tv} project.
 We focus on aggregating and analyzing the publicly available data and covering
 different approaches of profile generation
 for users. Our experiments reveal multiple ways of employing social networks'
-data for users profiling as well as show promising results for possibly employing
+data for users profiling as well as show promising results for employing
 this data in a real-life project.
 \end{abstract}
 

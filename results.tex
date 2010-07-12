@@ -21,21 +21,19 @@ YouTube services. We measured effectiveness of profilers as a ratio of number of
 items (tweets/videos) with linked data concepts identified to the overall number
 of items analyzed. The results are presented in the table below.
 
-\begin{figure}[h!]
-  \begin{center}
-    \begin{tabular}{| l | l | l |}
-    Topic & Twitter & YouTube \\ \hline
-    Film actors & 0.48\% & 13.12\% \\
-    Movie titles & 1.79\% & 45.95\% \\
-    TV actors & 0.20\% & 14.73\% \\
-    TV shows & 1.5\% & 30.25\% \\
-    \end{tabular}
-    \caption{The comparison of the amount of linked data concepts within separate data streams}
-  \end{center}
-\end{figure}
+\begin{center}
+  \begin{tabular}{| l | l | l |}
+  Topic & Twitter & YouTube \\ \hline
+  Film actors & 0.48\% & 13.12\% \\
+  Movie titles & 1.79\% & 45.95\% \\
+  TV actors & 0.20\% & 14.73\% \\
+  TV shows & 1.5\% & 30.25\% \\
+  \end{tabular} \\
+  Figure 5: The comparison of the amount of linked data concepts within separate data streams \\
+\end{center}
 
 The reader should note, there was no checking of actual correctness of those results at
-this stage (the evaluation of results using surveys is in the next chapter). We
+this stage (the evaluation of results using surveys is presented in the next chapter). We
 can still draw some conclusions after this step.
 
 \subsection{Use of text in social services}
@@ -46,7 +44,7 @@ result of different natures of text data in both services.
 
 Twitter web service doesn't encourage its users to publish their updates in any
 specific form. The single requirement is that the length of a single message
-was less than 149 characters. For a video description on YouTube: even the name
+was less than 140 characters. For a video description on YouTube: even the name
 suggests that this field should be used to characterize the contents
 of a video. Such a difference in suggested use might explain the fact, that
 much more named entities were found in YouTube stream. Also, a relatively
