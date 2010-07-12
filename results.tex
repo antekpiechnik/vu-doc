@@ -1,7 +1,8 @@
 \section{Comparison of structured and unstructured user activity data}
 
-The following section describes the results of the profile extractions and its
-analysis.
+The following section describes the results of the profile generation and its
+analysis. As mentioned before, we will compare the usefulness of \textit{structured}
+and \textit{unstructured} user activity data for this purpose.
 
 \subsection{Analyzed user sets}
 In order to analyze the effectiveness of our profilers, we ran them on groups of
@@ -11,8 +12,8 @@ in order to identify users that are likely to post updates about media content.
 Such an approach let us skip laborious analysis of accounts with hardly any
 updates at all, or updates not related to media content in any manner (which,
 given Twitter's access limits, was a considerable gain). For YouTube -- service
-with no access limits and no user-by-favourites-search function -- a BFS graph
-crawl was performed in order to collect the user set.
+with no access limits and no user-by-favourites-search function -- a BFS (breadth-first search)
+graph crawl was performed in order to collect the user set.
 
 \subsection{Analysis performed on collected data}
 
@@ -42,35 +43,36 @@ linked data concepts were present in up to 50 times as many items as for the oth
 web service for every type of concepts searched. This is most probably a
 result of different natures of text data in both services.  
 
-Twitter web service doesn't encourage its users to publish their updates in any
-specific form. The single requirement is that the length of a single message
-was less than 140 characters. For a video description on YouTube: even the name
+Twitter web service doesn't encourage its users to publish their tweets in any
+specific form. The only requirement is that the length of a single message
+is less than 140 characters, making them too short for users to elaborate
+on details of their activities. Moreover, tweets are often parts of
+conversations. In a video description on YouTube, even the name
 suggests that this field should be used to characterize the contents
-of a video. Such a difference in suggested use might explain the fact, that
+of a video. Such a difference in suggested use might explain the fact that
 much more named entities were found in YouTube stream. Also, a relatively
 unrestrained form of Twitter updates is probably the reason for a lower rate of
 concepts found in data coming from this web service. Often, instead of properly
 mentioning an entity by name Twitter user would decide to use only person's
-last name of an acronym of a TV show's title. Behaviours like that result in a
+last name of an acronym of a TV show's title. This results in a
 lower effectiveness of text-based entity finder.
 
 \subsection{Variety across concept types}
 Another remark worth making is that number of matched items depends on type of
 concepts that we are in search of. However, after manual analysis of identified
-items, authors came to a conclusion that comparing data stream pervasiveness of
-different concepts is counterproductive at this stage. And that is because of
-numbers of false positives, which vary wildly depending on the topic. This
-observation will be extended in the next chapter.
+items, we came to a conclusion that comparing occurrences of
+different concepts in data streams is counterproductive at this stage.
+That is because of the numbers of false positives, which vary wildly
+depending on the topic. This observation will be extended in the next chapter.
 
-\subsection{Dependency on amount and quality of data}
+\subsection{Dependency on the amount and quality of data}
 
-The efectiveness of profiler -- not surprisingly -- depends strictly on data
+The effectiveness of the profiler -- not surprisingly -- depends strictly on data
 that the profiler was fed. Only a small number of users -- those, whose updates
 are published frequently and often feature media-related subjects -- could be
-profiled thoroughly. Profiles for similarily small group should be considered
-to be only stubs, which would be of relatively little use for recommenders.
-Profiles for the rest of users would be essentialy worthless. A technique that
-might amortise the effect of small amounts of data would be combining results
+profiled thoroughly. Profiles generated from small amounts of data are considered
+to be only stubs, which would be of relatively little use for recommenders. A technique that
+might cushion the effect of small amounts of data would be combining results
 coming from various web services. This way, in face of scarce YouTube data, the
 profiler might still return meaningful results based on data coming from
-Twitter.
+Twitter or other services, as suggested by \cite{public-profiles}.
