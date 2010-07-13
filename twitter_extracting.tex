@@ -8,14 +8,15 @@ We will also cover any problems encountered and suggest possible solutions.
 \subsection{Approach}
 Since the \textit{Twitter} corpus has been selected as described in the Section 3.2.1,
 we decided to cross-validate the measurements against two randomly selected halves of the corpus
-to be able to minimize the overfitting of the data. By measurements, we understand methods of
-entity reference extraction described in Section 3.2.
+to be able to minimize the overfitting of the data. By the measurements, we understand methods
+of entity reference extraction described in Section 3.2.The results in the following sections suggest
+that entity references are evenly distributed between the two parts of the corpus.
 
 We have used vocabularies consisting of \textit{TV Actors, TV Programmes, Movies and Movie Actors} from
 the \textit{Freebase} dataset.
 
 Initial results show that using simple string matching methods we are able to extract interests from
-a user's Twitter stream. For an active Twitter user, it holds that on average up to \textit{18\%} of their tweets
+a user's Twitter stream. For an active Twitter user, it holds that up to \textit{18\%} of their tweets
 contain mentions of media entities (more on that in section 8.2).
 
 However, there is a great number of entity names (mostly TV Shows) that create noise in the results, \eg show titles such as \textit{Me too}. Removing those false positives has a crucial effect on the eventual accuracy of a Twitter-based profiler
@@ -33,15 +34,19 @@ We have measured the average ratio of tweets with entities found to all tweets f
 \begin{center}
   \begin{tabular}{ | p{4cm} | p{2cm} | p{1cm}| p{2cm} | } \hline
     Entity (average) & Corpus 1 & & Corpus 2 \\ \hline
-    TV Shows & 1.24\% & & 1.76\% \\ \hline
+    TV Shows & 62.54\% & & 77.21\% \\ \hline
     TV Actors & 0.41\% & & 0.00\% \\ \hline
-    Movies & 1.92\% & & 1.69\% \\ \hline
+    Movies & 30.81\% & & 26.19\% \\ \hline
     Movie actors & 0.74\% & & 0.21\% \\ \hline
   \end{tabular} \\
   Table 8: Percentage of all tweets with recognized entities using full name matching \\
 \end{center}
 
-Scores presented in Table 8 are used as the a baseline below. Out of half of the corpus, an average of 224 tweets contained reference for each entity type (898 tweets in total). This is a low score, but considering the purpose of \textit{Twitter} (as described in section 3.2), we have been expecting them and still believe this amount might be enough for user profiling.
+Scores presented in Table 8 are used as the a baseline below. We can easily notice high numbers for TV Shows and
+Movie entities. As we noticed in our results, most of those matches have been accidental when the entity name is a single
+word highly popular in natural language (such as \textit{Love} or \textit{Hotel}. We will refer to those accidental
+matches as \textit{false positives} and will discuss avoiding them in section 6.3. Out of half of the corpus, an average of 99 tweets contained a reference to an actor (TV or Movie). This is a low score, but considering the purpose of \textit{Twitter} (as described in section 3.2), we have been expecting them and still believe this amount might be enough for user profiling. On the other hand, the number of such tweets for TV show names is almost 14,500 tweets. This suggests
+that \textit{false positives} problem will be a obstacle to achieve accurate results.
 
 \paragraph{Matching twitter usernames}
 Due to small number of available Twitter usernames for entities in the \textit{Freebase} dataset (as of writing this paper -- 182 \textit{Twitter} usernames related to TV), this approach is not proving effective. After including those usernames in the search,
@@ -89,6 +94,26 @@ fact that people usually create hashtags based on a more general entity (such as
 a movie) rather then it's specific parts (such as actors that play in it)
 when expressing their opinion \cite{edinburg-corpus}
 
+\paragraph{Measuring the frequency of entities in matched tweets}
+We have decided to measure how much entities can be found in an average matched tweet. By a matched tweet,
+we understand a tweet where a mention of an entity has been found (via any of the methods mentioned above).
+
+\begin{center}
+  \begin{tabular}{ | p{4cm} | p{2cm} | } \hline
+    Method & Ratio \\ \hline
+    Full name & 1.69 \\ \hline
+    Acronyms & 1.02 \\ \hline
+    Hashtags & 1.13 \\ \hline
+  \end{tabular} \\
+  Table 11: The average amount of entities found within a tweet \\
+\end{center}
+
+The results in Table 11 show that on an average, every time a tweet contains a mention of an entity,
+it is likely to contain an additional reference to some other entity. This suggests that users try to add
+more references to a tweet when it's already related to media. This might also be helpful for detecting the
+context of a single tweet in search of media references.
+
+
 \subsubsection{Detecting opinion on an entity}
 \paragraph{Usage of activity verbs}
 For this experiment, a rather small activity verbs vocabulary has been used. (verbs such
@@ -105,7 +130,7 @@ entity's name (hence the higher scores).
     TV Actors & 1.3\% & & 0.6\% \\ \hline
     Movie actors & 2.1\% & & 0.0\% \\ \hline
   \end{tabular} \\
-  Table 11: Average ratio of tweets with activity verbs found to all tweets with entity references. \\
+  Table 12: Average ratio of tweets with activity verbs found to all tweets with entity references. \\
 \end{center}
 
 As we can see, the activity verbs are very unlikely to be occurring next to
@@ -121,7 +146,7 @@ Two sets of preference have been used:
   \item negative -- such as \textit{hate, bad, worse, poor}
 \end{itemize}
 
-The Table 12 below shows the general use of preference verbs with occurrences of
+The Table 13 below shows the general use of preference verbs with occurrences of
 mentions.
 
 \begin{center}
@@ -132,10 +157,10 @@ mentions.
     TV Actors & 0.0\% & & 0.9\% \\ \hline
     Movie actors & 1.2\% & & 2.7\% \\ \hline
   \end{tabular} \\
-  Table 12: Average ratio of tweets with preference verbs found to all tweets with entity references \\
+  Table 13: Average ratio of tweets with preference verbs found to all tweets with entity references \\
 \end{center}
 
-We have also measured the positive-to-negative preference ratio (Table 13):
+We have also measured the positive-to-negative preference ratio (Table 14):
 
 \begin{center}
   \begin{tabular}{ | p{3cm}| p{2cm} | } \hline
@@ -143,7 +168,7 @@ We have also measured the positive-to-negative preference ratio (Table 13):
     Positive & 92\% \\ \hline
     Negative & 8\% \\ \hline
   \end{tabular} \\
-  Table 13: The amount of positive and negative verbs found within the tweets with entity references found \\
+  Table 14: The amount of positive and negative verbs found within the tweets with entity references found \\
 \end{center}
 
 The amount of preference verbs used whilst mentioning an entity is definitely
@@ -154,7 +179,7 @@ media preferences expressed on Twitter are mostly positive.
 By gathering available Twitter usernames from the \textit{Freebase} database,
 we were able to perform searches for mentions of those usernames within the followers' streams.
 
-The Table 14 shows the share of different kind of mentions of the specific entity while following.
+The Table 15 shows the share of different kind of mentions of the specific entity while following.
 
 \begin{center}
   \begin{tabular}{ | p{3cm}| p{2cm} | } \hline
@@ -163,7 +188,7 @@ The Table 14 shows the share of different kind of mentions of the specific entit
     Hashtag & 8\% (2 occurrences) \\ \hline
     Username & 92\% (22 occurences) \\ \hline
   \end{tabular} \\
-  Table 14: The amount of mentions by different methods of the entity being followed by a user in his stream \\
+  Table 15: The amount of mentions by different methods of the entity being followed by a user in his stream \\
 \end{center}
 
 Since Twitter usernames mostly represent specific people rather than any other kinds of entities, it seems as if users mostly
