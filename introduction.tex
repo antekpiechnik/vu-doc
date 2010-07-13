@@ -2,23 +2,40 @@
 
 Recommender systems used to involve recommending more physical objects \cite{combining-cf-with-pa} to users.
 However, more and more abstract topics are becoming parts of such recommenders (such as tags) \cite{accuracy-recommending}. The NoTube project bases its recommendation of TV programmes on aggregating,
-extracting and analyzing user activities \cite{notube-main}. The Web provides traces left by users
-of social services regarding their activities, varying from user video viewing history
-and subscriptions to video channels (e.g. \textit{YouTube})
-to users' activity updates formed in natural language (such as \textit{Twitter}) \cite{why-we-twitter}.
+extracting and analyzing user activities \cite{notube-main}.
 
-In this paper we analyze those data streams and evaluate their usefulness to the \textit{NoTube}
-project, by answering two main research questions.
+On the Web, a great deal of \textit{user activity data} can be found on several networks. This UAD (\textit{user activity data}) varies from user video viewing history and subscriptions to video channels (\eg \textit{YouTube}) to users' activity updates formed in natural language (such as \textit{Twitter}) \cite{why-we-twitter}.
 
-Firstly, we find out \textit{what user data we can collect from both structured and natural language-based social applications?} We mainly focus on researching the available data and analyze the way people use services such as
-\textit{YouTube} and \textit{Twitter} to share their media preferences (section 3).
+In this paper we experiment on those data streams and evaluate their usefulness to the user profile generation. We answer
+two main research questions:
+\begin{enumerate}
+  \item What user data can we collect from \textit{structured} and \textit{unstructured} user activity streams?
+  \item How useful is structured UAD as compared to unstructured UAD, to generate a user profile?
+\end{enumerate}
 
-Furthermore, we look into \textit{how do those services compare when it comes to automated user media
-preference profile generating?}. In this part of the paper we present methods for evaluating results of
-available data aggregation (sections 5 and 6) as well as actual user preferences profiling for both
-services with a comparative analysis and discussion of the latter (sections 7 and 8). Our research reveals that despite the
-differences between those streams, both of them may provide enough opportunities for user media preference
-extraction. We conclude with a section on future work and a summary (section 9) and our implementation details (section 10).
+By the \textit{structured} user activity data, we understand data organized in predefined
+preference groups (such as favorites, subscriptions, etc. on \textit{YouTube}).
+We define \textit{unstructured} UAD, on the other hand, as data formed in freely in
+natural language (\textit{Twitter}).
+
+To answer the first research question, we mainly focus on analyzing the available
+data and the way people use services such as \textit{YouTube} and \textit{Twitter} to share
+their media preferences.
+
+We answer the second research question by presenting methods for evaluating results of
+available data aggregation and user profiling for both services with a comparative analysis.
+Our research reveals that more complex methods are required when processing \textit{unstructured} UAD.
+We have also observed that there are differences in the amount of user profiling data as well as its
+accuracy. However, despite those differences, both of them may provide
+enough opportunities for user media preference extraction.
+
+In the following section we describe related work on the subject. In section 3, we describe
+a selection of sources of user activities on the Social Web. Section 4 contains the description of
+the vocabulary we employed in our experiments. We follow by detailing the results of our experiments
+with the usage of \textit{structured} (section 5) and \textit{unstructured} (section 6) user activity data.
+The next part of the paper (section 7) is a comparison of the usage of both kinds of UAD. Section 8
+details the user evaluation of generated profiles. We conclude with a section on future
+work, a summary (section 9) and our implementation details (section 10).
 
 \section{Related work}
 
@@ -45,7 +62,7 @@ Apart from the papers mentioned, we have also found various implementations of s
 social services:
 
 \paragraph{Hunch}
-\textit{Hunch}\footnote{http://www.hunch.com} is a service offering recommendations on different topics based on a user's \textit{Twitter} data. It predicts preferences in forms of small questions and is then able to recommend a product or a solution to a problem that is represented with a \textit{Topic} on the site. \textit{Hunch} seems to be more commercial-oriented, e.g. providing users with links to online stores with products they are recommending. However,
+\textit{Hunch}\footnote{http://www.hunch.com} is a service offering recommendations on different topics based on a user's \textit{Twitter} data. It predicts preferences in forms of small questions and is then able to recommend a product or a solution to a problem that is represented with a \textit{Topic} on the site. \textit{Hunch} seems to be more commercial-oriented, \eg providing users with links to online stores with products they are recommending. However,
 it's prediction results suggest that \textit{Twitter} users' timelines contain information about their preferences.
 
 The application can create recommendations based solely on user's \textit{Twitter} data (mostly people they follow). However, when little data is available, it requires input from users in order to make future predictions more accurate. It covers topics broader than the \textit{NoTube} project.

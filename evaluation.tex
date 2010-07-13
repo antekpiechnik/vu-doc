@@ -1,19 +1,18 @@
 \section{User evaluation}
 In order to get more detailed measures of our results, we performed user surveys
 asking users to judge their extracted profiles. Two groups of users were chosen,
-each counting about 15 persons, most of them active users of Twitter and YouTube
-web services.
+each counting about 15 persons, most of them active users of \textit{Twitter} and \textit{YouTube}.
 
 \subsection{The surveys}
 
 Each person was presented a list of topics that were extracted from their online
-activity and asked to mark their preference / level on interest in every one of
-them. The marks ranged from 0 (dislike), through 1 (neutral) and 2 (like) up to
-3 (strongly like). Such scale was suggested for users to be able to quickly respond
+activity and asked to mark their level of interest in every one of
+them. The marks ranged from 0 (dislike) to 3 (strongly like).
+Such scale was suggested for users to be able to quickly respond
 and yet provide us with enough data to measure the accuracy of the prediction.
 This set was extended with additional mark ''X'', meaning
-''don't know this'', which let us quickly identify false positives that sneaked
-into extracted profiles.
+''I never heard of this'', which let us quickly identify false positives that
+sneaked into extracted profiles.
 
 Such a scale, in spite of being simple, let us capture three basic attitudes
 towards a given subject: positive, neutral and negative. Only the positive
@@ -24,16 +23,19 @@ of a survey into a very straight-forward process.
 \subsection{Analyzed data description}
 The activeness of users fit in relatively wide range: from 20 up to 400 tweets,
 and 6-400 favourites. On average, \textit{2.51\%} of tweets were media-related.
-For YouTube, videos useful for profiling formed about one tenth (\textit{9.56\%})
-of the analyzed set.
+One of the \textit{Twitter} users has noted a score of \textit{18\%} of his
+tweets containing mentions of media references. For YouTube, videos useful
+for profiling \textit{9.56\%} of the analyzed set.
 
 \subsection{Number of false positives}
-The number of false positives was astonishingly large. For some users, this
+The number of false positives is large. For some users, this
 number reached more than 50\% -- maximum of 73.37\% for Twitter using the most accurate method (we discuss
-the method accuracy in section 8.3.1) and 83\% for Youtube. This score makes any recommender
-algorithm, that is based on such a profile hardly of any use. Luckily, such degenerate
+the method accuracy in section 8.3.1) and 83\% for Youtube. This score makes the use of any recommender
+algorithm, that is based on such a profile, challenging. Luckily, such degenerate
 (more than 50\% false positives) cases were relatively uncommon (1 and 2 in accordingly for
 Twitter and YouTube surveys) and happened for users with small numbers of items in their streams.
+We have also experimented with methods of removing false positives from the generated user profile,
+as described below.
 
 \subsubsection{Removing false positives in Twitter profiling}
 
@@ -45,29 +47,31 @@ polls with results of different methods. The results are presented in the figure
   \begin{tabular}{ | p{4cm} | p{2cm} | p{2cm} | p{2cm} | } \hline
     Method & Entites & False positives & Correct preference \\ \hline
     Full name & 3.11\% & 92.17\% & 42\% \\ \hline
-    Full name \& Hashtag & 3.62\% & 80.81\% & 62\% \\ \hline
+    Full name \& hashtag & 3.62\% & 80.81\% & 62\% \\ \hline
     Corpus for FN and HT & 1.63\% & 67.25\% & 75\% \\ \hline
     Corpus for FN only & 1.64\% & 61.13\% & 69\% \\ \hline
   \end{tabular} \\
-  Figure 6: Results of different matches filtering methods on the results. \textit{FN} stands for Full Name,
-  \textit{HT} stands for Hashtag, where \textit{Corpus} means filtering entity names matches by ranking
-  their popularity in a natural language corpus. The \textit{Entities} column shows the amount of matched
-  entities within all tweets, the \textit{False positives} column shows the percentage of falsely matched
-  entities, whereas \textit{Correct preference} shows the percentage of correct preference predictions.
+  Figure 6: Results of different matches filtering methods on the generated user profile.
 \end{center}
+
+Figure 6 contains the results of using the false positives removal methods. In the Figure,
+\textit{FN} stands for Full Name, \textit{HT} stands for \textit{hashtag}, where \textit{Corpus}
+means filtering entity names matches by ranking their popularity in a natural language
+corpus. The \textit{Entities} column shows the amount of matched entities within all tweets,
+the \textit{False positives} column shows the percentage of falsely matched
+entities, whereas \textit{Correct preference} shows the percentage of correct preference predictions,
+excluding false positives.
 
 For this experiment we have used the \textit{British National Corpus}\footnote{http://www.natcorp.ox.ac.uk/}.
 The table shows that the number false positives without any matching provides us with many matches, less than
-10\% being correct. By incorporating Hashtag searching, we have received more results and decreased the amount
-false positives (suggesting, as we discussed in Section 6, that topics in form of Hashtags tend to be more
-accurate to the interests of the Twitter user who tweets them). After applying corpus filtering, the amount of
-entities matched has decreased over twice in size, but we have also noted an decrease in the amount of false positives.
-Applying the text corpus ranking only to entities matched by full name allowed us to further decrease the false
-positives percentage. This further suggests that Hashtags tend to contain more accurate data regarding
-user preferences.
+10\% being correct. By incorporating \textit{hashtag} searching, we have received more results and decreased the amount
+false positives. After applying corpus filtering, the amount of entities matched has decreased over twice in size,
+but we have also noted a decrease in the amount of false positives. Applying the text corpus ranking only to
+entities matched by full name allowed us to further decrease the false positives percentage.
+This further suggests that \textit{hashtags} tend to contain more accurate data regarding user preferences.
 
-The corpora ranking also has it's downsides. For one of the test users, the corpus ranking method helped to
-decrease the false positives by 33\% (from 74\% to 48\%), but also removed two \textit{accurate} matches (marked as
+The corpora ranking also has its downsides. For one of the test users, the corpus ranking method helped to
+decrease the false positives by from 74\% to 48\%, but also removed two (out of 11) \textit{accurate} matches (marked as
 accurate in the non-filtered polls -- a Movie \textit{The Weekend} and a TV Show called \textit{I'm telling}).
 However, since the accuracy is the most important aspect of user profiling, employing this method is worth
 the risk.
@@ -81,4 +85,5 @@ services. Our data suggests that Twitter profile, even though containing less
 items, is of a higher quality than the one based on YouTube data.  This
 might suggest that the frequency of tweeting on a given subject as well as
 preference vocabulary used is a better indicator of interest than a number of
-videos in user's YouTube favourites feed.
+videos in user's YouTube favourites feed, despite using simple methods of rating
+the predicted preference.

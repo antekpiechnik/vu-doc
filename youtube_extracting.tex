@@ -1,4 +1,4 @@
-\section{Extracting user profile from YouTube}
+\section{Using structured user activity data from YouTube}
 
 Our goal is to extract a user profile. For this paper, we will assume that user
 profile is a collection of linked data concepts, that should be understood as
@@ -104,7 +104,7 @@ person's interests (and the ways she uses youtube), cannot be used to find
 specific interests. We can say that a person is more keen to
 favourite music videos or comedy videos after looking at his categories, but in
 order to say what kind of music the person prefers, we need more specific
-information gathered from (e.g.) tags.
+information gathered from \eg tags.
 
 \subsection{How to handle duplicates}
 
@@ -132,14 +132,14 @@ The tags that appeared in all three sets are:
 
 As expected, the tags in the intersection of sets give much more precise view of person's
 interests as compared to tags occurring in a single set. Tags get muted when a user is not active in one of
-those areas (e.g. does not upload movies very frequently). In order to minimize it's effect on the
+those areas (\eg does not upload movies very frequently). In order to minimize it's effect on the
 end result, weights for different sets may be used, and we can maximize weights for tags occurring
 in multiple sets.
 
 \subsection{The double nestedness problem}
 Gathering tags across user's favourites or uploads let us treat the whole video
 set as a single document, giving each tag equal weight in the counting process.
-Taking a similar approach for subscriptions (e.g. giving equal weight to each
+Taking a similar approach for subscriptions (\eg giving equal weight to each
 tag of each video of every subscription) leads to some unwanted effects.
 
 Suppose a user subscribes to two channels. One represents the british royal
@@ -181,7 +181,7 @@ identification of actors among user's favorites.
 \end{figure}
 
 This approach is not ideal. Many false positives can be returned, particularily
-for concepts that are also common phrases (e.g. the "Lost" TV show).
+for concepts that are also common phrases (\eg the "Lost" TV show).
 
 \subsection{Pervasiveness of linked data concepts}
 A set of statistics was prepare to measure the pervasiveness of linked data
@@ -204,5 +204,5 @@ are shown in the Figure 4.
 
 These numbers are exceptionally large, but unfortunately, a vast number of text
 based matches proved to be false positives. This was the case particularily for
-movie titles, where entities with common names are quite popular (e.g. 'Under',
+movie titles, where entities with common names are quite popular (\eg 'Under',
 'House', or 'Power').
