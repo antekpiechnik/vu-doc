@@ -1,4 +1,4 @@
-\section{Sources of user activities on the Social Web}
+\section{Sources of user ativity data on the Social Web}
 In order to answer the first research question, we have focused on data from two social services: \textit{YouTube} and \textit{Twitter}. In the first subsection we describe user data available via APIs for \textit{YouTube}, whereas the
 following section covers possible methods of extracting preference information from \textit{Twitter} users' timelines.
 \subsection{YouTube}
@@ -7,12 +7,12 @@ YouTube stores various data concerning its users and content. Tables
 available. Within this data, three sets are of particular use for user
 profiling. These sets are: \emph{favorites}, \emph{subscriptions} and
 \emph{uploads}. All of them have two features in common: they all are connected
-to user's interests and a user needs to perform action in order to add an item
-to the set. In order to find out how frequently the mentioned sets are used, a
-sample of 7,500 randomly chosen users was examined, as described in next section.
+to user's interests and a user needs to perform an action (\eg click a button on the site
+in order to add an item to the set. In order to find out how frequently the
+mentioned sets are used, a sample of 7,500 randomly chosen users was examined,
+as described in section 3.1.1.
 
-There are also fields that can be used directly in user's profile. These would
-be user's age, gender and location.
+\textit{YouTube} also contains multiple demographic data.
 
 \begin{center}
   \begin{tabular}{|p{3cm} | l | p{4cm}|} \hline
@@ -93,13 +93,13 @@ be user's age, gender and location.
 
 \subsubsection{YouTube usage}
 
-A statistics were performed measuring popularity of three YouTube features: favourites,
-subscriptions and uploads. From the 7500 users analyzed, notable differences in activity
+Measuring popularity of the three YouTube sets -- favourites,
+subscriptions and uploads. From the 7,500 users analyzed, notable differences in activity
 where noted. Many users show little activity, as compared to a few highly active users.
 All histograms on Figure 1 show numbers of users
-(axis y) with $x_1-x_2$ numbers of favourites/subscriptions/uploads. For all
+(axis y) with $x_1-x_3$ numbers of favourites/subscriptions/uploads. For all
 three cases, almost all users belonged to the first histogram range -- the one
-with least items. As number of items grew, the number of users decreased so
+with least items. As number of items grows, the number of users decreases so
 quickly, that logarithmic scale has been used in order to increase the readability of the
 charts.
 
@@ -129,7 +129,7 @@ scarse amount of data.
 \end{figure}
 
 
-\subsubsection{YouTube descriptions corpus}
+\subsubsection{YouTube video descriptions corpus}
 
 A corpus of titles and descriptions for little over 100,000 videos was collected
 for text-based analysis of YouTube data. The file's size was 36 Mbytes. This
@@ -141,52 +141,62 @@ data was used to compute number of videos with identifiable concepts from
 Data available on \textit{Twitter} is composed of natural language short messages posted by users
 consisting of up to 140 characters, commonly known as \textbf{tweets}. Within
 those tweets we can distinguish user mentions (\textit{Twitter} usernames preceeded with the symbol @,
-such as \textit{@justinbieber}) as well as topics in form of \textit{hashtags} -- name stripped of all whitespace
+such as \textit{@justinbieber} -- accessible via \textit{Twitter}\footnote{http://twitter.com/justinbieber}) as well as topics in form of \textit{hashtags} -- name stripped of all whitespace
 and preceded by the hash symbol, \eg \textit{\#TheDailyShow} \cite{edinburg-corpus}.
 
 The initial purpose of tweets was to inform other users of currently performed activities. However, as this service has
 evolved, users started to use \textit{tweets} for a variety of purposes, such as conversations,
-sharing information/URLs and reporting news \cite{why-we-twitter, twitter-content-is-it}. In this section we describe available methods to use such unstructured data. We will use the word \textit{entity} to refer to
+sharing information/URLs and reporting news \cite{why-we-twitter, twitter-content-is-it}. In this section we describe available methods to use such unstructured data. We will use the expression \textit{named entity} (NE) to refer to
 known media people, shows and programmes.
-In our experiments we focus on the following entity extraction methods:
+In our experiments we focus on the following NE extraction methods:
 
 \paragraph{Mentioning entities names}
-Using simple string matching methods, we search for entity names within \textit{Twitter} users' streams and updates.
-Occurrences of entity names in the stream indicate interest in the entity mentioned. The
-number of references is expected to be positively correlated with the level of interest in the entity mentioned \cite{twitter-content-is-it}.
+Using simple string matching methods, we search for NE names within \textit{Twitter} users' streams and updates.
+Occurrences of NE names in the stream indicate interest in the NE mentioned. The
+number of references is expected to be positively correlated with the level of interest in the given NE \cite{twitter-content-is-it}.
 Entities might be mentioned by:
 \begin{itemize}
-  \item \textit{full name}
-  \item \textit{hashtag}
-  \item \textit{twitter username} (entity's twitter username, if known)
-  \item \textit{acronyms}
+  \item \textit{full name} (\eg \textit{"Having a How I Met Your Mother marathon."})
+  \item \textit{hashtag} (\eg \textit{"Who?! Where? I love \#HowIMetYourMother!"})
+  \item \textit{twitter username} (entity's twitter username, if known, \eg \textit{"@HIMYM\_CBS It entertains the spirit"})
+  \item \textit{acronyms} (\eg \textit{"Watching HIMYM. Season 3."})
 \end{itemize}
-\paragraph{Usage of preference verbs when tweeting about entities}
-In order to extract preference towards an entity from a tweet, a set of verbs
-that express preference (both positive, such as \textit{enjoyed}, as well as negative \textit{hated})
-was prepared. Those verbs were searched for in the tweets containing entity mentions.
+\paragraph{Usage of preference vocabulary when tweeting about entities}
+In order to extract preference towards a NE from a tweet, vocabularies that express
+preference was prepared. They have been pragmatically chosen by looking at random tweets.
+This vocabulary contains the following words: \textit{like, recommend, liked, love, great,
+awesome, enjoyed, stunning, loving, good, hate, bad, worst, poor}.
+Those verbs were searched for in the tweets containing entity mentions.
+Example of a tweet: \textit{"yesterday's \#Lost episode was stunning!"}
 \paragraph{Usage of activity verbs when tweeting about entities}
-When mentioning a media-related entity, users may also describe the activity performed.
-In order to find such tweets, an activity verbs vocabulary has also been prepared.
+When mentioning a media-related NE, users may also describe the activity performed.
+In order to find such tweets, an activity verbs vocabulary hasbeen prepared (similarly to
+the preference verbs, it was chosen by looking at the contents of random tweets).
+This vocabulary contains the followings verbs: \textit{watching, watched, play,
+watch, playing, saw, seen, played}.
 Describing the activity of participating in a certain TV experience (such
 as watching a show) has to be noted due to the fact that Twitter users are more
 likely to specify what they are doing at a particular moment.
+Example of a tweet: \textit{"Finnally watched Ironman 2 aha'"}
 
 \paragraph{Extracting entities from structured twitter stream sources}
 Applications, such as \textit{YouTube} or \textit{Boxee}\footnote{http://www.boxee.tv}, automatically generate tweets
 if the user linked their Twitter account with that application. These tweets are
-usually well structured, and therefore very suitable to extract an entity, activity or preference.
-\paragraph{Mentioning and following entities}
-Mentions of entities followed (for known Twitter usernames) by the given user.
+usually well structured, and therefore very suitable to extract a NE, activity or preference.
+Examples of tweets: (\textit{Boxee}) -- \textit{"likes Inglourious Basterds on Boxee http://bit.ly/FbAbn"} and
+\textit{YouTube} -- \textit{"I liked a YouTube video -- How I Met Your Mother - Lorenzo Van Matterhorn"}
+
+\paragraph{Summary}
+We present the possible measurements for extracting the UAD from \textit{Twitter} in Table 6:
 
 \begin{center}
   \begin{tabular}{ | p{4cm} | p{7cm} | } \hline
     \multicolumn{2}{|c|}{Types of measurements available} \\
     \hline
-    \multirow{4}{*} {Mentioning entities}
+    \multirow{4}{*} {Mentioning NEs}
       & Full name matching \\ \cline{2-2}
       & Matching the twitter username (if known) \\ \cline{2-2}
-      & Matching name converted to a hashtag form \\
+      & Matching name converted to a hashtag form \\ \cline{2-2}
       & Matching the full name acronym \\ \cline{2-2}
     \hline
     Usage of activity verbs & Mentions using activity verbs \\
@@ -200,7 +210,7 @@ Mentions of entities followed (for known Twitter usernames) by the given user.
       & Finding average amount of mentions-to-tweets ratio \\ \cline{2-2}
     \hline
   \end{tabular}
-Figure 2: Measures available for the Twitter tweets data corpus \\
+Table 6: Overview of the measures available for the \textit{Twitter} UAD extraction \\
 \end{center}
 
 \subsubsection{Corpus used for research}

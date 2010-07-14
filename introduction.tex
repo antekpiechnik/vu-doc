@@ -15,17 +15,17 @@ two main research questions:
 
 By the \textit{structured} user activity data, we understand data organized in predefined
 preference groups (such as favorites, subscriptions, etc. on \textit{YouTube}).
-We define \textit{unstructured} UAD, on the other hand, as data formed in freely in
-natural language (user streams on \textit{Twitter}).
+We define \textit{unstructured} UAD, on the other hand, as data expressed in natural language
+(user streams on \textit{Twitter}).
 
-To answer the first research question, we mainly focus on analyzing the available
-data and the way people use services such as \textit{YouTube} and \textit{Twitter} to share
+To answer the first research question, we focus on analyzing the
+data and the way people use services like \textit{YouTube} and \textit{Twitter} to share
 their media preferences.
 
-We answer the second research question by presenting methods for evaluating results of
-available data aggregation and user profiling for both services with a comparative analysis.
+We answer the second research question with a comparative analysis of the available data and
+methods for generating user profile for both services.
 Our research reveals that more complex methods are required when processing \textit{unstructured} UAD.
-We have also observed that there are differences in the amount of user profiling data as well as its
+We have also observed that there are differences in user profiling data as well as its
 accuracy. However, despite those differences, both of them may provide
 enough opportunities for user media preference extraction.
 
@@ -62,9 +62,11 @@ Apart from the papers mentioned, we have also found various implementations of s
 social services:
 
 \paragraph{Hunch}
-\textit{Hunch}\footnote{http://www.hunch.com} is a service offering recommendations on different topics based on a user's \textit{Twitter} data. It predicts preferences in forms of small questions and is then able to recommend a product or a solution to a problem that is represented with a \textit{Topic} on the site. \textit{Hunch} seems to be more commercial-oriented, \eg providing users with links to online stores with products they are recommending. However,
-it's prediction results suggest that \textit{Twitter} users' timelines contain information about their preferences.
-
-The application can create recommendations based solely on user's \textit{Twitter} data (mostly people they follow). However, when little data is available, it requires input from users in order to make future predictions more accurate. It covers topics broader than the \textit{NoTube} project.
-\textit{Hunch.com} does not provide information on how the recommender system works, although it provides an API for accessing their data.
-Hunch is able to adapt to much more different topics, and it does not necessarily focus on their semantics (rather on what similar people simply like).
+\textit{Hunch}\footnote{http://www.hunch.com} is a service offering recommendations on different topics based on a user's
+\textit{Twitter} data. It is able to employ methods of graph reasoning for users followers and following lists
+in order to predict his answers to various questions. In addition to that, it is able to recommend products
+to users and provide them with links to online stores containing those products.
+Initial prediction results and their accuracy suggest that
+\textit{Twitter} users data does contain information about their preferences. \textit{Hunch} is a \textit{gray box}
+--  it does not provide information on how the recommender system works, but it provides a rich
+API for accessing its data
