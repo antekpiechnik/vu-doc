@@ -3,7 +3,9 @@
 In order to answer the first research question, we have focused on data from two social services: \textit{YouTube} and
 \textit{Twitter}. The goal of this chapter is to present the organization of the \textit{User Activity Data} available
 in those two networks. In the first subsection we describe user data available via APIs for
-\textit{YouTube}, whereas the following section covers possible methods of extracting preference information from \textit{Twitter} users' timelines.
+\textit{YouTube}, whereas the following section covers possible methods of extracting preference information from \textit{Twitter} users' timelines. We will use the expression \textit{named entity} (NE) to refer to
+known media people, shows and programmes.
+
 \subsection{YouTube}
 YouTube stores various data concerning its users and content. Tables
 1 - 5 show the types of information
@@ -154,11 +156,10 @@ and preceded by the hash symbol, \eg \textit{\#TheDailyShow} \cite{edinburg-corp
 
 The initial purpose of tweets was to inform other users of currently performed activities. However, as this service has
 evolved, users started to use \textit{tweets} for a variety of purposes, such as conversations,
-sharing information/URLs and reporting news \cite{why-we-twitter, twitter-content-is-it}. In this section we describe available methods to use such unstructured data. We will use the expression \textit{named entity} (NE) to refer to
-known media people, shows and programmes.
+sharing information/URLs and reporting news \cite{why-we-twitter, twitter-content-is-it}. In this section we describe available methods to use such unstructured data.
 In our experiments we focus on the following NE extraction methods:
 
-\paragraph{Mentioning entities names}
+\paragraph{Mentioning NE full names}
 Using simple string matching methods, we search for NE names within \textit{Twitter} users' streams and updates.
 Occurrences of NE names in the stream indicate interest in the NE mentioned. The
 number of references is expected to be positively correlated with the level of interest in the given NE \cite{twitter-content-is-it}.
@@ -166,17 +167,17 @@ Entities might be mentioned by:
 \begin{itemize}
   \item \textit{full name} (\eg \textit{"Having a How I Met Your Mother marathon."})
   \item \textit{hashtag} (\eg \textit{"Who?! Where? I love \#HowIMetYourMother!"})
-  \item \textit{twitter username} (entity's twitter username, if known, \eg \textit{"@HIMYM\_CBS It entertains the spirit"})
+  \item \textit{twitter username} (NE's twitter username, if known, \eg \textit{"@HIMYM\_CBS It entertains the spirit"})
   \item \textit{acronyms} (\eg \textit{"Watching HIMYM. Season 3."})
 \end{itemize}
-\paragraph{Usage of preference vocabulary when tweeting about entities}
+\paragraph{Usage of preference vocabulary when tweeting about NEs}
 In order to extract preference towards a NE from a tweet, vocabularies that express
 preference was prepared. They have been pragmatically chosen by looking at random tweets.
 This vocabulary contains the following words: \textit{like, recommend, liked, love, great,
 awesome, enjoyed, stunning, loving, good, hate, bad, worst, poor}.
-Those verbs were searched for in the tweets containing entity mentions.
+Those verbs were searched for in the tweets containing NE mentions.
 Example of a tweet: \textit{"yesterday's \#Lost episode was stunning!"}
-\paragraph{Usage of activity verbs when tweeting about entities}
+\paragraph{Usage of activity verbs when tweeting about NEs}
 When mentioning a media-related NE, users may also describe the activity performed.
 In order to find such tweets, an activity verbs vocabulary hasbeen prepared (similarly to
 the preference verbs, it was chosen by looking at the contents of random tweets).
@@ -187,7 +188,7 @@ as watching a show) has to be noted due to the fact that Twitter users are more
 likely to specify what they are doing at a particular moment.
 Example of a tweet: \textit{"Finnally watched Ironman 2 aha'"}
 
-\paragraph{Extracting entities from structured twitter stream sources}
+\paragraph{Extracting NEs from structured twitter stream sources}
 Applications, such as \textit{YouTube} or \textit{Boxee}\footnote{http://www.boxee.tv}, automatically generate tweets
 if the user linked their Twitter account with that application. These tweets are
 usually well structured, and therefore very suitable to extract a NE, activity or preference.
@@ -241,5 +242,6 @@ weights. In order to keep the scale of the weight simple (more on that in the
 up to 3, meaning accordingly: ''do not like'', ''neutral'', ''like'', ''like
 very much''. In order to determine the weight for each concepts, simple metrics
 were used: number of repeats normalized to the mostly repeated item for
-YouTube, and XXX for Twitter.
+YouTube, and type of mention, the amount of mentions of a specified NE as well
+activity/preference vocabulary usage for Twitter.
 
