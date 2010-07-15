@@ -266,15 +266,20 @@ During our experiments we have encountered various challenges. We will discuss t
 
 When combining tags collected from various sets of videos, a question should be
 asked what preference -- if any -- should be given to tags appearing in more
-then one of them. Let's analyze some examples. The letters $f$, $s$ and $u$ mean number
-of videos in accordingly: favourites, subscriptions and uploads. The
+then one of them. Table 16 presents three examples of favourites,
+subscriptions and uploads intersections. The letters $f$, $s$ and $u$ mean
+numbers of videos in accordingly: favourites, subscriptions and uploads. The
 combinations of letters indicate the size of the intersections of those sets. \\
 
+\begin{center}
 \begin{tabular}{| l | l | l | l | l | l | l | l |}
 user & $f$ & $s$ & $u$ & $fs$ & $fu$ & $su$ & $fsu$ \\ \hline
 politician & 219 & 32321 & 357 & 116 & 59 & 156 & 34 \\
 metal music fan & 1103 & 7570 & 73 & 533 & 27 & 44 & 26 \\
 one of authors & 687 & 5553 & 10 & 199 & 2 & 2 & 1 \\
+\label{intersections}
+\end{center}
+Table 16: Sizes of intersecting favourite, subsubsection and upload sets of sample users.
 \end{tabular} \\
 
 The tags that appeared in all three sets are:
@@ -307,7 +312,11 @@ importance to her.
 
 In order to counteract this effect a number of techniques can be used. One of
 them is giving tags in each subscription a weight, based on the number of videos or
-total number of tags.
+total number of tags. This and other -- similar -- techniques can lead,
+however, to another distortion of the final results, giving preference to
+subscriptions with hardly any videos (one or two). During rough experiments,
+the authors were not able to find a normalization technique that gave
+fundamentally better results.
 
 \paragraph{Duplicates in Twitter}
 To come.
@@ -334,6 +343,10 @@ This measurement is easily translatable into the preference weights to be record
 Moreover, by undertaking semantic approaches we are able to analyze different topics found in a tweet and
 attempt to rank their relation to the entity we are researching. We will discuss this in the section 9 (Future work).
 
+A similar technique might be used YouTube research as well. It would
+drastically reduce the number of false positives, at the cost, however, of
+missing the actual entities of such common titles.
+
 XXX Add results with discussion and evaluation from 8.3 XXX
 
 \subsection{Generating the User Profile}
@@ -351,7 +364,10 @@ can be either too numerous, making many
 of them irrelevant, too sparse, nonexistent and occasionally just wrong. To avoid
 that problem, we aggregate the tags across sets of video clips related to the
 profiled user (favourites, subscriptions, uploads). Similar aggregation was
-performed for the videos' categories. Below is a comparison of results of counting
+performed for the videos' categories. Categories are similar to tags (in that:
+each video has many categories and many tags applied). They are chosen,
+however, from an extremely limited (12 items, for each(!) video on YouTube) set
+of options.  Below is a comparison of results of counting
 tags (chosen by the user) and categories (picked from a small predefined set).
 
 
@@ -429,9 +445,11 @@ heavy metal music fan}
 We can see that category count, even though providing general overview of
 person's interests (and the ways she uses youtube), cannot be used to find
 specific interests. We can say that a person is more keen to
-favourite music videos or comedy videos after looking at his categories, but in
-order to say what kind of music the person prefers, we need more specific
-information gathered from \eg tags.
+favourite music videos or comedy videos after looking at his categories
+(because categories like ''Music'' and ''Comedy'' would stand out), but in
+order to say what \textit{kind} of music the person prefers, we need more specific
+information gathered from \eg tags. This is what makes tags much more useful
+for profile generation.
 
 \paragraph{Analysis performed on generated user profiles}
 

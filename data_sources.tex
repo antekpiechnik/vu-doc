@@ -1,4 +1,4 @@
-\section{Sources of user ativity data on the Social Web}
+\section{Sources of user activity data on the Social Web}
 
 In order to answer the first research question, we have focused on data from two social services: \textit{YouTube} and
 \textit{Twitter}. The goal of this chapter is to present the organization of the \textit{User Activity Data} available
@@ -7,11 +7,15 @@ in those two networks. In the first subsection we describe user data available v
 \subsection{YouTube}
 YouTube stores various data concerning its users and content. Tables
 1 - 5 show the types of information
-available. Within this data, three sets are of particular use for user
+available. The table caption names entity, that the field names refer to, the
+column \textit{access} describes in what way these values can be obtained.
+Within this data, three sets are of particular use for user
 profiling. These sets are: \emph{favorites}, \emph{subscriptions} and
-\emph{uploads}. All of them have two features in common: they all are connected
-to user's interests and a user needs to perform an action (\eg click a button on the site
-in order to add an item to the set. In order to find out how frequently the
+\emph{uploads}. These sets were chosen because they have two features in common: they all are connected
+to user's interests and a user needs to perform an action (\eg click a button on the site)
+in order to add an item to the set. These features make them particularily useful for user profiling.
+For this reason, the rest of YouTube research in this paper will focus on these three sets.
+In order to find out how frequently the
 mentioned sets are used, a sample of 7,500 randomly chosen users was examined,
 as described in section 3.1.1.
 
@@ -99,6 +103,7 @@ as described in section 3.1.1.
 Measuring popularity of the three YouTube sets -- favourites,
 subscriptions and uploads. From the 7,500 users analyzed, notable differences in activity
 where noted. Many users show little activity, as compared to a few highly active users.
+50\% analyzed accounts had less than 60 favourites, 6000(!) out of 7,500 had less than 40 uploads.
 All histograms on Figure 1 show numbers of users
 (axis y) with $x_1-x_3$ numbers of favourites/subscriptions/uploads. For all
 three cases, almost all users belonged to the first histogram range -- the one
@@ -136,7 +141,7 @@ scarse amount of data.
 
 A corpus of titles and descriptions for little over 100,000 videos was collected
 for text-based analysis of YouTube data. The file's size was 36 Mbytes. This
-data was used to compute number of videos with identifiable concepts from
+data was used to compute number of video descriptions with identifiable concepts from
 \textit{Freebase}\footnote{http://freebase.com} data vocabularies (more on this in section 4).
 
 \subsection{Twitter}
@@ -227,3 +232,14 @@ The most significant reason for using a precompiled corpus for this research is 
 which makes a wider analysis challenging. Furthermore, a great deal of Twitter users provide data not necessarily
 useful for our experiments. All non-English mentions may be located,
 but make extracting preference information more challenging. Using a preselected corpus enables measuring and comparing the effectiveness of different counting methods much easier \cite{short-tweet}.
+
+\subsection{Metrics used in constructing User Profile}
+
+The generated user profile is a collection of concepts along with their
+weights. In order to keep the scale of the weight simple (more on that in the
+''User evaluation'' section), we limited the scale to an integer range from 0
+up to 3, meaning accordingly: ''do not like'', ''neutral'', ''like'', ''like
+very much''. In order to determine the weight for each concepts, simple metrics
+were used: number of repeats normalized to the mostly repeated item for
+YouTube, and XXX for Twitter.
+
