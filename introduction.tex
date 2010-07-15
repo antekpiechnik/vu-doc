@@ -39,27 +39,62 @@ work, a summary (section 9) and our implementation details (section 10).
 
 \section{Related work}
 
-A considerable number of papers examining social Web services have been
-published. Works devoted to YouTube often contain analysis of the video data
-stored by the service and its implications to the traffic generated
-(\cite{i-tube-you-tube}, \cite{views-from-the-edge},
-\cite{statistics-and-social-network}), some study impact of YouTube service on
-very narrow topics, like 2006 USA presidential elections
-\cite{voters-myspace-youtube}, or social attitude towards vaccinacions
-\cite{keelan}. There are also papers analyzing privacy issues of using YouTube
-\cite{publicly-private}.
+1. O profilowaniu: problem-method-results
+2. O twitterze/U2bie
+3. Grafy sieciowe
 
-Works analyzing \textit{Twitter} as a data stream can differ from very general \cite{why-we-twitter},
-to works devoted to analyzing content of the \textit{Twitter} users' timelines (such as \cite{twitter-content-is-it} and \cite{short-tweet}).
+\paragraph{The problem of generating semantic user profile} is widely covered in the
+research area. Maria Golemati et al. created the basic ontology for describing
+user profile data \cite{creating-ontology-for-user-profile}. It proved to be
+very suitable for static data concerning users, however -- not particularily
+helpful for data that changes frequently. Fabian Abel et al. showed in their
+paper ''Interweaving Public User Profiles on the Web'' \cite{public-profiles},
+that systems that gather data from \textit{several} social web services are
+able to draw further-reaching conclusions, than systems that analyze the web
+services content separately for each service. They crawled 160,000 user
+accounts using Google Social Graph API (more ob that below) and presented
+profiles with data combined from several user accounts.  The extractors, that
+were prepared during our research might find use in creating such a system.
 
-There are also works devoted to automated user profile generation, covering multiple data sources for profile
-information aggregation \cite{public-profiles}, as well as abusing social networks for profile generation \cite{twitter-abuse}. Apart from profile generation, a URL recommender system for \textit{Twitter} users
-has been introduced by \cite{short-tweet}.
+\paragraph{Twitter and YouTube}. There have been several papers published
+mentioning directly the services we analyzed. Many of them contain sets of
+statistics serving the goal of deeper understanding their nature and patterns
+in which they are used. A. Java et al. \cite{why-we-twitter} describe, what
+they call ''community intensions'', finding out, that main reasons for Twitter
+use are reporting their daily activities and seeking/sharing information. Both
+of these activities can pass media related content (which is what this paper is
+focused on). Mor Naaman et al. \cite{twitter-content-is-it} extended their
+work, by performing human computation and dividing the categories even further.
+The two of three most popular kinds of twitter updates they identified were
+''Me Now'' -- informing about current activities, and ''Opinions/Complains''.
+Again, both -- depending on the user, though -- are very likely to contain
+media-related content.
 
-The works describing user profiling in general are focused on finding the basic user profile ontology \cite{creating-ontology-for-user-profile}, and their role in recommender systems area \cite{ontological-user-profiling}.
+Among works analyzing YouTube, most contain statistics concerning the video
+data gathered on the site, and the implications of the service on the network
+traffic \cite{i-tube-you-tube}, \cite{views-from-the-edge},
+\cite{statistics-and-social-network}. One of them
+\cite{statistics-and-social-network} contains -- among other experiments --
+analysis of video length distribution for most popular categories.  While the
+curve shapes look similar for most of them, there is a noticeable difference
+among videos categorized as ''Music''. The most popular time-span if the videos
+there is 3 to 4 minutes -- a typical length of a music clip. This suggests,
+that many of the clips in this category might be considered as a musical track
+representation.
 
-Apart from the papers mentioned, we have also found various implementations of systems that aggregate personal preferences based on different
-social services:
+\paragraph{Web-based graphs}. There are several attempts at sneaking additional
+computer-processable semantic data into regular human-readable web pages.  The
+simplest of these are \textit{microformats}. The idea is to use well-defined
+markup names, so that others could analyze, and possibly provide additional
+features based on that.  The \textit{Google Social Graph} is an attempt at grasping
+the semantic data published across many social web sites. Namely: it uses a web
+crawler to find and recognize FOAF (ontology) and XFN (a microformat) profiles,
+and gives API access to anyone who is willing to explore that resources. A
+similar initiative, more vendor specific, however is Facebook's Open Graph
+Protocol. It lets webmasters integrate their sites with Facebook, giving them
+identity as nodes in a global graph, that the company uses for their
+web service. As the graph data in hidden within web pages \textit{meta tags},
+it is freely available for everyone to access.
 
 \paragraph{Hunch}
 \textit{Hunch}\footnote{http://www.hunch.com} is a service offering recommendations on different topics based on a user's
