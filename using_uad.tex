@@ -261,7 +261,22 @@ limits the use of this approach.
 
 \paragraph{Comparison of relevant user activities extraction}
 
-XXX
+The interest extraction, even though based on similar technique (simple text
+search), has different meaning for Twitter and YouTube data.  Concepts from
+YouTube video streams have clearly defined role (favourite, upload or
+subscription) whereas Twitter updates can refer to an entity in a way (positive,
+negative, neutral) that needs to be extracted as well with a possibility on
+introducing errors in the process. However, if extracted correctly (finding a
+preference verb in a Twitter update), the detected interest is very valuable,
+since it describes user's relation with the item directly. For YouTube, on the
+other hand, the information is determined, but its meaning might differ (we
+cannot determine the level of interest based only on the presence on a lack
+thereof). YouTube streams also tend to contain more references to media-related
+items than Twitter updates. 
+
+This diversity (more information of low quality for YouTube and less
+information of high quality from Twitter) would make the profile combined from
+both sources much more robust.
 
 \subsection{Challenges}
 
