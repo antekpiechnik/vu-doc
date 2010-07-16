@@ -1,25 +1,28 @@
-\section{Potential uses and future work}
+\section{Future developments}
 
-In this section, we discuss the future of our work in context of the current
+In this section, we discuss the application of our work in a real-life project
+as well as future of our work in context of the current
 trends among social web services. We also point out potential improvements for
 our algorithms.
 
-\subsection{Possible influence on the NoTube project}
+\subsection{Application in the NoTube project}
 
-The \textit{NoTube} project is able to personalize recommendations for TV
-programmes for a user. In order to maximize its recommending potential, it
-needs to aggregate data from different sources. Once the project becomes such a
-source, the recommender would have access to a much wider set of data,
-collected by the NoTube project itself.
+\textit{NoTube} is a European project that aims to connect TV and the Web through semantics.
+Currently, user activity on the Web has little or no influence on what you see on TV and
+visa versa. In NoTube, bits and pieces of data that are scattered around on the Web are
+accumulated and used to personalize TV. Userdata is collected from social sites, such
+as Facebook, YouTube and Twitter, and used to generate a user profile. Data on TV programs
+is collected from online program guides and enriched with semantics from the Linked Open Data
+cloud (LOD). The background data available in LOD is employed to find links between
+the user's interests and TV programs.
 
 Both \textit{YouTube} and \textit{Twitter} certainly do contain information
 useful for this topic. However, for limited sets of data (non-active
-Twitter/YouTube users), the recommender might need to 
-incorporate more advanced methods for media topics recognition or maybe require
-an evaluation of information extracted from those streams by the user.
-Given the little amounts of media-related information in some of user's
-streams, results obtained from incorporating such methods might prove useful
-only for the cold-start situation, that is: to estimate the user's interests
+Twitter/YouTube users), the recommender might need to incorporate more advanced methods
+for media topics recognition or maybe require an evaluation of information extracted
+from those streams by the user. Given the little amounts of media-related information
+in some of user's streams, results obtained from incorporating such methods might
+prove useful only for the cold-start situation, that is: to estimate the user's interests
 very roughly in hope to gather more data during user's activity.
 
 However, for very active Twitter and YouTube users, the profiles extracted
@@ -33,39 +36,35 @@ discuss the possible changes and their influence on this research.
 
 \paragraph{YouTube}
 
-YouTube users tend not to watch many videos related to the TV Shows, we would
-like to consider situations where this state might change. An obvious case
+An increasing amount of users watch TV programs on YouTube. An obvious case
 appears with Google (the owner of YouTube) planning on offering GoogleTV in the
 fall of 2010. Such a move might create opportunities for users to integrate
 this service with YouTube, changing the way users employ YouTube.
 
 Furthermore, should YouTube follow the example of services like \textit{Hulu}
-and start offering streaming of TV-Shows, it would immediately allow people to
-comment, share their preferences, making it a perfect source for extracting
+and start offering streaming of TV-Shows, its web-based environment would immediately
+allow people to comment, share their preferences, making it a perfect source for extracting
 users' preferences.
 
 \paragraph{Twitter}
 
-Recently Twitter has announced plans of bringing advertising (\eg in a form of
-\textit{Promoted Tweets}) to users' stream.  By retweeting such advertisements,
+Recently \textit{Twitter} has announced plans of bringing advertising (\eg in a form of
+\textit{Promoted Tweets}) to users' stream. By retweeting such advertisements,
 users might show some interest in additional subjects mentioned in their
 streams.
 
-What is far more interesting, is the idea of providing Twitter-based
-enrichments (called the Annotations) that Twitter has announced\footnote{http://blog.twitter.com/2010/05/twitter-platform.html},
-bringing semantic-like concepts into all tweets and making users able to
-retweet those concepts and find out more about them. This could increase
-the probability of matching entities correctly.
+\textit{Twitter} has recently announced\footnote{http://blog.twitter.com/2010/05/twitter-platform.html},
+enrichments (called the Annotations) that will bring semantic-like concepts
+into all tweets and making users able to retweet those concepts and find
+out more about them. This could increase the probability of matching entities correctly.
 
-On the other hand, it seems like Twitter will still mostly be used to update
-information on current activities and, in contrast to YouTube, we do not think
-this will change soon.
+We expect those changes to have an influence on how people use \textit{Twitter}
+to share their media preferences. This might improve the accuracy of the improved
+user profile extraction methods.
 
 \subsection{Future work}
 
-\subsubsection{Context/Semantic-based entity recognition}
-
-\paragraph{Removing more accidental matches}
+\subsubsection{Context/Semantic-based entity and context recognition}
 
 In order to enhance the accuracy of entities recognized within a user's Twitter
 stream, one could employ search methods based on analyzing a single tweet's
@@ -73,10 +72,10 @@ context regarding other topics related to the media field using semantic
 services.  However, this approach could be much slower for multiple tweets
 within a significant userbase.
 
-\paragraph{Entity ambiguity}
-
-Some entity categories (such as \textit{TV Actors}) can be ambiguous (such as \textbf{John Terry the actor} and \textbf{John Terry the footballer}). Such situations
-would require us to use additional methods (such as context-based reasoning) in order to accurately identify the entity in question.
+Some entity categories (such as \textit{TV Actors}) can be ambiguous
+(such as \textbf{John Terry the actor} and \textbf{John Terry the footballer}).
+Such situations would require us to use additional methods (such as context-based
+reasoning) in order to accurately identify the entity in question.
 
 \subsubsection{Comparison of TV show entities against more natural language corpora}
 
@@ -86,24 +85,3 @@ that are strictly \textbf{unrelated} to the topic of the recommender, (such as T
 newspaper/magazine articles). This might further increase it's accuracy when filtering the accidental
 matches. Using this approach while also using semantic recognition could decrease recommender's
 speed even further.
-
-\subsubsection{Research into other services}
-
-In order to be able to perform more analysis, it might be useful to perform
-research into other services, such as \textit{Facebook} or \textit{MySpace}.
-There however are much more private networks, where users tend not to share
-their information publicly. This might make them less accessible, but due to a
-great number of users, they might contain useful data.
-
-\subsection{Conclusions}
-
-The work done for this project let us better understand the actual content
-hidden in data gathered by the two analyzed web services. The tools that we
-prepared might prove useful for collecting data for use in recommender systems.
-
-The research questions that we posed let us focus on the ways to extract most
-useful information available. We learned that while basic extracting of the
-user profiles is relatively easy, it is extremely challenging to guarantee high
-quality of the results. We also identified two main obstructions as the
-scarcity of data available for a single user and the pervasiveness of some
-entities' names in other contexts.

@@ -7,19 +7,33 @@ language, a dynamic, scripting open source programming language. This allowed us
 to focus on experimenting instead of implementation. The profiler scripts have been
 separated from any native extensions, making them compatible with \textit{JRuby}\footnote{http://www.jruby.org} -- the Java implementation
 of the Ruby language.
+
 \subsubsection{Structure}
-The Extractor part retrieves the data from Twitter. The Twitter API requests are been handled via the \textit{OAuth}\footnote{http://oauth.net/} protocol and provided in a
+The \textbf{Extractor} part retrieves the data from Twitter. The Twitter API requests are being handled via the \textit{OAuth}\footnote{http://oauth.net/} protocol and provided in a
 \textit{JSON}-based stream form. Only the newest tweets for the Twitter
 users are downloaded. The entities definitions and semantics are provided by
-the \textit{Freebase} database REST interface. All further processing by the Associator
-occurs locally on the pre-loaded Twitter data. \\
+the \textit{Freebase} database REST interface. All further processing by the \textbf{Associator}
+occurs locally on the pre-loaded Twitter data.
 
-\begin{figure}[h!]
-  \begin{center}
-	  \includegraphics[scale=0.65]{images/twitter_diagram.pdf}
-	  \caption{The structure of the Twitter data experiments workflow}
-  \end{center}
-\end{figure}
+\subsubsection{Workflow}
+
+The \textit{Twitter} data is accessed by the \textbf{Extractor} via the \textit{Twitter}
+API\footnote{http://apiwiki.twitter.com/}. The data is served as a collection of \textit{JSON}. It provides
+information on followers of a user as well as contains a collection of his tweets. This data is then being
+stored in an instance of \textit{BerkeleyDB}\footnote{http://www.oracle.com/technology/products/berkeley-db/index.html}
+under a key representing the user uniquely. The NEs for processing are extracted from the \textit{Freebase}
+dataset using the \textit{Freebase} HTTP API\footnote{http://www.freebase.com/docs/acre\_api} also in
+form of \textit{JSON} Objects. The most important information (names and \textit{Freebase} IDs) are then
+saved in \textit{YAML}\footnote{http://www.yaml.org/} files. All this data is then combined and used
+for experiments by the \textbf{Associator}. It uses the power of the \textit{Ruby} language for processing tweets
+of a user using methods described in sections 5.1.1 and 5.1.2 (mostly using \textit{regular expressions}).
+When generating a user profile, the Associator outputs a YAML file containing user's interests and
+their weights. This workflow is shown on Figure 2:
+
+\begin{center}
+  \includegraphics[scale=0.65]{images/twitter_diagram.pdf} \\
+  Figure 2: The structure of the Twitter data experiments workflow
+\end{center}
 
 \subsubsection{Tools}
 Apart from using the standard Ruby libraries, separate open-source Ruby gems have been used for the experiment:
@@ -51,8 +65,8 @@ pieces of data, that are of interest to the examined subject.
 
 \begin{figure}[h!]
   \begin{center}
-	  \includegraphics[scale=0.65]{images/youtube_diagram.pdf}
-	  \caption{The structure of the YouTube data experiments workflow}
+	  \includegraphics[scale=0.65]{images/youtube_diagram.pdf} \\
+	  Figure 3: The structure of the YouTube data experiments workflow
   \end{center}
 \end{figure}
 
