@@ -2,8 +2,11 @@
 In order to get more detailed measures of our results, we performed user surveys
 asking users to judge their extracted profiles. Two groups of users were chosen,
 each counting about 15 persons, most of them active users of \textit{Twitter} and \textit{YouTube}.
+These users have been selected from friends of authors in order to be able to easily
+retrieve results of the accuracy of profiling. The surveys have been conducted via
+e-mail.
 
-\subsection{The surveys}
+\subsection{Surveys}
 
 Each person was presented a list of topics that were extracted from their online
 activity and asked to mark their level of interest in every one of
@@ -29,45 +32,50 @@ for profiling \textit{9.56\%} of the analyzed set.
 
 \subsection{Number of false positives}
 The number of false positives is large. For some users, this
-number reached more than 50\% -- maximum of 73.37\% for Twitter using the most accurate method (we discuss
-the method accuracy in section 8.3.1) and 83\% for Youtube. This score makes the use of any recommender
+number reached more than 50\% -- maximum of 73.37\% for \textit{Twitter} using the most accurate method (we discuss
+the method accuracy in section 8.3.1) and 83\% for \textit{YouTube}. This score makes the use of any recommender
 algorithm, that is based on such a profile, challenging. Luckily, such degenerate
 (more than 50\% false positives) cases were relatively uncommon (1 and 2 in accordingly for
 Twitter and YouTube surveys) and happened for users with small numbers of items in their streams.
 We have also experimented with methods of removing false positives from the generated user profile,
 as described below.
 
-\subsubsection{Removing false positives in Twitter profiling}
+\subsubsection{Removing false positives}
 
 We have analyzed the effect of different methods of minimizing the amount of false
 positives for Twitter profiling (as described in Section 6.3) by providing test users
-polls with results of different methods. The results are presented in the figure below:
+polls with results of different methods. The results are presented in the table below:
 
 \begin{center}
-  \begin{tabular}{ | p{4cm} | p{2cm} | p{2cm} | p{2cm} | } \hline
-    Method & Entites & False positives & Correct preference \\ \hline
-    Full name & 3.11\% & 92.17\% & 42\% \\ \hline
-    Full name \& hashtag & 3.62\% & 80.81\% & 62\% \\ \hline
-    Corpus for FN and HT & 1.63\% & 67.25\% & 75\% \\ \hline
-    Corpus for FN only & 1.64\% & 61.13\% & 69\% \\ \hline
+  \begin{tabular}{ | p{2.5cm} | p{2cm} | p{2cm} | p{2cm} | } \hline
+    False Positives removal & Method & Tweets with entities & False positives \\ \hline
+    \multirow{2}{*} {No}
+      & FN & 3.11\% & 92.17\% \\ \cline{2-4}
+      & FN \& HT & 3.62\% & 80.81\% \\ \cline{2-4}
+    \hline
+    \multirow{2}{*} {Yes}
+      & FN and HT & 1.63\% & 67.25\% \\ \cline{2-4}
+      & FN & 1.64\% & 61.13\% \\ \cline{2-4}
+    \hline
   \end{tabular} \\
-  Figure 6: Results of different matches filtering methods on the generated user profile.
+  Table 19: Results of different matches filtering methods on the generated user profile.
 \end{center}
 
-Figure 6 contains the results of using the false positives removal methods. In the Figure,
-\textit{FN} stands for Full Name, \textit{HT} stands for \textit{hashtag}, where \textit{Corpus}
-means filtering entity names matches by ranking their popularity in a natural language
-corpus. The \textit{Entities} column shows the amount of matched entities within all tweets,
+Table 19 contains the results of using the false positives removal methods. In the Figure,
+\textit{FN} stands for Full Name, \textit{HT} stands for \textit{hashtag}, where \textit{False Positives removal}
+column states whether \textit{false positives} removal methods have been applied.
+The \textit{Tweets with entities} column shows the amount of matched NEs within all tweets, whereas
 the \textit{False positives} column shows the percentage of falsely matched
-entities, whereas \textit{Correct preference} shows the percentage of correct preference predictions,
-excluding false positives.
+NEs within all NEs matched.
 
-For this experiment we have used the \textit{British National Corpus}\footnote{http://www.natcorp.ox.ac.uk/}.
+For this experiment we have used the \textit{British National Corpus}\footnote{http://www.natcorp.ox.ac.uk/}. It
+is a 100 million word collection of samples of written and spoken language from a wide range of sources. We have
+decided to employ this service due to its accessibility, ease of use and the quality of data it provides.
 The table shows that the number false positives without any matching provides us with many matches, less than
 10\% being correct. By incorporating \textit{hashtag} searching, we have received more results and decreased the amount
-false positives. After applying corpus filtering, the amount of entities matched has decreased over twice in size,
+false positives. After applying corpus filtering, the amount of NEs matched has decreased over twice in size,
 but we have also noted a decrease in the amount of false positives. Applying the text corpus ranking only to
-entities matched by full name allowed us to further decrease the false positives percentage.
+NEs matched by full name allowed us to further decrease the false positives percentage.
 This further suggests that \textit{hashtags} tend to contain more accurate data regarding user preferences.
 
 The corpora ranking also has its downsides. For one of the test users, the corpus ranking method helped to
@@ -82,12 +90,11 @@ A similar set of experiments was run for the YouTube data. The named entity
 search was run using an entity set limited to non-common names only. The
 results are presented in a table below.
 
-
 \subsection{Preference rate accuracy}
 After counting out false positives, the correctness of ratings was judged. The
 number of rates guessed correctly by the Twitter profiler revolving around \textit{70\%},
 while only \textit{50\%} of YouTube rate guesses turned out to be correct. This
-result seems surprising when compared to rates of entities found in both
+result seems surprising when compared to rates of NEs found in both
 services. Our data suggests that Twitter profile, even though containing less
 items, is of a higher quality than the one based on YouTube data.  This
 might suggest that the frequency of tweeting on a given subject as well as
