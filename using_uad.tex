@@ -186,11 +186,11 @@ the subscription for other items. To verify these assumptions, we performed a
 set of experiments using data from these two sets.
 
 \paragraph{Usage of activity verbs in Twitter}
-For this experiment, a rather small activity verbs vocabulary has been used. (verbs such
-as \textit{to watch, to play, to see, to check out, to catch} with their past forms.
-\\ Table 13 is showing percentage of tweets using an activity verb
-and a NE name (full match) out of all that have been matched with an
-NE name (hence the higher scores).
+For this experiment, a small set of activity verbs has been used: \textit{watch, watching, watched,
+play, playing, played, checking out, saw, seen}.
+
+Table 13 shows the ratio of tweets that contain both a NE and an activity verb over all
+tweets that contain a NE.
 
 \begin{center}
   \begin{tabular}{ | p{4cm} | p{2cm} | p{1cm}| p{2cm} | } \hline
@@ -209,15 +209,15 @@ Movies and TV Shows, which originates from the very idea of Twitter for
 updating statuses with information on what the user is currently doing (such as \textit{watching}
 a movie).
 
-\paragraph{Usage of preference vocabulary in Twitter}
-Two sets of preference have been used:
+\paragraph{Usage of opinion vocabulary in Twitter}
+Two sets of opinion words have been used:
 \begin{itemize}
-  \item positive -- such as \textit{like, recommend, love, great, awesome, stunning, good}
-  \item negative -- such as \textit{hate, bad, worse, poor}
+  \item positive -- \textit{like, recommend, love, great, awesome, stunning, good}
+  \item negative -- \textit{hate, bad, worse, poor}
 \end{itemize}
 
-The Table 14 below shows the general use of preference verbs with occurrences of
-mentions.
+The Table 14 below shows the general use of opinion words with occurrences of
+mentions. We have also measured the positive-to-negative preference ratio (in Table 15).
 
 \begin{center}
   \begin{tabular}{ | p{4cm} | p{2cm} | p{1cm}| p{2cm} | } \hline
@@ -227,10 +227,8 @@ mentions.
     TV Actors & 0.0\% & & 0.9\% \\ \hline
     Movie actors & 1.2\% & & 2.7\% \\ \hline
   \end{tabular} \\
-  Table 14: Average ratio of tweets with preference verbs found to all tweets with NE references \\
+  Table 14: Average ratio of tweets with opinion words found to all tweets with NE references \\
 \end{center}
-
-We have also measured the positive-to-negative preference ratio (Table 15):
 
 \begin{center}
   \begin{tabular}{ | p{3cm}| p{2cm} | } \hline
@@ -242,12 +240,12 @@ We have also measured the positive-to-negative preference ratio (Table 15):
 \end{center}
 
 The amount of preference verbs used whilst mentioning a NE is definitely
-smaller compared to activity verbs. However, the positive-to-negative ratio suggests that users'
+smaller compared to activity verbs. The positive-to-negative ratio suggests that users'
 media preferences expressed on Twitter are mostly positive.
 
 \paragraph{Preference towards NEs followed by a user in Twitter}
-By gathering available Twitter usernames from the \textit{Freebase} database,
-we were able to perform searches for mentions of those usernames within the followers' streams.
+We gathered available Twitter usernames from the \textit{Freebase} database and performed searches
+for mentions of those usernames within the followers' streams.
 
 The Table 16 shows the share of different kind of mentions of the specific NE while following.
 
@@ -265,7 +263,7 @@ Since Twitter usernames mostly represent specific people rather than any other k
 mention them using their usernames rather than their names in plain or hashtag form.
 
 However, those mentions occur relatively rarely. For a sample of 70 twitter usernames and 5 followers each
-(around 4000 tweets), we were able to find out only 24 tweets (about 0.57\%) mentioning directly the people they are following.
+(around 4000 tweets), we were able to find out only 24 tweets (about 0.57\%) mentioning directly the people they are following. However, such little amount of data is not enough to base conclusions on.
 
 Furthermore, following a certain NE should also be regarded just as a preference toward the topics this NE is related to (such as Politics for \textit{BarackObama}). On the other hand, automated locating of more \textit{official} twitter usernames for various NEs is challenging, which
 limits the use of this approach.
@@ -278,7 +276,7 @@ YouTube video streams have clearly defined role (favourite, upload or
 subscription) whereas Twitter updates can refer to an entity in a way (positive,
 negative, neutral) that needs to be extracted as well with a possibility of
 introducing errors in the process. However, if extracted correctly (finding a
-preference verb in a Twitter update), the detected interest is very valuable,
+preference verb in a Twitter update), the detected interest is valuable,
 since it describes user's relation with the item directly. For YouTube, on the
 other hand, the information is determined, but its meaning might differ (we
 cannot determine the level of interest based only on the presence or a lack
@@ -287,7 +285,7 @@ items than Twitter updates.
 
 This diversity (more information of low quality for YouTube and less
 information of high quality from Twitter) would make the profile combined from
-both sources much more robust.
+both sources more robust.
 
 \subsection{Challenges}
 
@@ -299,7 +297,7 @@ the most significant ones as well as present and discuss possible solutions.
 \paragraph{How to handle duplicates in YouTube}
 
 When combining tags collected from various sets of videos, a question should be
-asked what preference -- if any -- should be given to tags appearing in more
+asked what preference, should be given to tags appearing in more
 then one of them. Table 17 presents three examples of favourites,
 subscriptions and uploads intersections. The letters $f$, $s$ and $u$ mean
 numbers of videos in accordingly: favourites, subscriptions and uploads. The
@@ -327,7 +325,7 @@ The tags that appeared in all three sets are:
 
 As expected, the tags in the intersection of sets give much more precise view of person's
 interests as compared to tags occurring in a single set. Tags get muted when a user is not active in one of
-those areas (\eg does not upload movies very frequently). In order to minimize it's effect on the
+those areas (\eg does not upload movies very frequently). In order to minimize its effect on the
 end result, weights for different sets may be used, and we can maximize weights for tags occurring
 in multiple sets.
 
@@ -337,31 +335,29 @@ set as a single document, giving each tag equal weight in the counting process.
 Taking a similar approach for subscriptions (\eg giving equal weight to each
 tag of each video of every subscription) leads to some unwanted effects.
 
-Suppose a user subscribes to two channels. One represents the british royal
+Suppose a user subscribes to two channels. One represents the British royal
 family (133 uploads), the other one: Apple Inc., an american computer company
 (19 uploads). The tags referring to new hardware releases would get flooded with
-tags regarding british-specific content. In effect, the user's profile would
+tags regarding british-specific content. In effect, the user profile would
 depend on third parties' youtube activity which is doubtful to be of any
 importance to her.
 
 In order to counteract this effect a number of techniques can be used. One of
 them is giving tags in each subscription a weight, based on the number of videos or
-total number of tags. This and other -- similar -- techniques can lead,
-however, to another distortion of the final results, giving preference to
-subscriptions with hardly any videos (one or two). During rough experiments,
-the authors were not able to find a normalization technique that gave
-fundamentally better results.
+total number of tags. These kinds of techniques can lead to another distortion of
+the final results, giving preference to subscriptions with a few videos.
+During experiments, the authors were not able to find a normalization technique
+that gave fundamentally better results.
 
 \paragraph{Duplicates in Twitter}
 The problem of duplicates does not concern the \textit{Twitter} UAD. Each user has a single
 data stream on which all extraction is performed. This allowed us to focus more attention
 on problems described in section 5.2.2 in relation to \textit{Twitter}.
 
-\subsubsection{Dealing with false positives}
+\subsubsection{Dealing with false positives in the user profile}
 \label{sec:false_positives}
 By \textit{false positives}, we understand matches that have been falsely assigned to a user stating user's interest.
-They occur usually when a user uses the NE name in a unrelated context when the NE name is similar to a
-part of natural language.
+They occur when NE label is ambiguous, \eg 'Lost'.
 
 In order to reduce the chance of such accidental name matches occurring, NE names were ran against a corpus
 of English texts, ranking them by their frequency. The more often an NE name occurs in those corpora, the smaller the chance of it occurring as a name of the TV shows rather than a natural language expression. In order to rate the certainty, a separate function is introduced, taking into account the following:
