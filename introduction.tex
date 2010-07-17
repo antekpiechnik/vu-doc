@@ -52,25 +52,23 @@ Fabian Abel et al. showed in their
 paper ''Interweaving Public User Profiles on the Web'' \cite{public-profiles},
 that systems that gather data from \textit{several} social web services are
 able to draw further-reaching conclusions, than systems that analyze the web
-services content separately for each service. They crawled 160,000 user
+services content separately for a single service. They crawled 160,000 user
 accounts using Google Social Graph API (more on that below) and presented
 profiles with data combined from several user accounts.  The extractors, that
 were prepared during our research will find use in creating such a system.
 
-\paragraph{Twitter and YouTube data analysis} There have been several papers published
-mentioning directly the services we analyzed. Many of them contain sets of
-statistics serving the goal of deeper understanding their nature and patterns
-in which they are used. A. Java et al. \cite{why-we-twitter} describe, what
-they call ''community intentions'', finding out, that main reasons for Twitter
-use are reporting their daily activities and seeking/sharing information. This
-is beneficial information for our work, since both
-of these activities can pass media related content (which is what this paper is
-focused on). Mor Naaman et al. \cite{twitter-content-is-it} extended their
-work, by performing human computation and dividing the categories even further.
+\paragraph{Twitter and YouTube data analysis} Many papers on \textit{Twitter}
+and \textit{YouTube} contain sets of statistics serving the goal of
+deeper understanding of the nature of those services and patterns in which
+\textit{Twitter} and \textit{YouTube} are used. A. Java et al. \cite{why-we-twitter}
+describe, what they call ''community intentions'', finding out, that main reasons for
+Twitter use are reporting their daily activities and seeking/sharing information. This
+is beneficial information for our work, since both of these purposes may involve media
+related content, which we focus on. Mor Naaman et al. \cite{twitter-content-is-it}
+extended this work, by performing human computation and dividing the categories even further.
 The two of three most popular kinds of twitter updates they identified were
 ''Me Now'' -- informing about current activities, and ''Opinions/Complains''.
-Again, both -- depending on the user, though -- are very likely to contain
-media-related content.
+Again, both potentially contain media-related content.
 
 Among works analyzing YouTube, most contain statistics concerning the video
 data gathered on the site, and the implications of the service on the network
@@ -81,8 +79,7 @@ analysis of video length distribution for most popular categories.  While the
 curve shapes look similar for most of them, there is a noticeable difference
 among videos categorized as ''Music''. The most popular time-span of the videos
 there is 3 to 4 minutes -- a typical length of a music clip. This suggests,
-that many of the clips in this category might be considered as a musical track
-representation -- again, a good news for our research.
+that many of the clips in this category might be videos that contain a single song.
 
 \paragraph{Web-Based Graphs} There are several attempts at sneaking additional
 computer-processable semantic data into regular human-readable web pages.  The
@@ -129,7 +126,7 @@ able to to predict its users' answers to various questions based solely on their
 In addition to that, it is able to recommend products
 to users and provide them with links to online stores containing those products.
 Initial prediction results and their accuracy suggest that
-\textit{Twitter} users data does contain information about their preferences.
+\textit{Twitter} user data does contain information about their preferences.
 \textit{Hunch} is a \textit{gray box}
---  it does not provide information on how the recommender system works, but it provides a rich
-API for accessing its data.
+--  it does not provide information on how the recommender system works, but it
+provides a rich API for accessing its data.
