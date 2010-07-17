@@ -7,7 +7,9 @@ The NoTube project bases its recommendation of TV programs on aggregated, extrac
 
 On the Web, a great deal of \textit{user activity data} (UAD) can be found on several networks. This UAD varies from user
 video viewing history and video channels subscriptions, \eg on \textit{YouTube}, to users' activity updates formed
-in natural language, such as \textit{Twitter} \cite{why-we-twitter}.
+in natural language, such as \textit{Twitter} \cite{why-we-twitter}. We believe that this UAD contains enough
+data for accurate media oriented user profiling. We expect such user profiles to have great added value when
+employed in modern recommender systems.
 
 In this paper we experiment on those data streams and evaluate their usefulness to the user profile generation. We answer
 two main research questions:
@@ -19,13 +21,20 @@ two main research questions:
 By the \textit{structured} UAD, we understand data organized in predefined
 preference groups, such as favorites, subscriptions, etc. on \textit{YouTube}.
 We define \textit{unstructured} UAD as data expressed in natural language, \eg user streams on \textit{Twitter}.
+We decided to focus on \textit{Twitter} and \textit{YouTube} due to time constraints and diversification of those two
+services.
 
-To answer the first research question, we focus on analyzing the
-data and the way people use services like \textit{YouTube} and \textit{Twitter} to share
-their media preferences.
+To answer the first research question, we need to identify ways of extracting the UAD from \textit{Twitter}
+and \textit{YouTube}. To do that, we need to focus on analyzing the available data and the way people use
+those services to share their media preferences.
 
 We answer the second research question with a comparative analysis of the available data and
-methods for generating user profiles for both services.
+methods for generating user profiles for both services. We employ methods identified to answer the
+first research question to extract a set of objects contained within UAD and aggregate them
+in order to generate a user profile. This user profile consists of entities a user shows interest in
+along with their preference weights. This approach has been inspired by the recommender used in the
+\textit{NoTube} project. It will also enable us to easily evaluate our results by users profiled.
+
 Our research reveals that more complex methods are required when processing \textit{unstructured} UAD.
 We have also observed that there are differences in user profiling data as well as its
 accuracy. However, despite those differences, both of them may provide
