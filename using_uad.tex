@@ -17,7 +17,7 @@ We will refer to those accidental matches as \textit{false positives} and will d
 \subsubsection{Named Entity Recognition}
 \label{sec:ner}
 
-\paragraph{Identifying entities in Youtube streams}
+\paragraph{Identifying named entities in Youtube streams}
 The linked data concepts can be associated with user data through the use of
 simple text search. The video's title and description fields often carry names
 of people depicted in the clip. Having a set of all actors names we can
@@ -41,18 +41,18 @@ are shown in the Table 8.
       Movies & 45.95\% \\ \hline
       Movie actors & 13.12\% \\ \hline
     \end{tabular} \\
-    Table 8: Rate of video descriptions with entities found using using full name matching. \\
+    Table 8: Rate of video descriptions with NEs found using using full name matching. \\
   \end{center}
 \end{figure}
 
 These numbers are exceptionally large, but unfortunately, a vast number of text
 based matches proved to be false positives. This was the case particularly for
-movie titles, where entities with common names are quite popular (\eg 'Under',
+movie titles, where NEs with common labels are quite popular (\eg 'Under',
 'House', or 'Power').
 
-\paragraph{Full name matching of entities in Twitter}
-We have measured the average ratio of tweets with entities found to all tweets for different kinds of entities
-using full name matching of the entity name.
+\paragraph{Full name matching of named entities in Twitter}
+We have measured the average ratio of tweets with NEs found to all tweets for different kinds of NEs
+using full name matching of the NE label.
 
 \begin{center}
   \begin{tabular}{ | p{4cm} | p{2cm} | p{1cm}| p{2cm} | } \hline
@@ -62,7 +62,7 @@ using full name matching of the entity name.
     Movies & 30.81\% & & 26.19\% \\ \hline
     Movie actors & 0.74\% & & 0.21\% \\ \hline
   \end{tabular} \\
-  Table 9: Percentage of all tweets with recognized entities using full name matching \\
+  Table 9: Percentage of all tweets with recognized NEs using full name matching \\
 \end{center}
 
 Scores presented in Table 9 are used as the a baseline below. Given the results in Table 9, we believe
@@ -90,7 +90,7 @@ are shown in Table 10.
     TV Shows & 3.07\% & & 2.17\% \\ \hline
     Movies & 2.01\% & & 2.33\% \\ \hline
   \end{tabular} \\
-  Table 10: Percentage of all tweets with recognized NEs using the NE's name acronym \\
+  Table 10: Percentage of all tweets with recognized NEs using the NE's label acronym \\
 \end{center}
 
 We can easily spot an increase in matched NEs, since acronyms such as \textit{SNL}
@@ -103,8 +103,8 @@ which we discuss in section \ref{sec:false_positives}. Case sensitive matching c
 but due to time constraints we were unable to perform enough experiments.
 
 \paragraph{Matching of the name converted to a hashtag form (Twitter)}
-For this measurement, all NEs names have been converted to a \textit{hashtag} form (as described
-in Section 3.2). In this experiment, also one-word NE names have been used.
+For this measurement, all NEs labels have been converted to a \textit{hashtag} form (as described
+in Section 3.2). In this experiment, also one-word NE labels have been used.
 
 \begin{center}
   \begin{tabular}{ | p{4cm} | p{2cm} | p{1cm}| p{2cm} | } \hline
@@ -166,7 +166,7 @@ text-based NE finder.
 
 \paragraph{Exploring user-video relation} Even after a video is enriched by
 concepts from Linked Open Data, user's attitude towards it should by analyzed.
-For Twitter, the context of an entity is searched for verbs that would indicate
+For Twitter, the context of a NE is searched for verbs that would indicate
 level of interest. For YouTube, such approach is futile as the user in most
 cases has no impact on description of the video. What we can do, however, is
 analyze the structure of data, that we work with. The presence of a video in
@@ -263,18 +263,20 @@ The Table 16 shows the share of different kind of mentions of the specific NE wh
 Since Twitter usernames mostly represent specific people rather than any other kinds of NEs, it seems as if users mostly
 mention them using their usernames rather than their names in plain or hashtag form.
 
-However, those mentions occur relatively rarely. For a sample of 70 twitter usernames and 5 followers each
-(around 4000 tweets), we were able to find out only 24 tweets (about 0.57\%) mentioning directly the people they are following. However, such little amount of data is not enough to base conclusions on.
+However, those mentions occur relatively rarely. For a sample of 70 \textit{Twitter} usernames and 5 followers each
+(around 4000 tweets), we were able to find out only 24 tweets (about 0.57\%) mentioning directly the people they are
+following. However, such little amount of data is not enough to base conclusions on.
 
-Furthermore, following a certain NE should also be regarded just as a preference toward the topics this NE is related to (such as Politics for \textit{BarackObama}). On the other hand, automated locating of more \textit{official} twitter usernames for various NEs is challenging, which
-limits the use of this approach.
+Furthermore, following a certain NE should also be regarded just as a preference toward the topics this NE is related to
+(such as Politics for \textit{BarackObama}). On the other hand, automated locating of more \textit{official}
+\textit{Twitter} usernames for various NEs is challenging, which limits the use of this approach.
 
 \paragraph{Comparison of relevant user activities extraction}
 
 The interest extraction, even though based on a similar technique (simple text
 search), has different meaning for Twitter and YouTube data.  Concepts from
 YouTube video streams have clearly defined role (favourite, upload or
-subscription) whereas Twitter updates can refer to an entity in a way (positive,
+subscription) whereas Twitter updates can refer to a NE in a way (positive,
 negative, neutral) that needs to be extracted as well with a possibility of
 introducing errors in the process. However, if extracted correctly (finding a
 preference verb in a Twitter update), the detected interest is valuable,
@@ -367,11 +369,11 @@ They occur when NE label is ambiguous, \eg 'Lost'.
 
 \paragraph{Detecting false positives in Twitter UAD}
 
-In order to reduce the chance of such accidental name matches occurring, NE names were ran against a corpus
-of English texts, ranking them by their frequency. The more often an NE name occurs in those corpora, the smaller the chance of it occurring as a name of the TV shows rather than a natural language expression. In order to rate the certainty, a separate function is introduced, taking into account the following:
+In order to reduce the chance of such accidental name matches occurring, NE labels were ran against a corpus
+of English texts, ranking them by their frequency. The more often an NE label occurs in those corpora, the smaller the chance of it occurring as a name of the TV shows rather than a natural language expression. In order to rate the certainty, a separate function is introduced, taking into account the following:
 
 \begin{itemize}
-  \item form of occurrence of the NE name (string match, hashtag)
+  \item form of occurrence of the NE label (string match, hashtag)
   \item use of an activity verb
   \item use of a preference verb
   \item the frequency of the NE label in a collection of samples of written and spoken language
@@ -506,7 +508,7 @@ heavy metal music fan}
 \end{table}
 
 We can see that category count, even though providing general overview of
-person's interests (and the ways she uses youtube), cannot be used to find
+person's interests (and the ways she uses \textit{YouTube}), cannot be used to find
 specific interests. We can say that a person is more keen to
 favourite music videos or comedy videos after looking at his categories
 (because categories like ''Music'' and ''Comedy'' would stand out), but in
@@ -517,10 +519,10 @@ information gathered. This is what makes tags much more useful for profile gener
 
 For generating user profile from the \textit{Twitter} UAD, we have used methods
 described in section \ref{sec:usage_uad}. We have aggregated the occurrences
-of mentions of different entities, giving a higher weight to more precise mentions, \eg
+of mentions of different NEs, giving a higher weight to more precise mentions, \eg
 full name mentions having a lower weight than \textit{hashtags}. After
 generating the user profile containing all the NEs and preference weights, we have
-applied methods for \textit{false positives} removal to entities that have not achieved
+applied methods for \textit{false positives} removal to NEs that have not achieved
 a predefined threshold.
 
 This approach has its downsides. We have applied methods described in section \ref{sec:false_positives}

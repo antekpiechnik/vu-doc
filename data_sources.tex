@@ -220,7 +220,7 @@ evolved, users started to use \textit{tweets} for a variety of purposes, such as
 sharing information/URLs and reporting news \cite{why-we-twitter, twitter-content-is-it}. In this section we describe available methods to use such unstructured data.
 In our experiments we focus on the following NE extraction methods:
 
-\paragraph{Mentioning NE full names}
+\paragraph{Mentioning NE labels}
 Using simple string matching methods, we search for NE labels within tweets.
 Occurrences of NE names in tweets indicate a potential interest in the NE mentioned. The
 number of references is expected to be positively correlated with the level of interest in the given NE \cite{twitter-content-is-it}.
@@ -228,7 +228,7 @@ Entities might be mentioned by:
 \begin{itemize}
   \item \textit{full name} (\eg \textit{"Having a How I Met Your Mother marathon."})
   \item \textit{hashtag} (\eg \textit{"Who?! Where? I love \#HowIMetYourMother!"})
-  \item \textit{twitter username} (NE's twitter username, if known, \eg \textit{"@HIMYM\_CBS It entertains the spirit"})
+  \item \textit{twitter username} (NE's \textit{Twitter} username, if known, \eg \textit{"@HIMYM\_CBS It entertains the spirit"})
   \item \textit{acronyms} (\eg \textit{"Watching HIMYM. Season 3."})
 \end{itemize}
 \paragraph{Usage of opinion vocabulary when tweeting about NEs}
@@ -249,7 +249,7 @@ as watching a show, has to be noted due to the fact that Twitter users are more
 likely to specify what they are doing at a particular moment.
 Example of a tweet: \textit{"Finnally watched Ironman 2 aha'"}
 
-\paragraph{Extracting NEs from structured twitter stream sources}
+\paragraph{Extracting NEs from structured Twitter stream sources}
 Applications, such as \textit{YouTube} or \textit{Boxee}\footnote{http://www.boxee.tv}, automatically generate tweets
 if the user linked their Twitter account with that application. These tweets are
 usually well structured, and therefore very suitable to extract a NE, activity or preference.
@@ -266,7 +266,7 @@ We present the possible measurements for extracting the UAD from
     \hline
     \multirow{4}{*} {Mentioning NEs}
       & Full name matching \\ \cline{2-2}
-      & Matching the twitter username (if known) \\ \cline{2-2}
+      & Matching the Twitter username (if known) \\ \cline{2-2}
       & Matching name converted to a hashtag form \\ \cline{2-2}
       & Matching the full name acronym \\ \cline{2-2}
     \hline

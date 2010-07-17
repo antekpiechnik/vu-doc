@@ -13,7 +13,7 @@ of the Ruby language.
 \subsubsection{Structure}
 The \textbf{Extractor} part retrieves the data from Twitter. The Twitter API requests are being handled via the \textit{OAuth}\footnote{http://oauth.net/} protocol and provided in a
 \textit{JSON}-based stream form. Only the newest tweets for the Twitter
-users are downloaded. The entities definitions and semantics are provided by
+users are downloaded. The NE definitions and semantics are provided by
 the \textit{Freebase} database REST interface. All further processing by the \textit{Associator}
 occurs locally on the pre-loaded Twitter data.
 
@@ -87,7 +87,7 @@ library, which simplifies the installation process and lets us avoid dependency
 on a particular Python implementation (such an approach makes the eventual
 switch to \textit{Jython}\footnote{http://www.jython.org} far easier). The
 standard library modules used were: ElementTree -- for xml processing, csv --
-for reading freebase data dumps and urllib2 -- for accessing the API.
+for reading \textit{Freebase} data dumps and urllib2 -- for accessing the API.
 
 A set of additional scripts was prepared that were used for YouTube data
 analysis. These scripts rather than analyzing single user's data, worked over a
