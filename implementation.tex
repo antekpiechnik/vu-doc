@@ -58,10 +58,18 @@ programming language. Using high-level programming language let us focus on the 
 gory details like memory management.
 
 \subsubsection{Structure and Workflow}
-The main program -- that's the one responsible for generating user's preferences
+The main program -- the one responsible for generating user's preferences
 -- connects to \textit{YouTube} API in order to receive the required data. The
-API responses come as xml documents, and are further processed and analyzed in search of
-pieces of data, that are of interest to the examined subject.
+API responses come as xml documents, and are analyzed in search of the pieces of
+data we are interested in (titles and descriptions). Amond these pieces of text,
+the Freebase concepts are sought. For repeating items, their number is kept,
+which is leter used as a preference indicator.  The Freebase data
+is stored as flat files, downloaded from the dumps regularily published by the
+Freebase service.
+
+The corpora for analysis was collected using breadth-first search graph
+traversal through YouTube contacts. The corpus of video titles and descriptions
+was collected based on those user's favourites.
 
 \begin{figure}[h!]
   \begin{center}
@@ -87,7 +95,3 @@ This information includes number of people using various features (see section
 Parts of data extracted for this research was only possible to obtain after
 authentication. This was performed using http-based Google's protocol designed
 for this purpose.
-
-The corpora for analysis was collected using bfs graph traversal through YouTube
-contacts. The corpus of video titles and descriptions was collected based on
-those user's favourites.
