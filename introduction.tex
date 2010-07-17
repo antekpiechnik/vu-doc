@@ -42,22 +42,26 @@ work, a summary (section 9) and our implementation details (section 10).
 \paragraph{The problem of generating semantic user profile} is widely covered in the
 research area. Maria Golemati et al. created the basic ontology for describing
 user profile data \cite{creating-ontology-for-user-profile}. It proved to be
-very suitable for static data concerning users, however -- not particularly
-helpful for data that changes frequently. Fabian Abel et al. showed in their
+very suitable for static data concerning users. However -- not particularly
+so for data that changes frequently. Our profilers describe elements of user
+profile, that change on a regular basis -- their interests.  
+
+Fabian Abel et al. showed in their
 paper ''Interweaving Public User Profiles on the Web'' \cite{public-profiles},
 that systems that gather data from \textit{several} social web services are
 able to draw further-reaching conclusions, than systems that analyze the web
 services content separately for each service. They crawled 160,000 user
 accounts using Google Social Graph API (more on that below) and presented
 profiles with data combined from several user accounts.  The extractors, that
-were prepared during our research might find use in creating such a system.
+were prepared during our research will find use in creating such a system.
 
-\paragraph{Twitter and YouTube} There have been several papers published
+\paragraph{Twitter and YouTube data analysis} There have been several papers published
 mentioning directly the services we analyzed. Many of them contain sets of
 statistics serving the goal of deeper understanding their nature and patterns
 in which they are used. A. Java et al. \cite{why-we-twitter} describe, what
-they call ''community intensions'', finding out, that main reasons for Twitter
-use are reporting their daily activities and seeking/sharing information. Both
+they call ''community intentions'', finding out, that main reasons for Twitter
+use are reporting their daily activities and seeking/sharing information. This
+is beneficial information for our work, since both
 of these activities can pass media related content (which is what this paper is
 focused on). Mor Naaman et al. \cite{twitter-content-is-it} extended their
 work, by performing human computation and dividing the categories even further.
@@ -73,37 +77,57 @@ traffic \cite{i-tube-you-tube}, \cite{views-from-the-edge},
 \cite{statistics-and-social-network} contains -- among other experiments --
 analysis of video length distribution for most popular categories.  While the
 curve shapes look similar for most of them, there is a noticeable difference
-among videos categorized as ''Music''. The most popular time-span if the videos
+among videos categorized as ''Music''. The most popular time-span of the videos
 there is 3 to 4 minutes -- a typical length of a music clip. This suggests,
 that many of the clips in this category might be considered as a musical track
-representation.
+representation -- again, a good news for our research.
 
-\paragraph{Web-based graphs}. There are several attempts at sneaking additional
+\paragraph{Web-Based Graphs} There are several attempts at sneaking additional
 computer-processable semantic data into regular human-readable web pages.  The
 simplest of these are \textit{microformats}. The idea is to use well-defined
 markup names, so that others could analyze, and possibly provide additional
-features based on that.  The \textit{Google Social Graph} is an attempt at grasping
+features based on that. Several microformats for social activity, and semantic
+links between the pages, are heavily promoted. The information stored in
+websites, that contain these micro-formatted pieces of data, forms a semantic
+graph, which we will call a Web-Based Graph (WBG).  
+The \textit{Google Social Graph} is an attempt at grasping
 the semantic data published across many social web sites. Namely: it uses a web
 crawler to find and recognize FOAF (ontology) and XFN (a \textit{microformat}) profiles,
-and gives API access to anyone who is willing to explore that resources. A
-similar initiative, more vendor specific, however is Facebook's Open Graph
-Protocol. It lets webmasters integrate their sites with Facebook, giving them
+and gives API access to anyone who is willing to explore that resources.
+
+Another WBG that gains popularity in the recent days, is Facebook's Open Graph
+Protocol. It lets webmasters integrate their sites with Facebook, by giving them
 identity as nodes in a global graph, that the company uses for their
-web service. As the graph data in hidden within web pages \textit{meta tags},
+web service. As the graph data is hidden within web pages' \textit{meta tags},
 it is freely available for everyone to access.
 
+One could expect, that one of the goals of introducing these technologies will
+be to prepare user profiles based on semantic knowledge accumulated from across
+the web.  This resembles topic of our research, and we expect a number of works
+on profiling based of WBGs to appear in the future, as the
+popularity of such technologies arises.
+
 \paragraph{Semantic recommender systems} Our work will be used to generate input
-for a media related semantic recommender system. Several systems like this have
+for a media-related semantic recommender system. Several systems like this have
 been published, covering, however, other thematic areas, like works of art and
-antics \cite{museums} or web search \cite{social-tagging}.
+antics \cite{museums} or web search \cite{social-tagging}. An integral part of
+these solutions is preparation of a user model. The user model employed in
+\cite{museums} uses a similar scale for describing person's relation to an item.
+The degree of likeness ranges from ''I hate it'' to ''I like it very much''
+across 5 levels. The scale we decided to use limits the negative marks to
+a single level only, and provides another mark that explicitly specifies user's unawareness
+of and item.
 
-
-\paragraph{Hunch}
-\textit{Hunch}\footnote{http://www.hunch.com} is a service offering recommendations on different topics based on a user's
-\textit{Twitter} data. It is able to employ methods of graph reasoning for users followers and following lists
-in order to predict his answers to various questions. In addition to that, it is able to recommend products
+Also worth mentioning here is the proprietary solution
+\textit{Hunch}\footnote{http://www.hunch.com}. It is a web service that offers
+recommendations on different topics based on a user's \textit{Twitter} data. As
+opposed to the WBG solutions, it limits itself to a single source. Yet, it is
+able to to predict its users' answers to various questions based solely on their
+\textit{Twitter} updates, followers and following lists.
+In addition to that, it is able to recommend products
 to users and provide them with links to online stores containing those products.
 Initial prediction results and their accuracy suggest that
-\textit{Twitter} users data does contain information about their preferences. \textit{Hunch} is a \textit{gray box}
+\textit{Twitter} users data does contain information about their preferences.
+\textit{Hunch} is a \textit{gray box}
 --  it does not provide information on how the recommender system works, but it provides a rich
-API for accessing its data
+API for accessing its data.
