@@ -203,12 +203,14 @@ data was used to compute number of video descriptions with identifiable concepts
 \textit{Freebase}\footnote{http://freebase.com} data vocabularies (more on this in section 4).
 
 \subsection{Twitter}
+\label{sec:twitter_uad}
 
 Data available on \textit{Twitter} is composed of natural language short messages posted by users
 consisting of up to 140 characters, commonly known as \textbf{tweets}. Within
 those tweets we can distinguish user mentions (\textit{Twitter} usernames preceeded with the symbol @,
-such as \textit{@justinbieber} -- accessible via \textit{Twitter}\footnote{http://twitter.com/justinbieber}) as well as topics in form of \textit{hashtags} -- name stripped of all whitespace
-and preceded by the hash symbol, \eg \textit{\#TheDailyShow} \cite{edinburg-corpus}.
+such as \textit{@justinbieber}\footnote{http://twitter.com/justinbieber}) as well as topics in form of
+\textit{hashtags} -- names stripped of all whitespace and preceded by the hash symbol,
+\eg \textit{\#TheDailyShow} \cite{edinburg-corpus}.
 
 The initial purpose of tweets was to inform other users of currently performed activities. However, as this service has
 evolved, users started to use \textit{tweets} for a variety of purposes, such as conversations,
@@ -216,8 +218,8 @@ sharing information/URLs and reporting news \cite{why-we-twitter, twitter-conten
 In our experiments we focus on the following NE extraction methods:
 
 \paragraph{Mentioning NE full names}
-Using simple string matching methods, we search for NE names within \textit{Twitter} users' streams and updates.
-Occurrences of NE names in the stream indicate interest in the NE mentioned. The
+Using simple string matching methods, we search for NE labels within tweets.
+Occurrences of NE names in tweets indicate a potential interest in the NE mentioned. The
 number of references is expected to be positively correlated with the level of interest in the given NE \cite{twitter-content-is-it}.
 Entities might be mentioned by:
 \begin{itemize}
@@ -226,21 +228,21 @@ Entities might be mentioned by:
   \item \textit{twitter username} (NE's twitter username, if known, \eg \textit{"@HIMYM\_CBS It entertains the spirit"})
   \item \textit{acronyms} (\eg \textit{"Watching HIMYM. Season 3."})
 \end{itemize}
-\paragraph{Usage of preference vocabulary when tweeting about NEs}
-In order to extract preference towards a NE from a tweet, vocabularies that express
-preference was prepared. They have been pragmatically chosen by looking at random tweets.
-This vocabulary contains the following words: \textit{like, recommend, liked, love, great,
-awesome, enjoyed, stunning, loving, good, hate, bad, worst, poor}.
+\paragraph{Usage of opinion vocabulary when tweeting about NEs}
+In order to extract opinion towards a NE from a tweet, vocabularies that express
+opinion has been compiled. They have been pragmatically chosen by looking at random tweets.
+This vocabulary contains the following words: \textit{awesome, bad, enjoyed, good, great, hate,
+like, liked, love, loving, poor, recommend, stunning, worst}.
 Those verbs were searched for in the tweets containing NE mentions.
 Example of a tweet: \textit{"yesterday's \#Lost episode was stunning!"}
 \paragraph{Usage of activity verbs when tweeting about NEs}
 When mentioning a media-related NE, users may also describe the activity performed.
 In order to find such tweets, an activity verbs vocabulary has been prepared (similarly to
-the preference verbs, it was chosen by looking at the contents of random tweets).
+the opinion verbs, it was chosen by looking at the contents of random tweets).
 This vocabulary contains the followings verbs: \textit{watching, watched, play,
 watch, playing, saw, seen, played}.
-Describing the activity of participating in a certain TV experience (such
-as watching a show) has to be noted due to the fact that Twitter users are more
+Describing the activity of participating in a certain TV experience, such
+as watching a show, has to be noted due to the fact that Twitter users are more
 likely to specify what they are doing at a particular moment.
 Example of a tweet: \textit{"Finnally watched Ironman 2 aha'"}
 
@@ -272,30 +274,30 @@ We present the possible measurements for extracting the UAD from
       & Positive preferences \\ \cline{2-2}
       & Negative preferences \\ \cline{2-2}
     \hline
-    \multirow{3}{*}{Researching mentions}
-      & Finding average amount of mentions-to-tweets ratio \\ \cline{2-2}
-    \hline
   \end{tabular}
 Table 7: Overview of the measures available for the \textit{Twitter} UAD extraction \\
 \end{center}
 
 \subsubsection{Corpus used for research}
 
-The example data analyzed consists of Twitter streams consisting in total of about 42,000 tweets of
-203 different users. They have been selected by looking at the followers of popular TV
-channels and broadcasters available on Twitter. Users were selected based on the number
-of tweets and their followers. For our experiments, we have focused on tweets in English.
+The example data analyzed consists of 43,000 tweets of 203 different users.
+They have been selected by looking at the followers of popular TV channels and broadcasters
+available on Twitter. Users were selected based on the number of tweets and their followers.
+For our experiments, we have focused on tweets in English.
 
-The most significant reason for using a precompiled corpus for this research is the Twitter API Rate Limiting
-which makes a wider analysis challenging. Furthermore, a great deal of Twitter users provide data not necessarily
-useful for our experiments. All non-English mentions may be located,
-but make extracting preference information more challenging. Using a preselected corpus enables measuring and comparing the effectiveness of different counting methods much easier \cite{short-tweet}.
+The most significant reason for using a precompiled corpus for this research is the Twitter API
+Rate Limiting which limits the amount of tweets that can be fetched using the API.
+Furthermore, a great deal of Twitter users provide data not necessarily
+useful for our experiments. Mentions of NEs in non-English tweets could be located, but
+extracting preference information in a multi-lingual setting is more challenging.
+Using a preselected corpus enables measuring and comparing the effectiveness of different
+counting methods much easier \cite{short-tweet}.
 
 \subsection{Metrics used in constructing User Profile}
 
 The generated user profile is a collection of concepts along with their
-weights. In order to keep the scale of the weight simple (more on that in the
-''User evaluation'' section), we limited the scale to an integer range from 0
+weights. In order to keep the scale of the weight simple (more on that in section
+\ref{sec:evaluation}), we limited the scale to an integer range from 0
 up to 3, meaning accordingly: ''do not like'', ''neutral'', ''like'', ''like
 very much''. In order to determine the weight for each concepts, simple metrics
 were used: number of repeats normalized to the mostly repeated item for
