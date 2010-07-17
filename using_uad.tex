@@ -1,29 +1,33 @@
 \section{Using user activity data}
 \label{sec:usage_uad}
 
-Our goal is to extract a user profile. The goal of this section is to create a comparative analysis the UAD
-available on of different \textit{Twitter} and \textit{YouTube} identified in section 3 for generating a user profile.
-We focus on discussing methods and approaches. We also describe encountered challenges and discuss proposed solutions.
+Our object is to extract a user profile. The goal of this section is to create a comparative analysis the UAD
+available on of different \textit{Twitter} and \textit{YouTube} identified in section \ref{sec:uad} for generating
+a user profile. We focus on discussing methods and approaches. We also describe encountered challenges and discuss
+proposed solutions.
 
 \subsection{Method}
-In this section we want to present methods and results of using the UAD described in section 3 for generating a user
-profile. We will focus on the Named Entity Recognition, as well as extracting relevant types of user activity
-for both services.
+In this section we want to present methods and results of using the UAD described in section \ref{sec:uad} for
+generating a user profile. We will focus on the Named Entity Recognition, as well as extracting relevant types
+of user activity for both services. We expect many \textit{false positives} to occur, i.e. incorrectly identified NEs
+-- when the NE name is a single word highly popular in natural language (such as \textit{Love} or \textit{Hotel}).
+We will refer to those accidental matches as \textit{false positives} and will discuss avoiding them in section
+\ref{sec:false_positives}.
 
 \subsubsection{Named Entity Recognition}
 
 \paragraph{Identifying entities in Youtube streams}
 The linked data concepts can be associated with user data through the use of
 simple text search. The video's title and description fields often carry names
-of people depicted in the clip. Having a set of all actors' names we can
+of people depicted in the clip. Having a set of all actors names we can
 identify their occurrences.
 
-This approach is not ideal. Many false positives can be returned, particularily
-for concepts that are also common phrases (\eg the "Lost" TV show).
+This approach is not ideal. Many \textit{false positives} can be returned, particularly
+for concepts that are also common phrases (\eg the 'Lost' TV show).
 
 \paragraph{Pervasiveness of linked data concepts in YouTube}
 A set of statistics was prepare to measure the pervasiveness of linked data
-concepts as extracted from the freebase vocabularies. The matching performed
+concepts as extracted from the \textit{Freebase} vocabularies. The matching performed
 was a simple text-based search in videos titles and descriptions. It's results
 are shown in the Table 8.
 
@@ -36,7 +40,7 @@ are shown in the Table 8.
       Movies & 45.95\% \\ \hline
       Movie actors & 13.12\% \\ \hline
     \end{tabular} \\
-    Table 8: Rate of video descriptions with entities found using text-based matching. \\
+    Table 8: Rate of video descriptions with entities found using using full name matching. \\
   \end{center}
 \end{figure}
 
@@ -46,7 +50,8 @@ movie titles, where entities with common names are quite popular (\eg 'Under',
 'House', or 'Power').
 
 \paragraph{Full name matching of entities in Twitter}
-We have measured the average ratio of tweets with entities found to all tweets for different kinds of entities using full name matching of the entity name.
+We have measured the average ratio of tweets with entities found to all tweets for different kinds of entities
+using full name matching of the entity name.
 
 \begin{center}
   \begin{tabular}{ | p{4cm} | p{2cm} | p{1cm}| p{2cm} | } \hline
@@ -59,19 +64,17 @@ We have measured the average ratio of tweets with entities found to all tweets f
   Table 9: Percentage of all tweets with recognized entities using full name matching \\
 \end{center}
 
-Scores presented in Table 9 are used as the a baseline below. Given the results in Table 9, we expect that
-many \textit{false positives} occur, i.e. incorrectly identified NEs -- when the NE name is a single
-word highly popular in natural language (such as \textit{Love} or \textit{Hotel}). We will refer to those accidental
-matches as \textit{false positives} and will discuss avoiding them in section 6.3. Out of half of the corpus, an
+Scores presented in Table 9 are used as the a baseline below. Given the results in Table 9, we believe
+most of them are \textit{false positives}. Out of half of the corpus, an
 average of 99 tweets contained a reference to an actor (TV or Movie). This is a low score, but considering the
-purpose of \textit{Twitter} (as described in section 3.2), we have been expecting them and still believe this amount
+purpose of \textit{Twitter} (as described in section \ref{sec:twitter_uad}), we have been expecting them and still believe this amount
 might be enough for user profiling. On the other hand, the number of such tweets for TV show names is almost 14,500
 tweets. This suggests that \textit{false positives} problem will be a obstacle to achieve accurate results.
 
 \paragraph{Matching Twitter usernames}
 Due to small number of available Twitter usernames for NEs in the \textit{Freebase} dataset (as of writing this
 paper -- 182 \textit{Twitter} usernames related to TV), this approach is not proving effective. After including those
-usernames in the search, we noticed little (0.02\% in on of the corpuses for TV Shows) to almost none increase in
+usernames in the search, we noticed little (0.02\% in on of the corpuses for TV Shows) to almost no increase in
 the results.
 
 \paragraph{Matching title acronyms in Twitter}
@@ -94,7 +97,9 @@ We can easily spot an increase in matched NEs, since acronyms such as \textit{SN
 However there might be many misleading acronyms created with this approach. If an acronym is similar
 to a natural language word (\eg \textit{CAT}), it will drastically increase the noise and the amount
 of \textit{false positives} generated by the matching algorithms (thus the higher percentage of tweets
-found). This problem might be solved by methods for avoiding the false positives, which we discuss in section 6.3.
+found). This problem might be partially solved by methods for avoiding the false positives,
+which we discuss in section \ref{sec:false_positives}. Case sensitive matching could also be helpful,
+but due to time constraints we were unable to perform enough experiments.
 
 \paragraph{Matching of the name converted to a hashtag form (Twitter)}
 For this measurement, all NEs names have been converted to a \textit{hashtag} form (as described
@@ -108,17 +113,17 @@ in Section 3.2). In this experiment, also one-word NE names have been used.
     Movies & 2.49\% & & 3.12\% \\ \hline
     Movie actors & 0.67\% & & 0.09\% \\ \hline
   \end{tabular} \\
-  Table 11: Percentage of all tweets with recognized NEs using hashtag formed from the NE name \\
+  Table 11: Percentage of all tweets with recognized NEs in hashtag form \\
 \end{center}
 
 The results in Table 11 let us notice how the person-based NEs have either noted a smaller
 occurrence rate and the title-based ones have improved. This may be related to the
 fact that people usually create hashtags based on a more general entity (such as
-a movie) rather then it's specific parts (such as actors that play in it)
+a movie) rather then its specific parts (such as actors that play in it)
 when expressing their opinion \cite{edinburg-corpus}
 
 \paragraph{Measuring the frequency of NEs in matched tweets}
-We have decided to measure how much NEs can be found in an average matched tweet. By a matched tweet,
+We have decided to measure the average amount of detected NEs per matched tweet. By a matched tweet,
 we understand a tweet where a mention of an NE has been found (via any of the methods mentioned above).
 
 \begin{center}
@@ -133,28 +138,28 @@ we understand a tweet where a mention of an NE has been found (via any of the me
 
 The results in Table 12 show that on an average, every time a tweet contains a mention of an NE,
 it is likely to contain an additional reference to some other NE. This suggests that users try to add
-more references to a tweet when it's already related to media. This might also be helpful for detecting the
-context of a single tweet in search of media references.
+more references to a tweet when it's already related to media. This allows us to consider the context
+in which NEs are used for improving the accuracy of the Named Entity Recognition methods.
 
 \paragraph{Comparison of Named Entity Recognition in YouTube and Twitter}
-YouTube looks to be a more promising area for this kind of search. The
-linked data concepts were present in up to 50 times as many items as for the other
-web service for every type of concepts searched. This is most probably a
-result of different natures of text data in both services.
+By comparing results from Tables 8 and 9, \textit{YouTube} looks to be a more promising area for this
+kind of search. The linked data concepts were present in up to 50 times as many items as for the other
+web service for every type of concepts searched. This is most probably a result of different natures of
+text data in both services.
 
-Twitter web service doesn't encourage its users to publish their tweets in any
+\textit{Twitter} web service doesn't encourage its users to publish their tweets in any
 specific form. The only requirement is that the length of a single message
 is less than 140 characters, making them too short for users to elaborate
 on details of their activities. Moreover, tweets are often parts of
-conversations. In a video description on YouTube, even the name
+conversations. In a video description on \textit{YouTube}, even the name
 suggests that this field should be used to characterize the contents
 of a video. Such a difference in suggested use might explain the fact that
-much more named NEs were found in YouTube stream. Also, a relatively
-unrestrained form of Twitter updates is probably the reason for a lower rate of
-concepts found in data coming from this web service. Often, instead of properly
-mentioning an NE by name Twitter user would decide to use only person's
-last name of an acronym of a TV show's title. This results in a
-lower effectiveness of text-based NE finder.
+many more NEs were found in \textit{YouTube} stream. Also, a relatively
+unrestrained form of tweets is probably the reason for a lower rate of
+concepts found in data coming from this web service. Often, instead of referring to
+a NE by its full name, \textit{Twitter} users often use a person's
+last name or the acronym of a TV show. This results in a lower effectiveness of
+text-based NE finder.
 
 \subsubsection{Extracting relevant types of user activity}
 
@@ -353,6 +358,7 @@ data stream on which all extraction is performed. This allowed us to focus more 
 on problems described in section 5.2.2 in relation to \textit{Twitter}.
 
 \subsubsection{Dealing with false positives}
+\label{sec:false_positives}
 By \textit{false positives}, we understand matches that have been falsely assigned to a user stating user's interest.
 They occur usually when a user uses the NE name in a unrelated context when the NE name is similar to a
 part of natural language.
