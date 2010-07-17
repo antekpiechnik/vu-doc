@@ -1,4 +1,5 @@
 \section{Future developments}
+\label{sec:future}
 
 In this section, we discuss the application of our work in a real-life project
 as well as future of our work in context of the current
@@ -21,15 +22,14 @@ and let him actually watch the shows. This is another source of data useful as
 an input to the recommender module.
 
 Both \textit{YouTube} and \textit{Twitter} certainly do contain information
-useful for this topic. However, for limited sets of data (non-active
-Twitter/YouTube users), the recommender might need to incorporate more advanced methods
-for media topics recognition or maybe require an evaluation of information extracted
-from those streams by the user. Given the little amounts of media-related information
-in some of user's streams, results obtained from incorporating such methods might
-prove useful only for the cold-start situation, that is: to estimate the user's interests
-very roughly in hope to gather more data during user's activity.
+useful for this topic, allowing \textit{NoTube} recommender to benefit from
+our work. Its results could be further improved by incorporating more advanced methods
+for media topics recognition and maybe an evaluation of information extracted
+from those streams by the user. If a user is not active on any of the described
+UAD sources, combining results from both services should provide enough information
+to generate a user profile.
 
-However, for very active Twitter and YouTube users, the profiles extracted
+For very active Twitter and YouTube users, the profiles extracted
 might be rich enough to be very useful for recommender systems. The amount of
 information generated would be a considerable set to run a recommender against.
 
@@ -40,7 +40,7 @@ discuss the possible changes and their influence on this research.
 
 \paragraph{YouTube}
 
-In the recent years, YouTube officially incorporated television shows on their
+In recent years, YouTube officially incorporated television shows on their
 site \cite{youtube-tv-shows} and a plethora of shows is uploaded by the users
 every day, which indicates that increasing number of users uses this service to
 watch their favourite TV shows. This number would possibly increase even more
@@ -60,10 +60,10 @@ Recently \textit{Twitter} has announced plans of bringing advertising (\eg in a 
 users might show some interest in additional subjects mentioned in their
 streams.
 
-\textit{Twitter} has recently announced\footnote{http://blog.twitter.com/2010/05/twitter-platform.html},
+\textit{Twitter} has recently announced\footnote{http://blog.twitter.com/2010/05/twitter-platform.html}
 enrichments (called the Annotations) that will bring semantic-like concepts
 into all tweets and making users able to retweet those concepts and find
-out more about them. This could increase the probability of matching entities correctly.
+out more about them. This could increase the probability of matching NEs correctly.
 
 We expect those changes to have an influence on how people use \textit{Twitter}
 to share their media preferences. This might improve the accuracy of the improved
@@ -74,24 +74,24 @@ user profile extraction methods.
 We collected a list of techniques the application of which would be an
 interesting topic for further research. Some of them are listed below.
 
-\subsubsection{Context/Semantic-based entity and context recognition}
+\subsubsection{Context/Semantic-based named entity and context recognition}
 
-In order to enhance the accuracy of entities recognized within a user's Twitter
+In order to enhance the accuracy of NEs recognized within a user's Twitter
 stream, one could employ search methods based on analyzing a single tweet's
 context regarding other topics related to the media field using semantic
 services.  However, this approach could be much slower for multiple tweets
 within a significant userbase.
 
-Some entity categories (such as \textit{TV Actors}) can be ambiguous
+Some NE categories (such as \textit{TV Actors}) can be ambiguous
 (such as \textbf{John Terry the actor} and \textbf{John Terry the footballer}).
 Such situations would require us to use additional methods (such as context-based
-reasoning) in order to accurately identify the entity in question.
+reasoning) in order to accurately identify the NE in question.
 
-\subsubsection{Comparison of TV show entities against more natural language corpora}
+\subsubsection{Comparison of TV show named entities against more natural language corpora}
 
 In addition to methods described in section 6.3, to further minimize the amount of \textit{false positives}
-matched in a user's stream, different entities' names and aliases should be ran against corpora
+matched in a user's stream, different NE labels and aliases should be ran against corpora
 that are strictly \textbf{unrelated} to the topic of the recommender, (such as TV or other media related
-newspaper/magazine articles). This might further increase it's accuracy when filtering the accidental
+newspaper/magazine articles). This might further increase its accuracy when filtering the accidental
 matches. Using this approach while also using semantic recognition could decrease recommender's
 speed even further.

@@ -1,10 +1,13 @@
 \section{Introduction}
 
 Recommender systems used to involve recommending more physical objects \cite{combining-cf-with-pa} to users.
-However, more and more abstract topics are becoming parts of such recommenders (such as tags) \cite{accuracy-recommending}. The NoTube project bases its recommendation of TV programmes on aggregating,
-extracting and analyzing user activities \cite{notube-main}.
+However, more and more abstract topics are becoming parts of such recommenders (such as tags) \cite{accuracy-recommending}.
+The NoTube project bases its recommendation of TV programs on aggregated, extracted and analyzed user activities
+\cite{notube-main}.
 
-On the Web, a great deal of \textit{user activity data} can be found on several networks. This UAD (\textit{user activity data}) varies from user video viewing history and subscriptions to video channels (\eg \textit{YouTube}) to users' activity updates formed in natural language (such as \textit{Twitter}) \cite{why-we-twitter}.
+On the Web, a great deal of \textit{user activity data} (UAD) can be found on several networks. This UAD varies from user
+video viewing history and video channels subscriptions, \eg on \textit{YouTube}, to users' activity updates formed
+in natural language, such as \textit{Twitter} \cite{why-we-twitter}.
 
 In this paper we experiment on those data streams and evaluate their usefulness to the user profile generation. We answer
 two main research questions:
@@ -13,29 +16,28 @@ two main research questions:
   \item How useful is \textit{structured} UAD as compared to \textit{unstructured} UAD, to generate a user profile?
 \end{enumerate}
 
-By the \textit{structured} user activity data, we understand data organized in predefined
-preference groups (such as favorites, subscriptions, etc. on \textit{YouTube}).
-We define \textit{unstructured} UAD, on the other hand, as data expressed in natural language
-(user streams on \textit{Twitter}).
+By the \textit{structured} UAD, we understand data organized in predefined
+preference groups, such as favorites, subscriptions, etc. on \textit{YouTube}.
+We define \textit{unstructured} UAD as data expressed in natural language, \eg user streams on \textit{Twitter}.
 
 To answer the first research question, we focus on analyzing the
 data and the way people use services like \textit{YouTube} and \textit{Twitter} to share
 their media preferences.
 
 We answer the second research question with a comparative analysis of the available data and
-methods for generating user profile for both services.
+methods for generating user profiles for both services.
 Our research reveals that more complex methods are required when processing \textit{unstructured} UAD.
 We have also observed that there are differences in user profiling data as well as its
 accuracy. However, despite those differences, both of them may provide
-enough opportunities for user media preference extraction.
+enough opportunities for user preference extraction.
 
-In the following section we describe related work on the subject. In section 3, we describe
-a selection of sources of user activities on the Social Web. Section 4 contains the description of
-the vocabulary we employed in our experiments. We follow by detailing the results of our experiments
-with the usage of \textit{structured} (section 5) and \textit{unstructured} (section 6) user activity data.
-The next part of the paper (section 7) is a comparison of the usage of both kinds of UAD. Section 8
-details the user evaluation of generated profiles. We conclude with a section on future
-work, a summary (section 9) and our implementation details (section 10).
+In the following section we describe related work on the subject. In section \ref{sec:vocabulary}, we describe the
+vocabulary we employed in our experiments. Section \ref{sec:uad} contains a description of a selection of sources
+of user activities on the Social Web. We follow by detailing the results of our experiments
+with the usage of UAD, describing methods applied, challenges encountered and generating a user profile in
+section \ref{sec:usage_uad}. Section \ref{sec:evaluation} details the user evaluation of generated profiles.
+We conclude with a section on future developments in section \ref{sec:future}, our implementation details
+in section \ref{sec:implementation} and a summary of our work in section \ref{sec:conclusion}
 
 \section{Related work}
 
@@ -50,25 +52,23 @@ Fabian Abel et al. showed in their
 paper ''Interweaving Public User Profiles on the Web'' \cite{public-profiles},
 that systems that gather data from \textit{several} social web services are
 able to draw further-reaching conclusions, than systems that analyze the web
-services content separately for each service. They crawled 160,000 user
+services content separately for a single service. They crawled 160,000 user
 accounts using Google Social Graph API (more on that below) and presented
 profiles with data combined from several user accounts.  The extractors, that
 were prepared during our research will find use in creating such a system.
 
-\paragraph{Twitter and YouTube data analysis} There have been several papers published
-mentioning directly the services we analyzed. Many of them contain sets of
-statistics serving the goal of deeper understanding their nature and patterns
-in which they are used. A. Java et al. \cite{why-we-twitter} describe, what
-they call ''community intentions'', finding out, that main reasons for Twitter
-use are reporting their daily activities and seeking/sharing information. This
-is beneficial information for our work, since both
-of these activities can pass media related content (which is what this paper is
-focused on). Mor Naaman et al. \cite{twitter-content-is-it} extended their
-work, by performing human computation and dividing the categories even further.
-The two of three most popular kinds of twitter updates they identified were
+\paragraph{Twitter and YouTube data analysis} Many papers on \textit{Twitter}
+and \textit{YouTube} contain sets of statistics serving the goal of
+deeper understanding of the nature of those services and patterns in which
+\textit{Twitter} and \textit{YouTube} are used. A. Java et al. \cite{why-we-twitter}
+describe, what they call ''community intentions'', finding out, that main reasons for
+Twitter use are reporting their daily activities and seeking/sharing information. This
+is beneficial information for our work, since both of these purposes may involve media
+related content, which we focus on. Mor Naaman et al. \cite{twitter-content-is-it}
+extended this work, by performing human computation and dividing the categories even further.
+The two of three most popular kinds of \textit{Twitter} updates they identified were
 ''Me Now'' -- informing about current activities, and ''Opinions/Complains''.
-Again, both -- depending on the user, though -- are very likely to contain
-media-related content.
+Again, both potentially contain media-related content.
 
 Among works analyzing YouTube, most contain statistics concerning the video
 data gathered on the site, and the implications of the service on the network
@@ -79,8 +79,7 @@ analysis of video length distribution for most popular categories.  While the
 curve shapes look similar for most of them, there is a noticeable difference
 among videos categorized as ''Music''. The most popular time-span of the videos
 there is 3 to 4 minutes -- a typical length of a music clip. This suggests,
-that many of the clips in this category might be considered as a musical track
-representation -- again, a good news for our research.
+that many of the clips in this category might be videos that contain a single song.
 
 \paragraph{Web-Based Graphs} There are several attempts at sneaking additional
 computer-processable semantic data into regular human-readable web pages.  The
@@ -127,7 +126,7 @@ able to to predict its users' answers to various questions based solely on their
 In addition to that, it is able to recommend products
 to users and provide them with links to online stores containing those products.
 Initial prediction results and their accuracy suggest that
-\textit{Twitter} users data does contain information about their preferences.
+\textit{Twitter} user data does contain information about their preferences.
 \textit{Hunch} is a \textit{gray box}
---  it does not provide information on how the recommender system works, but it provides a rich
-API for accessing its data.
+--  it does not provide information on how the recommender system works, but it
+provides a rich API for accessing its data.

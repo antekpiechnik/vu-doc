@@ -1,7 +1,7 @@
 \section{Vocabulary}
-In this section we would like to describe how vocabularies are used to help
-recognize Named Entities (NEs -- known people shows and programmes) within
-the available UAD for \textit{YouTube} and \textit{Twitter}.
+\label{sec:vocabulary}
+In this section we would like to describe how vocabularies are used to help recognize \textit{named entities} (NEs)
+known people shows and programmes) within the available UAD for \textit{YouTube} and \textit{Twitter}.
 
 \paragraph{Dataset used}
 In order to link the concepts in the user profile to known uniquely identifiable concepts in the Linked Open Data
@@ -11,20 +11,20 @@ Freebase is a service offering a large (over 10 million topics) amount of semant
 
 The data available on Freebase is divided into \textit{topics}, types and properties. \textit{Topics} correspond to data
 freely available, similar to \textit{Wikipedia}, describing physical entities, artistic creations, abstract concepts
-etc. In comparison to \textit{Wikipedia}, all of the data on \textit{Freebase} is semantically structured,
-allowing users to edit, add and remove data. As mentioned, the \textit{Freebase} project is a part of Linked Open Data.
+etc. In comparison to \textit{Wikipedia}, all of the data on \textit{Freebase} is semantically structured. Moreover,
+users are allowed to edit, add and remove data. As mentioned, the \textit{Freebase} project is a part of Linked Open Data.
 
-\textit{Types} refer to different aspects of the same topic (\eg \textit{Bob Dylan} is a song writer,
-singer and a film actor which all represent different types). All types have properties referring those
-types to the topics (such as songs that Bob Dylan has written).
+\textit{Types} refer to different aspects of the same topic, \eg \textit{Bob Dylan} has several types, namely:
+song writer, singer and film actor. Types have properties relating topics of a certain type to other topics, \eg
+\textit{Bob Dylan} wrote some songs and played in a movie.
 
 All topics and types have IDs expandable into URIs pointing to their location in the \textit{Freebase} dataset
 (such as \textit{/en/tina\_fey}\footnote{www.freebase.com/view/en/tina\_fey} for actress \textit{Tina Fey}
 or \textit{/medicine/disease}\footnote{www.freebase.com/view/medicine/disease} for the type \textit{Disease}).
 By referring to those IDs a user is able to search Freebase for more linked data regarding the interesting topic and type.
 
-From the whole wealth of data, we have focused only on the data related to the media, such as TV Actors, Movies, Movie
-actors and TV Programmes as well as Bands and Singers' names.
+From the whole wealth of data, we have focused only on the data related to the media, namely TV Actors, Movies, Movie
+actors, TV Programmes and Bands and Singers' names.
 
 \paragraph{Usage in the research}
 We have decided to use the \textit{Freebase} dataset in order to be able to uniquely identify mentions of different NEs
