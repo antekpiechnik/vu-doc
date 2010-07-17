@@ -2,12 +2,16 @@
 In order to answer the first research question, we have focused on data from two social services: \textit{YouTube} and
 \textit{Twitter}. The goal of this chapter is to present the organization of the \textit{User Activity Data} available
 in those two networks. In the first subsection we describe user data available via APIs for
-\textit{YouTube}, whereas the following section covers possible methods of extracting preference information from \textit{Twitter} users' timelines. We will use the expression \textit{named entity} (NE) to refer to
-known media people, shows and programmes.
+\textit{YouTube}, whereas the following section covers possible methods of
+extracting preference information from \textit{Twitter} users' timelines. This
+data has been analyzed with regards to extracting NEs from both sources, as this
+is the primary method for user profile generation, that we used. The NEs we used 
+are primarily media-related and come from the freebase dataset, and described
+in the previous section.
 
 \subsection{YouTube}
 
-YouTube stores various data concerning its users and content and offers a public
+YouTube stores various pieces of data concerning its users and content, and offers a public
 access to this structured information through the use of its API. In theory, additional
 pieces of data could be acquired through the use of screen scraping. Using this
 technique, however, breaks YouTube's Terms and Conditions (\S 5.1H), and as such
