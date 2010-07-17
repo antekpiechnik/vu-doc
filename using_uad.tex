@@ -515,19 +515,18 @@ information gathered. This is what makes tags much more useful for profile gener
 
 \paragraph{Generating User Profile in Twitter}
 
-For generating user profile using the \textit{Twitter} UAD, we have used methods
-described in sections 5.1.1, 5.1.2 and 5.2.2. We have been aggregating the occurrences
-of mentions of different entities, ranking different ways of mentions differently (\eg
-full name mentions having a lower preference weight than \textit{hashtags}). After
+For generating user profile from the \textit{Twitter} UAD, we have used methods
+described in section \ref{sec:usage_uad}. We have aggregated the occurrences
+of mentions of different entities, giving a higher weight to more precise mentions, \eg
+full name mentions having a lower weight than \textit{hashtags}. After
 generating the user profile containing all the NEs and preference weights, we have
 applied methods for \textit{false positives} removal to entities that have not achieved
 a predefined threshold.
 
-This approach has its downsides. By applying methods described in section 5.2.2 after
-aggregating the preference weights, we did not take into the consideration the different
-ways a NE has been mentioned (only the final preference weight).
-By applying those methods while performing the Named Entity Recognition, we expect to
-achieve more accurate results. However, this was not possible due to time restrictions.
+This approach has its downsides. We have applied methods described in section \ref{sec:false_positives}
+to the final preference weight, that is without taking into the consideration what
+this weight has been based on. By applying those methods while performing the Named Entity Recognition,
+we expect to achieve more accurate results. However, this was not possible due to time restrictions.
 
 \paragraph{Analysis performed on generated user profiles}
 
@@ -547,7 +546,7 @@ of items analyzed. The results are presented in the table below.
   Table 18: The comparison of the amount of linked data concepts within separate data streams \\
 \end{center}
 
-The results in Table 18 show that the analyzed \textit{YouTube} UAD contained way more linked
+The results in Table 18 show that the analyzed \textit{YouTube} UAD contained more linked
 data concepts. The reader should note, there was no checking of actual correctness of those results at
 this stage (the evaluation of results using surveys   is presented in the next chapter).
 
