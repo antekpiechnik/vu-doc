@@ -1,5 +1,4 @@
-\section{Sources of user activity data on the Social Web}
-
+\section{User activity data on the Social Web} 
 In order to answer the first research question, we have focused on data from two social services: \textit{YouTube} and
 \textit{Twitter}. The goal of this chapter is to present the organization of the \textit{User Activity Data} available
 in those two networks. In the first subsection we describe user data available via APIs for
@@ -7,19 +6,31 @@ in those two networks. In the first subsection we describe user data available v
 known media people, shows and programmes.
 
 \subsection{YouTube}
-YouTube stores various data concerning its users and content. Tables
-1 - 5 show the types of information
-available. The table caption names entity, that the field names refer to, the
-column \textit{access} describes in what way these values can be obtained.
-Within this data, three sets are of particular use for user
-profiling. These sets are: \emph{favorites}, \emph{subscriptions} and
-\emph{uploads}. These sets were chosen because they have two features in common: they all are connected
-to user's interests and a user needs to perform an action (\eg click a button on the site)
-in order to add an item to the set. These features make them particularily useful for user profiling.
-For this reason, the rest of YouTube research in this paper will focus on these three sets.
-In order to find out how frequently the
-mentioned sets are used, a sample of 7,500 randomly chosen users was examined,
-as described in section 3.1.1.
+
+YouTube stores various data concerning its users and content and offers a public
+access to this structured information through the use of its API. In theory, additional
+pieces of data could be acquired through the use of screen scraping. Using this
+technique, however, breaks YouTube's Terms and Conditions (\S 5.1H), and as such
+was not used for this research.
+
+The schema of YouTube data is presented in tables 1-5.  Each table lists
+properties of a single type of entity, along with the way those properties are
+accessed (either API or through the use of screen scraping). For example:
+we can learn that values of such video's parameters as its view count or
+its duration (and many others) are accessible through the official API.
+
+Among these elements, what begs for most attention are the video sets.
+Undoubtedly, videos are the central point of YouTube as a service, and form the
+majority of its content. This sets them as most suitable candidates for data
+enrichment. Furthermore, the user can form a relation with a video by performing
+an action on it (uploading, adding to favourites or subscribing), which makes
+video analysis a perfect choice for semantic user profile generation.  Three
+sets of videos are accessible through the official API, these are
+\emph{favorites}, \emph{subscriptions} and \emph{uploads}. For this reason, the
+rest of YouTube research in this paper will focus on these three sets. The other
+fields concerning user, like his \textit{age} or \textit{location}, while
+directly usable as a part of the profile, are not as challenging to extract and
+will not be analyzed in deep detail.
 
 \textit{YouTube} also contains multiple demographic data.
 
@@ -100,22 +111,40 @@ as described in section 3.1.1.
 	\end{minipage}
 \end{table}
 
-\subsubsection{YouTube usage}
+\subsubsection{Problems regarding concepts identification}
 
-Measuring popularity of the three YouTube sets -- favourites,
-subscriptions and uploads. From the 7,500 users analyzed, notable differences in activity
-where noted. Many users show little activity, as compared to a few highly active users.
-50\% analyzed accounts had less than 60 favourites, 6000(!) out of 7,500 had less than 40 uploads.
-All histograms on Figure 1 show numbers of users
-(axis y) with $x_1-x_3$ numbers of favourites/subscriptions/uploads. For all
-three cases, almost all users belonged to the first histogram range -- the one
-with least items. As number of items grows, the number of users decreases so
-quickly, that logarithmic scale has been used in order to increase the readability of the
-charts.
+Even though the video sets are most promising mean to interest extraction. There
+are problems that make this task challenging.
+
+\paragraph{Detecting level of interest}
+One of them, is the fact that YouTube videos cannot
+express an interest directly. The user can add a video to the favourites
+indicating some level of interest, but we are not able to detect the reason for
+such user's action. This indirectness might result in lower precision of the
+interests extracted from YouTube. 
+
+The only indicator of an interest in a particular subject is binary: it is
+either present or not present in user's data. This forces us to fall back to
+entity counting in order to determine level of interest.
+
+\paragraph{Usage of YouTube features} 
+Another problem is the scarcity of data. Below are measurements that showed how
+little users make extensive use of YouTube features.
+In order to find out how frequently the
+mentioned sets are used, a sample of 7,500 randomly chosen users was examined.
+Among those users, noticeable differences in their activity (level of use of
+various features) where noted. Many users show little activity, as compared to a
+few highly active users.  50\% analyzed accounts had less than 60 favourites,
+6000(!) out of 7,500 had less than 40 uploads.  All histograms on Figure 1 show
+numbers of users (axis y) with $x_1-x_3$ numbers of
+favourites/subscriptions/uploads. For all three cases, almost all users belonged
+to the first histogram range -- the one with least items. As number of items
+grows, the number of users decreases so quickly, that logarithmic scale has been
+used in order to increase the readability of the charts.
 
 For all three sets, almost half of examined users had no more than 100 items.
 This means that for most cases, the user profiling would need to be based on a very
-scarse amount of data.
+scarce amount of data.
 
 \begin{figure}[htb]
   \centering
@@ -138,6 +167,32 @@ scarse amount of data.
   groups.}
 \end{figure}
 
+\subsubsection{YouTube measurements employed}
+
+We have decided to measure the user data in two ways: by identifying entities
+and collecting tags. Each YouTube video contains a set of tags - single,
+separate words - describing the video's content. While this kind of information
+is not directly usable for the recommender systems, it can prove indirect
+support for verifying the hypothesis that recommenders prepared. The types of
+measurements performed are presented in Table 6.
+
+\begin{center}
+  \begin{tabular}{ | p{4cm} | p{7cm} | } \hline
+    \multicolumn{2}{|c|}{Types of measurements available} \\
+    \hline
+    \multirow{3}{*} {Tag collection}
+      & Tags from favourites \\ \cline{2-2}
+      & Tags from subscriptions \\ \cline{2-2}
+      & Tags from uploads \\ \cline{2-2}
+    \hline
+    \multirow{3}{*}{Concepts detection}
+      & Concepts from favourites \\ \cline{2-2}
+      & Concepts from subscriptions \\ \cline{2-2}
+      & Concepts from uploads \\ \cline{2-2}
+    \hline
+  \end{tabular}
+Table 6: Overview of the measures available for the \textit{YouTube} structured data \\
+\end{center}
 
 \subsubsection{YouTube video descriptions corpus}
 
@@ -196,7 +251,8 @@ Examples of tweets: (\textit{Boxee}) -- \textit{"likes Inglourious Basterds on B
 \textit{YouTube} -- \textit{"I liked a YouTube video -- How I Met Your Mother - Lorenzo Van Matterhorn"}
 
 \paragraph{Summary}
-We present the possible measurements for extracting the UAD from \textit{Twitter} in Table 6:
+We present the possible measurements for extracting the UAD from
+\textit{Twitter} in Table 7:
 
 \begin{center}
   \begin{tabular}{ | p{4cm} | p{7cm} | } \hline
@@ -219,7 +275,7 @@ We present the possible measurements for extracting the UAD from \textit{Twitter
       & Finding average amount of mentions-to-tweets ratio \\ \cline{2-2}
     \hline
   \end{tabular}
-Table 6: Overview of the measures available for the \textit{Twitter} UAD extraction \\
+Table 7: Overview of the measures available for the \textit{Twitter} UAD extraction \\
 \end{center}
 
 \subsubsection{Corpus used for research}
