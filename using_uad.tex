@@ -287,9 +287,14 @@ both sources much more robust.
 During our experiments we have encountered various challenges. In this section, we would like to describe
 the most significant ones as well as present and discuss possible solutions.
 
-\subsubsection{Dealing with duplicates}
+\subsubsection{Multiple streams of user activity}
 
-\paragraph{How to handle duplicates in YouTube}
+While the Twitter data contains a single UAD stream only, the data gathered from
+YouTube is divided into several streams of different natures. This causes
+several problems, but also is a source of unexpected benefits. This section
+describes these challenges and explains why it does not concern Twitter's UAD.
+
+\paragraph{Duplicates in YouTube}
 
 When combining tags collected from various sets of videos, a question should be
 asked what preference -- if any -- should be given to tags appearing in more
@@ -330,30 +335,33 @@ set as a single document, giving each tag equal weight in the counting process.
 Taking a similar approach for subscriptions (\eg giving equal weight to each
 tag of each video of every subscription) leads to some unwanted effects.
 
-Suppose a user subscribes to two channels. One represents the british royal
-family (133 uploads), the other one: Apple Inc., an american computer company
+Suppose a user subscribes to two channels. One represents the British royal
+family (133 uploads), the other one: Apple Inc., an American computer company
 (19 uploads). The tags referring to new hardware releases would get flooded with
 tags regarding british-specific content. In effect, the user's profile would
-depend on third parties' youtube activity which is doubtful to be of any
+depend on third parties' YouTube activity which is doubtful to be of any
 importance to her.
 
 In order to counteract this effect a number of techniques can be used. One of
 them is giving tags in each subscription a weight, based on the number of videos or
 total number of tags. This and other -- similar -- techniques can lead,
 however, to another distortion of the final results, giving preference to
-subscriptions with hardly any videos (one or two). During rough experiments,
-the authors were not able to find a normalization technique that gave
+subscriptions with hardly any videos (one or two). During our experiments,
+we were not able to find a normalization technique that gave
 fundamentally better results.
 
-\paragraph{Duplicates in Twitter}
-The problem of duplicates does not concern the \textit{Twitter} UAD. Each user has a single
+\paragraph{Multiple streams in Twitter}
+The problems caused by multiple streams do not concern the \textit{Twitter} UAD. Each user has a single
 data stream on which all extraction is performed. This allowed us to focus more attention
 on problems described in section 5.2.2 in relation to \textit{Twitter}.
 
 \subsubsection{Dealing with false positives}
-By \textit{false positives}, we understand matches that have been falsely assigned to a user stating user's interest.
+By \textit{false positives}, we understand matches that have been falsely
+assigned to a user as stating his interest.
 They occur usually when a user uses the NE name in a unrelated context when the NE name is similar to a
 part of natural language.
+
+\paragraph{Detecting false positives in Twitter UAD}
 
 In order to reduce the chance of such accidental name matches occurring, NE names were ran against a corpus
 of English texts, ranking them by their frequency. The more often an NE name occurs in those corpora, the smaller the chance of it occurring as a name of the TV shows rather than a natural language expression. In order to rate the certainty, a separate function is introduced, taking into account the following:
@@ -366,19 +374,28 @@ of English texts, ranking them by their frequency. The more often an NE name occ
 \end{itemize}
 
 We expect the first three of those factors to have a huge influence on the accuracy of the Named Entity Recognition within
-a tweet (basing on results in section 6.2). The can see in section 8.3.1 that such approach provided great results for
+a tweet (basing on results in section 6.2). We can see in section 8.3.1 that such approach provided great results for
 reducing the amount of false positives.
 
 This measurement is easily translatable into the preference weights to be recorded when profiling a user.
 Moreover, by undertaking semantic approaches we are able to analyze different topics found in a tweet and
 attempt to rank their relation to the NE we are researching. We will discuss this in the section 9 (Future work).
 
-A similar technique might be used YouTube research as well. It would drastically reduce the number of
-false positives, at the cost, however, of missing the actual NEs of such common titles.
-
 The methods presented have proved highly effective. As we will discuss in section 8.3, using the natural
 text--based corpora can reduce the amount of \textit{false positives} by up to 33\%. We will discuss those
 results in section 8.3.
+
+\paragraph{Detecting false positives in YouTube UAD}
+
+A similar technique might be used YouTube research as well. It would drastically
+reduce the number of false positives, at the cost, however, of missing the NEs
+that actually do have common, single word titles.
+
+Another aproach is accepting NE detection only, when it is found in both title
+and description of the clip. While such approach has a huge potential, when it
+comes to increasing priecision of the search, it might refuse too many matches,
+as concepts are not always mentioned by name in both title and description of
+the video.
 
 \subsection{Generating the User Profile}
 
