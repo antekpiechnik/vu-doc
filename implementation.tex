@@ -7,11 +7,12 @@ This section covers the code that performed most of the experiments used for the
 Most processing has been done using the \textit{Ruby}\footnote{http://www.ruby-lang.org/en/}
 language, a dynamic, scripting open source programming language. This allowed us
 to focus on experimenting instead of implementation. The profiler scripts have been
-separated from any native extensions, making them compatible with \textit{JRuby}\footnote{http://www.jruby.org} -- the Java implementation
-of the Ruby language.
+separated from any native extensions, making them compatible with \textit{JRuby}\footnote{http://www.jruby.org}
+-- the Java implementation of the Ruby language.
 
 \subsubsection{Structure}
-The \textbf{Extractor} part retrieves the data from Twitter. The Twitter API requests are being handled via the \textit{OAuth}\footnote{http://oauth.net/} protocol and provided in a
+The \textbf{Extractor} part retrieves the data from Twitter. The Twitter API requests are being handled via the
+\textit{OAuth}\footnote{http://oauth.net/} protocol and provided in a
 \textit{JSON}-based stream form. Only the newest tweets for the Twitter
 users are downloaded. The NE definitions and semantics are provided by
 the \textit{Freebase} database REST interface. All further processing by the \textit{Associator}
@@ -30,7 +31,8 @@ saved in \textit{YAML}\footnote{http://www.yaml.org/} files. All this data is th
 for experiments by the \textit{Associator}. It uses the power of the \textit{Ruby} language for processing tweets
 of a user using methods described in sections 5.1.1 and 5.1.2 (mostly using \textit{regular expressions}).
 When generating a user profile, the Associator outputs a YAML file containing user's interests and
-their weights. This workflow is shown on Figure 2:
+their weights.  This workflow is shown on Figure 2. We have also implemented scripts for generating a text file
+containing surveys used in section \ref{sec:evaluation}, basing on user profile generated.
 
 \begin{center}
   \includegraphics[scale=0.65]{images/twitter_diagram.pdf} \\
