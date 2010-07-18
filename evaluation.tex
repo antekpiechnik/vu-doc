@@ -95,6 +95,13 @@ accurate in the non-filtered polls -- a Movie \textit{The Weekend} and a TV Show
 However, since the accuracy is the most important aspect of user profiling, employing this method is worth
 the risk.
 
+For YouTube user profiles, the false positives detection based on filtering
+entities with common, single word names gave unsatisfying results, as many TV
+shows (most likely set for returning false positives) have names consisting of
+common \textit{phrases}. Detecting common phrases, while possible to perform
+using the \textit{British National Corpus} API access, was not performed because
+of the time restrictions.
+
 \subsection{Number of ratings guessed correctly}
 After counting out false positives, the correctness of ratings was judged. The
 number of rates guessed correctly by the Twitter profiler revolving around \textit{70\%},
