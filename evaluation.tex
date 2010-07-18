@@ -10,7 +10,8 @@ e-mail.
 
 \subsection{Surveys}
 
-Each person was presented a list of topics that were extracted from their online
+Each person was presented a list of media-related topics (TV shows and actors) 
+that were extracted from their online
 activity and asked to mark their level of interest in every one of
 them. The marks ranged from 0 (dislike) to 3 (strongly like).
 Such scale was suggested for users to be able to quickly respond
@@ -25,15 +26,22 @@ attitude was further divided into two levels so that a person could express a
 more enthusiastic feelings. The simplicity of the scale also turned the filling
 of a survey into a very straight-forward process.
 
-\subsection{Analyzed data description}
+The results of the survey were collected and compared to the generated profiles.
+Each ''X'' mark in the survey meant that an item shouldn't have been matched,
+and thus should be considered a false positive. The rate of these missed is
+presented in section 6.3. Among the rest of the results, we analyzed how big
+part of the marks we estimated were the same as the ones provided by the user.
+The results of this comparison are presented in section 6.4.
+
+\subsection{Overview of the survey results}
 The activeness of users fit in relatively wide range: from 20 up to 400 tweets,
 and 6-400 favourites. On average, \textit{2.51\%} of tweets were media-related.
 One of the \textit{Twitter} users has noted a score of \textit{18\%} of his
-tweets containing mentions of media references. For YouTube, videos useful
-for profiling \textit{9.56\%} of the analyzed set.
+tweets containing mentions of media references. For YouTube, average rate of
+videos with NEs detected was \textit{9.56\%} of the analyzed set.
 
-\subsection{Number of false positives}
-The number of false positives is large. For some users, this
+\subsection{False positives in the survey results}
+The number of false positives was large. For some users, this
 number reached more than 50\% -- maximum of 73.37\% for \textit{Twitter} using the most accurate method (we discuss
 the method accuracy in section \ref{sec:false_positives_evaluation}) and 83\% for \textit{YouTube}.
 This score makes the use of any recommender algorithm, that is based on such a profile, challenging.
@@ -87,7 +95,7 @@ accurate in the non-filtered polls -- a Movie \textit{The Weekend} and a TV Show
 However, since the accuracy is the most important aspect of user profiling, employing this method is worth
 the risk.
 
-\subsection{Preference rate accuracy}
+\subsection{Number of ratings guessed correctly}
 After counting out false positives, the correctness of ratings was judged. The
 number of rates guessed correctly by the Twitter profiler revolving around \textit{70\%},
 while only \textit{50\%} of YouTube rate guesses turned out to be correct. This
