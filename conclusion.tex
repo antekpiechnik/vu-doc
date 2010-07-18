@@ -14,15 +14,20 @@ on obstacles and challenges encountered and propose effective ways of dealing wi
 \textit{duplicates} and avoiding \textit{false positives}). We have also evaluated our solutions with users, proving
 them effective enough for use in a recommender system.
 
-We were able to perform a significant amount of experiments in order to answer both research question. Due to the time
+We were able to perform a significant amount of experiments in order to answer both research questions. Due to the time
 constraints we were not able to perform experiments on greater amounts of data and using more sophisticated methods.
-Despite that, we believed we were able to answer the posed research questions by providing enough evidence to back our
-answers up.
+Despite those restrictions, we have identified multiple ways of extracting UAD from \textit{Twitter} and \textit{YouTube}
+as described in section \ref{sec:uad}. We have proved those methods effective enough for generating user profiles, as
+described in section \ref{sec:usage_uad}. Basing our conclusions on the limited amount of experiments, we identified
+the \textit{YouTube} UAD as a source containing more NEs useful for profile generations. On the other hand, the
+user profiles generated from \textit{Twitter} UAD contained more accurate preference information, as evaluated in section
+\ref{sec:evaluation}.
 
 We learned that while basic extracting of the user profiles is relatively easy, it is extremely challenging to
-guarantee high quality and accuracy of the results. We have also noticed that \textit{unstructured} data requires
-much more complex methods for accurate generation of the user profile but is also able to provide more
-accurate data.
+guarantee high quality and accuracy of the results. User activity streams from \textit{YouTube} and \textit{Twitter}
+required different methods of acquiring and processing user data. These methods have been described in section
+\ref{sec:implementation}. We have also noticed that \textit{unstructured} data involves much more complex methods
+for generation of the user profile.
 
 We believe that existing and future recommender systems may benefit from our work and focus on improving their results
 even further.
