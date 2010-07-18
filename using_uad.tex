@@ -1,26 +1,33 @@
 \section{Using user activity data}
 \label{sec:usage_uad}
 
-Our object is to extract a user profile. The goal of this section is to create a comparative analysis the UAD
+Our object is to extract a user profile. The goal of this section is to create a comparative analysis of the UAD
 available on of different \textit{Twitter} and \textit{YouTube} identified in section \ref{sec:uad} for generating
-a user profile. We focus on discussing methods and approaches. We also describe encountered challenges and discuss
+a user profile. We focus on discussing methods and approaches, but also describe encountered challenges and discuss
 proposed solutions.
 
 \subsection{Method}
 In this section we want to present methods and results of using the UAD described in section \ref{sec:uad} for
 generating a user profile. We will focus on the Named Entity Recognition, as well as extracting relevant types
-of user activity for both services. We expect many \textit{false positives} to occur, \ie incorrectly identified NEs
+of user activity for both services. We expect many accidental matches to occur, \ie incorrectly identified NEs
 -- when the NE name is a single word highly popular in natural language (such as \textit{Love} or \textit{Hotel}).
 We will refer to those accidental matches as \textit{false positives} and will discuss avoiding them in section
 \ref{sec:false_positives}.
+
+Since the \textit{Twitter} corpus has been selected as described in the Section \ref{sec:twitter_corpus},
+we decided to cross-validate the measurements against two randomly selected halves of the corpus
+to be able to minimize the overfitting of the data. The results in the following paragraphs suggest
+that entity references are evenly distributed between the two parts of the corpus. In each paragraph we
+present results for both halves of the corpus, which we will refer to as \textit{Corpus 1} and
+\textit{Corpus 2}.
 
 \subsubsection{Named Entity Recognition}
 \label{sec:ner}
 
 \paragraph{Identifying named entities in Youtube streams}
 The linked data concepts can be associated with user data through the use of
-simple text search. The video's title and description fields often carry names
-of people depicted in the clip. Having a set of all actors names we can
+simple text search. The video title and description fields often carry names
+of people depicted in the clip. By using a set of all actors names we can
 identify their occurrences.
 
 This approach is not ideal. Many \textit{false positives} can be returned, particularly
@@ -35,7 +42,7 @@ are shown in the Table 8.
 \begin{figure}[h!]
   \begin{center}
     \begin{tabular}{ | p{4cm} | p{6cm} | } \hline
-      Entity (average) & Rate of videos with matched contents 1 \\ \hline
+      Entity (average) & Rate of videos with matched contents \\ \hline
       TV Shows & 30.25\% \\ \hline
       TV Actors & 14.73\% \\ \hline
       Movies & 45.95\% \\ \hline
@@ -45,7 +52,7 @@ are shown in the Table 8.
   \end{center}
 \end{figure}
 
-These numbers are exceptionally large, but unfortunately, a vast number of text
+These numbers are exceptionally large, but a vast number of text
 based matches proved to be false positives. This was the case particularly for
 movie titles, where NEs with common labels are quite popular (\eg 'Under',
 'House', or 'Power').
@@ -65,17 +72,18 @@ using full name matching of the NE label.
   Table 9: Percentage of all tweets with recognized NEs using full name matching \\
 \end{center}
 
-Scores presented in Table 9 are used as the a baseline below. Given the results in Table 9, we believe
+Scores presented in Table 9 are used as the a baseline below. Given these results, we believe
 most of them are \textit{false positives}. Out of half of the corpus, an
 average of 99 tweets contained a reference to an actor (TV or Movie). This is a low score, but considering the
-purpose of \textit{Twitter} (as described in section \ref{sec:twitter_uad}), we have been expecting them and still believe this amount
-might be enough for user profiling. On the other hand, the number of such tweets for TV show names is almost 14,500
-tweets. This suggests that \textit{false positives} problem will be a obstacle to achieve accurate results.
+purpose of \textit{Twitter} (as described in section \ref{sec:twitter_uad}), we have been expecting them and still
+believe this amount might be enough for user profiling. On the other hand, the number of such tweets for TV show
+names is almost 14,500 tweets. This suggests that \textit{false positives} problem will be an obstacle to achieve
+accurate results.
 
 \paragraph{Matching Twitter usernames}
-Due to small number of available Twitter usernames for NEs in the \textit{Freebase} dataset (as of writing this
+Due to a small number of available \textit{Twitter} usernames for NEs in the \textit{Freebase} dataset (as of writing this
 paper -- 182 \textit{Twitter} usernames related to TV), this approach is not proving effective. After including those
-usernames in the search, we noticed little (0.02\% in on of the corpuses for TV Shows) to almost no increase in
+usernames in the search, we noticed little (0.02\% in one of the corpuses for TV Shows) to almost no increase in
 the results.
 
 \paragraph{Matching title acronyms in Twitter}
@@ -96,7 +104,7 @@ are shown in Table 10.
 We can easily spot an increase in matched NEs, since acronyms such as \textit{SNL}
 (for \textit{Saturday Night Live} show) or \textit{BBT} (\textit{Big Bang Theory}) are widely used.
 However there might be many misleading acronyms created with this approach. If an acronym is similar
-to a natural language word (\eg \textit{CAT}), it will drastically increase the noise and the amount
+to a natural language word, \eg \textit{CAT}, it will drastically increase the noise and the amount
 of \textit{false positives} generated by the matching algorithms (thus the higher percentage of tweets
 found). This problem might be partially solved by methods for avoiding the false positives,
 which we discuss in section \ref{sec:false_positives}. Case sensitive matching could also be helpful,
@@ -119,8 +127,8 @@ in Section 3.2). In this experiment, also one-word NE labels have been used.
 
 The results in Table 11 let us notice how the person-based NEs have either noted a smaller
 occurrence rate and the title-based ones have improved. This may be related to the
-fact that people usually create hashtags based on a more general entity (such as
-a movie) rather then its specific parts (such as actors that play in it)
+fact that people usually create hashtags based on a more general entity, such as
+a movie, rather then its specific parts, such as actors that play in it,
 when expressing their opinion \cite{edinburg-corpus}
 
 \paragraph{Measuring the frequency of NEs in matched tweets}
@@ -139,25 +147,25 @@ we understand a tweet where a mention of an NE has been found (via any of the me
 
 The results in Table 12 show that on an average, every time a tweet contains a mention of an NE,
 it is likely to contain an additional reference to some other NE. This suggests that users try to add
-more references to a tweet when it's already related to media. This allows us to consider the context
+more references to a tweet when it is already related to media. This allows us to consider the context
 in which NEs are used for improving the accuracy of the Named Entity Recognition methods.
 
 \paragraph{Comparison of Named Entity Recognition in YouTube and Twitter}
 By comparing results from Tables 8 and 9, \textit{YouTube} looks to be a more promising area for this
 kind of search. The linked data concepts were present in up to 50 times as many items as for the other
-web service for every type of concepts searched. This is most probably a result of different natures of
+web service for every type of concepts searched. This is most probably a result of different nature of
 text data in both services.
 
-\textit{Twitter} web service doesn't encourage its users to publish their tweets in any
+\textit{Twitter} web service does not encourage its users to publish their tweets in any
 specific form. The only requirement is that the length of a single message
 is less than 140 characters, making them too short for users to elaborate
-on details of their activities. Moreover, tweets are often parts of
+on the details of their activities. Moreover, tweets are often parts of
 conversations. In a video description on \textit{YouTube}, even the name
 suggests that this field should be used to characterize the contents
 of a video. Such a difference in suggested use might explain the fact that
-many more NEs were found in \textit{YouTube} stream. Also, a relatively
+many more NEs were found in \textit{YouTube} stream. In addition, a relatively
 unrestrained form of tweets is probably the reason for a lower rate of
-concepts found in data coming from this web service. Often, instead of referring to
+concepts found in data coming from this web service. Instead of referring to
 a NE by its full name, \textit{Twitter} users often use a person's
 last name or the acronym of a TV show. This results in a lower effectiveness of
 text-based NE finder.
@@ -165,14 +173,14 @@ text-based NE finder.
 \subsubsection{Extracting relevant types of user activity}
 
 \paragraph{Exploring user-video relation} Even after a video is enriched by
-concepts from Linked Open Data, user's attitude towards it should by analyzed.
+concepts from Linked Open Data, user's attitude towards it should be analyzed.
 For Twitter, the context of a NE is searched for verbs that would indicate
 level of interest. For YouTube, such approach is futile as the user in most
-cases has no impact on description of the video. What we can do, however, is
-analyze the structure of data, that we work with. The presence of a video in
+cases has no impact on the description of the video. However, we can analyze
+the structure of data that we work with. The presence of a video in
 user's favourites, subscriptions or uploads set suggests some relation between
-the two. We can narrow down the nature of that relation by checking which set
-specifically the video belongs to.
+the the user and the video. We can narrow down the nature of that relation by
+checking which set the video belongs to.
 
 The upload stream is generated by the user herself, so presence of an entity in
 there should suggest a strong interest. Lack of presence, however, should not
