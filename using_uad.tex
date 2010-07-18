@@ -70,12 +70,12 @@ most of them are \textit{false positives}. Out of half of the corpus, an
 average of 99 tweets contained a reference to an actor (TV or Movie). This is a low score, but considering the
 purpose of \textit{Twitter} (as described in section \ref{sec:twitter_uad}), we have been expecting them and still believe this amount
 might be enough for user profiling. On the other hand, the number of such tweets for TV show names is almost 14,500
-tweets. This suggests that \textit{false positives} problem will be a obstacle to achieve accurate results.
+tweets. This suggests that \textit{false positives} problem will be an obstacle to achieve accurate results.
 
 \paragraph{Matching Twitter usernames}
 Due to small number of available Twitter usernames for NEs in the \textit{Freebase} dataset (as of writing this
 paper -- 182 \textit{Twitter} usernames related to TV), this approach is not proving effective. After including those
-usernames in the search, we noticed little (0.02\% in on of the corpuses for TV Shows) to almost no increase in
+usernames in the search, we noticed little (0.02\% in on of the corpora for TV Shows) to almost no increase in
 the results.
 
 \paragraph{Matching title acronyms in Twitter}
@@ -449,7 +449,7 @@ favourite music videos or comedy videos after looking at his categories
 (because categories like ''Music'' and ''Comedy'' would stand out), but in
 order to say what \textit{kind} of music the person prefers, we need more specific
 information gathered from \eg tags. However, for the task of identifying Open Linked
-Data entities, both tags and categories can play at most a support role and was
+Data entities, both tags and categories can play at most a support role and were
 not used for the entity detection in our work.
 
 \paragraph{Multiple streams in Twitter}
@@ -501,8 +501,8 @@ the video.
 
 \subsection{Generating the User Profile}
 
-For this paper, we define profile as a collection of linked data concepts and weights,
-that represent user's interests. Many YouTube clips can be
+For this paper, we define users profile as a collection of linked data concepts and weights,
+that represent his interests. Many YouTube clips can be
 enriched by linking them to elements presented in the video. For example, a
 video with a specific actor can be linked to that actor's freebase id, making it
 a part of Linked Open Data. Luckily, for many clips, such a connection can be
