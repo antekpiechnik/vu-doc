@@ -98,7 +98,7 @@ the risk.
 \subsection{Number of ratings guessed correctly}
 After counting out false positives, the correctness of ratings was judged. The
 number of rates guessed correctly by the Twitter profiler revolving around \textit{70\%},
-while only \textit{50\%} of YouTube rate guesses turned out to be correct. This
+while only \textit{25\%} of YouTube rate guesses turned out to be correct. This
 result seems surprising when compared to rates of NEs found in both
 services. Our data suggests that Twitter profile, even though containing less
 items, is of a higher quality than the one based on YouTube data.  This
@@ -106,3 +106,22 @@ might suggest that the frequency of tweeting on a given subject as well as
 preference vocabulary used is a better indicator of interest than a number of
 videos in user's YouTube favourites feed, despite using simple methods of rating
 the predicted preference.
+
+\paragraph{Comparing multiple user streams in YouTube}
+
+The multiple user streams from YouTube have been compared for their usefulness
+for their adequacy in extracting the user's interests. The results are presented
+in Table 21. Unfortunately, the users from our survey did not have enough
+uploads to measure this video set appropriately. For that reason, the uploads
+set is missing from the table. We can see, however, that the favourites set
+tends to not only contain more correct matches, but also was more likely to
+reflect the user rating correctly (through the use of occurrence counting).
+
+\begin{center}
+  \begin{tabular}{| l | l | l |}
+  Video set & False positives & Correct matches \\ \hline
+  Favourites & 33\% & 25\% \\
+  Subscriptions & 80\% & 0\% \\
+  \end{tabular} \\
+  Table 21: Comparison of subscriptions and favourites
+\end{center}
