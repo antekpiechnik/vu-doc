@@ -27,7 +27,7 @@ This approach is not ideal. Many \textit{false positives} can be returned, parti
 for concepts that are also common phrases (\eg the 'Lost' TV show).
 
 \paragraph{Pervasiveness of linked data concepts in YouTube}
-A set of statistics was prepare to measure the pervasiveness of linked data
+A set of statistics was prepared to measure the pervasiveness of linked data
 concepts as extracted from the \textit{Freebase} vocabularies. The matching performed
 was a simple text-based search in videos titles and descriptions. It's results
 are shown in the Table 8.
@@ -574,37 +574,24 @@ to the final preference weight, that is without taking into the consideration wh
 this weight has been based on. By applying those methods while performing the Named Entity Recognition,
 we expect to achieve more accurate results. However, this was not possible due to time restrictions.
 
-\paragraph{Analysis of the generated user profiles}
+\subsection{Initial analysis of the generated user profiles}
 
-For each user, a profile was generated using our profilers for both Twitter and
-YouTube services. We measured effectiveness of profilers as a ratio of number of
-items (tweets/videos) with linked data concepts identified to the overall number
-of items analyzed. The results are presented in the table below.
+Before evaluating the profiles with users, we performed an initial analysis of
+them (this is extended with the results gathered from the user surveys in
+Section \ref{sec:evaluation}).
 
-\begin{center}
-  \begin{tabular}{| l | l | l |}
-  Topic & Twitter & YouTube \\ \hline
-  Film actors & 0.48\% & 13.12\% \\
-  Movie titles & 1.79\% & 45.95\% \\
-  TV actors & 0.20\% & 14.73\% \\
-  TV shows & 1.5\% & 30.25\% \\
-  \end{tabular} \\
-  Table 19: The comparison of the amount of linked data concepts within separate data streams \\
-\end{center}
+\paragraph{Variety across concept types}
 
-The results in Table 19 show that the analyzed \textit{YouTube} UAD contained more linked
-data concepts. The reader should note, there was no checking of actual correctness of those results at
-this stage (the evaluation of results using surveys   is presented in the next chapter).
+A remark worth making is that number of matched items depends on type of
+concepts that we are in search of (see Tables 8 and 9). However, after manual
+analysis of identified items, we came to a conclusion that comparing usefulness
+of structured and unstructured data (one of our research questions) is risky at
+this stage, because of a large amount of false positives. Furthermore, the
+amount of false positives has been noted to vary wildly depending on the topic
+(much less misses for actors' names; much more for TV programmes). This
+observation will be extended in the next chapter.
 
-\subsection{Variety across concept types}
-Another remark worth making is that number of matched items depends on type of
-concepts that we are in search of. However, after manual analysis of identified
-items, we came to a conclusion that comparing occurrences of
-different concepts in data streams is counterproductive at this stage.
-That is because of the numbers of false positives, which vary wildly
-depending on the topic. This observation will be extended in the next chapter.
-
-\subsection{Dependency on the amount and quality of data}
+\paragraph{Dependency on the amount and quality of data}
 
 The effectiveness of the profiler -- not surprisingly -- depends strictly on data
 that the profiler was fed. Only a small number of users -- those, whose updates
