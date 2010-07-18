@@ -559,7 +559,7 @@ Dudley Moore & 2 \\
   Table 18: Example user profile (the actors part)
 \end{center}
 
-\paragraph{Generating User Profile in Twitter}
+\paragraph{Generating User Profile from Twitter UAD}
 
 For generating user profile from the \textit{Twitter} UAD, we have used methods
 described in section \ref{sec:usage_uad}. We have aggregated the occurrences
@@ -567,7 +567,30 @@ of mentions of different NEs, giving a higher weight to more precise mentions, \
 full name mentions having a lower weight than \textit{hashtags}. After
 generating the user profile containing all the NEs and preference weights, we have
 applied methods for \textit{false positives} removal to NEs that have not achieved
-a predefined threshold.
+a predefined threshold. Table 19 shows an example user profile generated from Twitter
+UAD.
+
+\begin{center}
+  \begin{tabular}{| l | l |}
+Named Entity & Rating \\ \hline
+Ironman & 1 \\
+Eric Clapton & 3 \\
+Jorge Garcia & 2 \\
+J.J. Abrams & 1 \\
+Leverage & 2 \\
+Brooklyn Bridge & 1 \\
+Dire Straits & 1 \\
+Mark Knopfler & 2 \\
+The Second Time & 1 \\
+I'm Telling & 1 \\
+  \end{tabular} \\
+  Table 19: Example user profile from Twitter UAD
+\end{center}
+
+As we can see, the example user profile generated from the \textit{Twitter} UAD is of smaller size
+than user profile generated from \textit{YouTube} UAD presented in the previous paragraph. This profile
+contains two false positives, as we found out while evaluating it by the user, namely 'Brooklyn Bridge'
+and 'The Second Time'.
 
 This approach has its downsides. We have applied methods described in section \ref{sec:false_positives}
 to the final preference weight, that is without taking into the consideration what
