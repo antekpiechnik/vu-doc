@@ -15,21 +15,21 @@ which we described in section \ref{sec:vocabulary}.
 
 \textit{YouTube} stores various data concerning its users and content and offers a public
 access to this structured information through the use of its API. In theory, additional
-pieces of data could be acquired through the use of screen scraping. Using this
-technique, however, breaks \textit{YouTube}'s Terms and Conditions (\S 5.1H), and as such
+pieces of data could be acquired through the use of screen scraping. However, using this
+technique breaks \textit{YouTube}'s Terms and Conditions (\S 5.1H), and as such
 was not used for this research.
 
 The schema of \textit{YouTube} data is presented in tables 1-5.  Each table lists
 properties of a single type of entity, along with the way those properties are
-accessed (either API or through the use of screen scraping). For example:
-we can learn that values of such video's parameters as its view count or
-its duration (and many others) are accessible through the official API.
+accessed, \ie either API or through the use of screen scraping. For example,
+we can learn that parameters of a video, such as its view count or
+its duration, are accessible through the official API.
 
 Among these elements, what begs for most attention are the video sets.
-Undoubtedly, videos are the central point of \textit{YouTube} as a service, and form the
+Undoubtedly, videos are the central point of \textit{YouTube} as a service and form the
 majority of its content. This sets them as most suitable candidates for data
 enrichment. Furthermore, the user can form a relation with a video by performing
-an action on it (uploading, adding to favourites or subscribing), which makes
+an action on it, such as uploading, adding to favourites or subscribing, which makes
 video analysis a perfect choice for semantic user profile generation.  Three
 sets of videos are accessible through the official API, these are
 \emph{favorites}, \emph{subscriptions} and \emph{uploads}. For this reason, the
@@ -48,13 +48,13 @@ of a user, which we will not use in our experiments.
   Category & Public API & Chosen from a restricted set of YouTube categories \\
   Tags (keywords) & Public API & May be freely assigned \\
   Comments & Public API & Natural language \\
-  Permissons & Public API & Irrelevant, but available \\
+  Permissions & Public API & Irrelevant, but available \\
   Description & Public API & Natural language \\
   Thumbnails & Public API & Set of video's thumbnails (along with times
   when taken) \\
   Duration & Public API & \\
   Ratings & Public API & Best, worst and average rating, number of votes \\
-  Viewcount & Public API & \\
+  View count & Public API & \\
   Favourite count & Public API & \\
   Number of likes & Public API & \\
   Number of dislikes & Public API & \\
@@ -118,26 +118,26 @@ of a user, which we will not use in our experiments.
 
 \subsubsection{Problems regarding concepts identification}
 
-Even though the video sets are most promising mean to interest extraction. There
+Even though the video sets are most promising means to interest extraction, there
 are problems that make this task challenging.
 
 \paragraph{Detecting level of interest}
-One of them, is the fact that YouTube videos cannot
+One of such challenges is the fact that YouTube videos cannot
 express an interest directly. The user can add a video to the favourites
 indicating some level of interest, but we are not able to detect the reason for
 such user's action. This indirectness might result in lower precision of the
-interests extracted from YouTube. 
+interests extracted from YouTube.
 
 The only indicator of an interest in a particular subject is binary: it is
 either present or not present in user's data. This forces us to fall back to
-entity counting in order to determine level of interest.
+entity counting in order to determine the level of interest.
 
 \paragraph{Usage of YouTube features} 
-Another problem is the scarcity of data. Below are measurements that showed how
+Another problem is the scarcity of data. Figure 1 shows measurements of how
 little users make extensive use of YouTube features.
 In order to find out how frequently the mentioned sets are used, a sample of 7,500
 randomly chosen users was examined. Among those users, noticeable differences in their
-activity (level of use of various features) were noted. Many users show little activity,
+activity, \ie level of use of various features, were observed. Many users show little activity,
 as compared to a few highly active users.  50\% analyzed accounts had less than 60 favourites,
 6000 out of 7,500 had less than 40 uploads.  All histograms on Figure 1 show
 numbers of users (axis y) with $x_1-x_2$ numbers of
@@ -177,7 +177,7 @@ We have decided to measure the user data in two ways: by identifying entities
 and collecting tags. Each YouTube video contains a set of tags - single,
 separate words - describing the video's content. While this kind of information
 is not directly usable for the recommender systems, it can prove indirect
-support for verifying the hypothesis that recommenders prepared. The types of
+support for verifying the hypotheses that recommenders prepared. The types of
 measurements performed are presented in Table 6.
 
 \begin{center}
@@ -202,8 +202,8 @@ Table 6: Overview of the measures available for the \textit{YouTube} structured 
 \label{sec:twitter_uad}
 
 Data available on \textit{Twitter} is composed of natural language short messages posted by users
-consisting of up to 140 characters, commonly known as \textbf{tweets}. Within
-those tweets we can distinguish user mentions (\textit{Twitter} usernames preceeded with the symbol @,
+consisting of up to 140 characters, commonly known as \textit{tweets}. Within
+those \textit{tweets} we can distinguish user mentions (\textit{Twitter} usernames preceded with the symbol @,
 such as \textit{@justinbieber}\footnote{http://twitter.com/justinbieber}) as well as topics in form of
 \textit{hashtags} -- names stripped of all whitespace and preceded by the hash symbol,
 \eg \textit{\#TheDailyShow} \cite{edinburg-corpus}.
@@ -233,10 +233,10 @@ Those verbs were searched for in the tweets containing NE mentions.
 Example of a tweet: \textit{"yesterday's \#Lost episode was stunning!"}
 \paragraph{Usage of activity verbs}
 When mentioning a media-related NE, users may also describe the activity performed.
-In order to find such tweets, an activity verbs vocabulary has been prepared (similarly to
-the opinion verbs, it was chosen by looking at the contents of random tweets).
-This vocabulary contains the followings verbs: \textit{watching, watched, play,
-watch, playing, saw, seen, played}.
+In order to find such tweets, an activity verbs vocabulary has been prepared. Similarly to
+the opinion words, this set of verbs was chosen by looking at the contents of random tweets.
+This vocabulary contains the followings verbs: \textit{play, playing, played, watch, watching, watched,
+saw, seen}.
 Describing the activity of participating in a certain TV experience, such
 as watching a show, has to be noted due to the fact that Twitter users are more
 likely to specify what they are doing at a particular moment.
@@ -252,9 +252,8 @@ Examples of tweets: (\textit{Boxee}) -- \textit{"likes Inglourious Basterds on B
 \textit{YouTube} -- \textit{"I liked a YouTube video -- How I Met Your Mother - Lorenzo Van Matterhorn"}
 
 \paragraph{Summary}
-We present the possible measurements for extracting the UAD from \textit{Twitter} in Table 7. We present an overview
-of different kinds of measurements for each extraction method described in this section. All those measurements will
-be used for attempting to generate a user profile.
+In Table 7 we present an overview of different kinds of measurements for each extraction method
+described in this section. All those measurements will be used for generating a user profile.
 
 \begin{center}
   \begin{tabular}{ | p{4cm} | p{7cm} | } \hline
@@ -289,7 +288,7 @@ Rate Limiting which limits the amount of tweets that can be fetched using the AP
 Furthermore, a great deal of Twitter users provide data not necessarily
 useful for our experiments. Mentions of NEs in non-English tweets could be located, but
 extracting preference information in a multi-lingual setting is more challenging.
-Using a preselected corpus enables measuring and comparing the effectiveness of different
+Using a preselected corpus allows for measuring and comparing the effectiveness of different
 counting methods much easier \cite{short-tweet}.
 
 \subsection{Metrics used in constructing User Profile}
@@ -299,6 +298,6 @@ weights. In order to keep the scale of the weight simple (more on that in sectio
 \ref{sec:evaluation}), we limited the scale to an integer range from 0
 up to 3, meaning accordingly: ''do not like'', ''neutral'', ''like'', ''like
 very much''. In order to determine the weight for each concepts, simple metrics
-were used: number of repeats normalized to the mostly repeated item for
-YouTube, and measurements presented in section \ref{sec:twitter_uad} in Table 7.
+were used, \ie number of repeats normalized to the mostly repeated item for
+YouTube and measurements presented in section \ref{sec:twitter_uad} in Table 7.
 
