@@ -11,7 +11,7 @@ our algorithms.
 NoTube is a European project that aims to connect TV and the Web through
 semantics. Currently, user activity on the Web has little or no influence on
 what you see on TV and visa versa. In NoTube bits and pieces of data that are
-scattered around on the Web are accumulated and used to personalize TV. Userdata
+scattered around on the Web are accumulated and used to personalize TV. User data
 is collected from social sites, such as Facebook, YouTube and Twitter, and used
 to generate a user profile. Data on TV programs is collected from online program
 guides and enriched with semantics from the Linked Open Data cloud (LOD). The
@@ -24,7 +24,7 @@ an input to the recommender module.
 Both \textit{YouTube} and \textit{Twitter} certainly do contain information
 useful for this topic, allowing \textit{NoTube} recommender to benefit from
 our work. Its results could be further improved by incorporating more advanced methods
-for media topics recognition and maybe an evaluation of information extracted
+for media topics recognition and an evaluation of information extracted
 from those streams by the user. If a user is not active on any of the described
 UAD sources, combining results from both services should provide enough information
 to generate a user profile.
@@ -80,7 +80,7 @@ In order to enhance the accuracy of NEs recognized within a user's Twitter
 stream, one could employ search methods based on analyzing a single tweet's
 context regarding other topics related to the media field using semantic
 services.  However, this approach could be much slower for multiple tweets
-within a significant userbase.
+within a significant amount of users.
 
 Some NE categories (such as \textit{TV Actors}) can be ambiguous
 (such as \textbf{John Terry the actor} and \textbf{John Terry the footballer}).
@@ -89,9 +89,10 @@ reasoning) in order to accurately identify the NE in question.
 
 \subsubsection{Comparison of TV show named entities against more natural language corpora}
 
-In addition to methods described in section 6.3, to further minimize the amount of \textit{false positives}
+In addition to methods described in section \ref{sec:false_positives_evaluation}, to further minimize the
+amount of \textit{false positives}
 matched in a user's stream, different NE labels and aliases should be ran against corpora
-that are strictly \textbf{unrelated} to the topic of the recommender, (such as TV or other media related
-newspaper/magazine articles). This might further increase its accuracy when filtering the accidental
+that are strictly \textbf{unrelated} to the topic of the recommender, such as TV or other media related
+newspaper/magazine articles. This might further increase its accuracy when filtering the accidental
 matches. Using this approach while also using semantic recognition could decrease recommender's
 speed even further.

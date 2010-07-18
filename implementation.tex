@@ -29,9 +29,9 @@ dataset using the \textit{Freebase} HTTP API\footnote{http://www.freebase.com/do
 form of \textit{JSON} Objects. The most important information (names and \textit{Freebase} IDs) are then
 saved in \textit{YAML}\footnote{http://www.yaml.org/} files. All this data is then combined and used
 for experiments by the \textit{Associator}. It uses the power of the \textit{Ruby} language for processing tweets
-of a user using methods described in sections 5.1.1 and 5.1.2 (mostly using \textit{regular expressions}).
-When generating a user profile, the Associator outputs a YAML file containing user's interests and
-their weights.  This workflow is shown on Figure 2. We have also implemented scripts for generating a text file
+of a user using methods described in sections \ref{sec:ner} and \ref{sec:user_activity} (mostly using \textit{regular
+expressions}). When generating a user profile, the Associator outputs a YAML file containing user's interests and
+their weights. This workflow is shown on Figure 2. We have also implemented scripts for generating a text file
 containing surveys used in section \ref{sec:evaluation}, basing on user profile generated.
 
 \begin{center}
@@ -67,8 +67,8 @@ The main program -- the one responsible for generating user's preferences
 API responses come as xml documents, and are analyzed in search of the pieces of
 data we are interested in (titles and descriptions). Among these pieces of text,
 the Freebase concepts are sought. For repeating items, their number is kept,
-which is leter used as a preference indicator.  The Freebase data
-is stored as flat files, downloaded from the dumps regularily published by the
+which is later used as a preference indicator.  The Freebase data
+is stored as flat files, downloaded from the dumps regularly published by the
 Freebase service.
 
 The corpora for analysis was collected using breadth-first search graph
